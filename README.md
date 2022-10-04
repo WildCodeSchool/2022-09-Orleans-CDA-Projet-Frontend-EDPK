@@ -1,10 +1,8 @@
 # yarn
 
 - add
-  = npm install
+  = yarn install
 
-- we use only npm
-
-- !! never use npm update!!
+- we only use yarn
 
 - format
