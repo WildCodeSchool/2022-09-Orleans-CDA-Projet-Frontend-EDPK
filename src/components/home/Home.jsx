@@ -1,7 +1,6 @@
 import React from "react";
 import "./Home.scss";
 import MoviesListHome from "../MoviesListHome/MoviesListHome";
-("../MoviesListHome/MoviesListHome");
 
 function Home() {
   return (

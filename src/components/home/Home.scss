@@ -2,13 +2,14 @@
   margin: 0%;
 }
 
-.home > video {
-  margin-top: 5rem;
-  object-fit: cover;
-  width: 100%;
-  height: 35vh;
+.home {
+  video {
+    margin-top: 5rem;
+    object-fit: cover;
+    width: 100%;
+    height: 35vh;
+  }
 }
-
 h1 {
   color: #13c5b2;
 }
