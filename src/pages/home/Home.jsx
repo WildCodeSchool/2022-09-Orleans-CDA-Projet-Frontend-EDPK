@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.scss";
-import MoviesListHome from "../MoviesListHome/MoviesListHome";
+import MoviesListHome from "../components/MoviesListHome/MoviesListHome";
 
 function Home() {
   return (
