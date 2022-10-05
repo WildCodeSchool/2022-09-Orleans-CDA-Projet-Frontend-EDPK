@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .absolute-center-container {
   position: absolute;
   top: 50%;
