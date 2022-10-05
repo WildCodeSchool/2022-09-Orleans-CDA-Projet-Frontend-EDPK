@@ -1,13 +1,15 @@
 import React from "react";
 import "./Home.scss";
+import Searchbar from "../searchbar/Searchbar";
 
 function Home() {
   return (
     <div>
-      <body className="home">
+      <div className="home">
         <video src="/videos/video2.mp4" autoPlay loop muted />
         <h1>navbar</h1>
-      </body>
+        <Searchbar cat="movie" />
+      </div>
     </div>
   );
 }
