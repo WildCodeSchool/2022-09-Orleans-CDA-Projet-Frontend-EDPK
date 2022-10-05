@@ -5,13 +5,11 @@ import MoviesListHome from "../MoviesListHome/MoviesListHome";
 
 function Home() {
   return (
-    <div>
-      <div className="home">
-        <video src="/videos/video2.mp4" autoPlay loop muted />
-        <h1>navbar</h1>
-        <div className="card">
-        < MoviesListHome />
-        </div>
+    <div className="home">
+      <h1>navbar</h1>
+      <video src="/videos/video2.mp4" autoPlay loop muted />
+      <div className="card">
+        <MoviesListHome />
       </div>
     </div>
   );
