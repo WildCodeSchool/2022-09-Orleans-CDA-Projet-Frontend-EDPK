@@ -1,7 +1,7 @@
 # yarn
 
 - add
-  = yarn install
+  = yarn
 
 - we only use yarn
 
