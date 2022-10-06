@@ -4,10 +4,6 @@ import { useEffect, useState } from "react";
 const Searchbar = ({ cat }) => {
   const [search, setSearch] = useState("");
   const [display, setDisplay] = useState("");
-  let isMovie = true;
-  if (cat === "tv") {
-    isMovie = false;
-  }
 
   useEffect(() => {
     const debounce = setTimeout(() => {
@@ -28,10 +24,7 @@ const Searchbar = ({ cat }) => {
   return (
     <>
       <div className="search-input">
-        <input
-          placeholder="Recherchez un film ou une série..."
-          onChange={handleSearch}
-        />
+        <input placeholder="Recherchez un film..." onChange={handleSearch} />
       </div>
       {display && (
         <div className="search-list">
@@ -43,13 +36,11 @@ const Searchbar = ({ cat }) => {
                     ? `https://image.tmdb.org/t/p/w500${item.poster_path}`
                     : "/src/assets/default_img.jpg"
                 }
-                alt={
-                  isMovie ? `Poster of ${item.title}` : `Poster of ${item.name}`
-                }
+                alt={`Poster of ${item.title}`}
               />
               <div>
                 <span>[{cat.toUpperCase()}]</span>
-                <span>{isMovie ? item.title : item.name}</span>
+                <span>{item.title}</span>
               </div>
             </div>
           ))}
