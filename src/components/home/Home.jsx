@@ -4,10 +4,10 @@ import "./Home.scss";
 function Home() {
   return (
     <div>
-      <body className="home">
-        <video src="/videos/video2.mp4" autoPlay loop muted />
+      <div className="home">
+        {/*<video src="/videos/video2.mp4" autoPlay loop muted />*/}
         <h1>navbar</h1>
-      </body>
+      </div>
     </div>
   );
 }
