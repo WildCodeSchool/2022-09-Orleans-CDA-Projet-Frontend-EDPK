@@ -30,7 +30,7 @@ const Movie = () => {
     <div
       className="container h-screen w-screen"
       style={{
-        backgroundImage: `url('https://image.tmdb.org/t/p/original${movie.backdrop_path}')`,
+        backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://image.tmdb.org/t/p/original${movie.backdrop_path}')`,
         backgroundSize: "100%",
         backgroundRepeat: "no-repeat",
       }}

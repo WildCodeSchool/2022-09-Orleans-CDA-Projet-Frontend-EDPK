@@ -1,12 +1,15 @@
-import "./App.css";
-import Home from "./components/home/Home";
-import Movie from "./pages/detail/Movie";
+import "./App.scss";
+import "tw-elements";
+import Home from "./pages/home/Home";
+import Footer from "./components/footer/Footer";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   return (
     <>
-      {/*<Home />*/}
-      <Movie />
+      <Navbar />
+      <Home />
+      <Footer />
     </>
   );
 }
