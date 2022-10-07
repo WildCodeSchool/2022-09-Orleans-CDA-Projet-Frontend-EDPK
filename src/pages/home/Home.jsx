@@ -7,7 +7,7 @@ function Home() {
   return (
     <div className="home">
       <video src="/videos/video2.mp4" autoPlay loop muted />
-      <Searchbar cat="movie" />
+      <Searchbar />
       <div className="card">
         <MoviesListHome />
       </div>

@@ -6,9 +6,9 @@ const Searchbar = ({ cat }) => {
   const [display, setDisplay] = useState("");
 
   useEffect(() => {
-    const debounce = setTimeout(() => {
+    const timeOut = setTimeout(() => {
       fetch(
-        `https://api.themoviedb.org/3/search/${cat}?api_key=c27f8ca565d1e0e0b28f3721fb54e05e&language=fr&query=${search}`
+        `https://api.themoviedb.org/3/search/movie?api_key=c27f8ca565d1e0e0b28f3721fb54e05e&language=fr&query=${search}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -16,7 +16,7 @@ const Searchbar = ({ cat }) => {
           setDisplay(data.results);
         });
     }, 500);
-    return () => clearTimeout(debounce);
+    return () => clearTimeout(timeOut);
   }, [search]);
 
   const handleSearch = (e) => setSearch(e.target.value);
@@ -39,7 +39,7 @@ const Searchbar = ({ cat }) => {
                 alt={`Poster of ${item.title}`}
               />
               <div>
-                <span>[{cat.toUpperCase()}]</span>
+                <span>[MOVIE]</span>
                 <span>{item.title}</span>
               </div>
             </div>
