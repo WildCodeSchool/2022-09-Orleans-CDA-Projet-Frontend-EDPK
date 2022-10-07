@@ -75,7 +75,7 @@ const Navbar = () => {
                     href="#"
                     className="titles hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    TV Show
+                    Show TV
                   </a>
 
                   <a
