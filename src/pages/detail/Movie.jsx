@@ -8,14 +8,19 @@ const Movie = () => {
   const [movie, setMovie] = useState({});
   const [characters, setCharacters] = useState({});
 
-  async function getMovieById() {
+  async function getMovieById(signal) {
     const response = await axios
-      .get(url_movie_detail + apiKey)
+      .get(url_movie_detail + apiKey, signal)
       .then((res) => res.data);
-    setMovie(response);
+    response && setMovie(response);
   }
 
-  getMovieById();
+  useEffect(() => {
+    const abortCtrl = new AbortController();
+    const opts = { signal: abortCtrl.signal };
+    getMovieById(opts);
+    return () => abortCtrl.abort();
+  }, []);
 
   return (
     <div
