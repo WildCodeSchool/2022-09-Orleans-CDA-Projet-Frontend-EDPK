@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./movie.scss";
 import axios from "axios";
-import Rating from "../../components/Rating";
 
 const Movie = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const url_movie_detail = "https://api.themoviedb.org/3/movie/550?api_key=";
   const [movie, setMovie] = useState({});
-  const [caracters, setCharacters] = useState({});
+  const [characters, setCharacters] = useState({});
 
   async function getMovieById() {
     const response = await axios
@@ -16,15 +15,7 @@ const Movie = () => {
     setMovie(response);
   }
 
-  let mounted = true;
-  useEffect(() => {
-    // run only once the function
-    mounted && getMovieById();
-
-    return () => {
-      mounted = false;
-    };
-  }, []);
+  getMovieById();
 
   return (
     <div
@@ -64,9 +55,10 @@ const Movie = () => {
               <b>Overview : </b>
               {movie.overview}
             </p>
-            <div>
-              <Rating note={movie.vote_average} />
-            </div>
+
+            <p className="text-gray-800">
+              Average rating : {movie.vote_average}
+            </p>
           </div>
         </div>
       </div>
