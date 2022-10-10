@@ -15,7 +15,9 @@ const Movie = () => {
     setMovie(response);
   }
 
-  getMovieById();
+  useEffect(() => {
+    getMovieById();
+  }, []);
 
   return (
     <div
