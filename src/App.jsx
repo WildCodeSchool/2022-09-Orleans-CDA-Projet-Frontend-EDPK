@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Movie />
+      <Home />
       <Footer />
     </>
   );
