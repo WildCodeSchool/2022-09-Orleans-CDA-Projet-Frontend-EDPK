@@ -1,5 +1,6 @@
 import "./Searchbar.scss";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Searchbar = ({ media, genreId }) => {
   const [search, setSearch] = useState("");
@@ -77,8 +78,9 @@ const Searchbar = ({ media, genreId }) => {
 
   useEffect(() => {
     const timeOut = setTimeout(() => {
-      fetch(apiValues.url)
-        .then((res) => res.json())
+      axios
+        .get(apiValues.url)
+        .then((res) => res.data)
         .then((data) => {
           setDisplay(data.results);
         });
