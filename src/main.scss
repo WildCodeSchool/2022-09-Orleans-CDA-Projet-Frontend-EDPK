@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+
+body {
+  background-color: var(--var-primary);
+}
+
+:root {
+  //colors
+  --var-primary: #022631;
+  --var-secondary: #13c5b2;
+  --var-text: #f5f5f5f1;
+
+  //font
+  --title-font: "Reem Kufi Ink", sans-serif;
+  --text-font: "PT Sans", sans-serif;
+}
