@@ -3,23 +3,17 @@ import "tw-elements";
 import Home from "./pages/home/Home";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
-import {
-  BrowserRouter,
-  BrowserRouter as Router,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/2022-09-Orleans-CDA-Projet-Frontend-EDPK/">
       <>
         <Navbar />
-        <Home />
-        <Footer />
         <Routes>
-          <Route path="/" element={<App />} />
+          <Route path="/" element={<Home />} />
         </Routes>
+        <Footer />
       </>
     </BrowserRouter>
   );
