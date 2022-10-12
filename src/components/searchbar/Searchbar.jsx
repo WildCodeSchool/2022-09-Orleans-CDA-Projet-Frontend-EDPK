@@ -6,29 +6,29 @@ import genres from "../../data/genres.json";
 const Searchbar = ({ media = null, genreId = null }) => {
   const [search, setSearch] = useState("");
   const [display, setDisplay] = useState("");
-  const [apiValues, setApiValues] = useState({});
+  const [defaultValues, setDefaultValues] = useState({});
 
-  const getApiValues = (media, genreId) => {
+  useEffect(() => {
     if (genreId) {
       for (const key in genres) {
         if (key.includes(genreId)) {
-          apiValues.genre = genres[key].toLowerCase();
+          defaultValues.genre = genres[key].toLowerCase();
         }
       }
       switch (media) {
         case "movie":
-          apiValues.url = `https://api.themoviedb.org/3/discover/movie?api_key=${
+          defaultValues.url = `https://api.themoviedb.org/3/discover/movie?api_key=${
             import.meta.env.VITE_API_KEY
           }&with_genres=${genreId}`;
-          apiValues.media = "MOVIE";
-          apiValues.placeholder = `Search a movie of ${apiValues.genre}...`;
+          defaultValues.media = "MOVIE";
+          defaultValues.placeholder = `Search a movie of ${defaultValues.genre}...`;
           break;
         case "tv":
-          apiValues.url = `https://api.themoviedb.org/3/discover/tv?api_key=${
+          defaultValues.url = `https://api.themoviedb.org/3/discover/tv?api_key=${
             import.meta.env.VITE_API_KEY
           }&with_genres=${genreId}`;
-          apiValues.media = "TV SHOW";
-          apiValues.placeholder = `Search a TV show of ${apiValues.genre}...`;
+          defaultValues.media = "TV SHOW";
+          defaultValues.placeholder = `Search a TV show of ${defaultValues.genre}...`;
           break;
         default:
           break;
@@ -36,34 +36,34 @@ const Searchbar = ({ media = null, genreId = null }) => {
     } else {
       switch (media) {
         case "movie":
-          apiValues.url = `https://api.themoviedb.org/3/search/movie?api_key=${
+          defaultValues.url = `https://api.themoviedb.org/3/search/movie?api_key=${
             import.meta.env.VITE_API_KEY
           }&language=en&page=1&include_adult=false&query=${search}`;
-          apiValues.media = "MOVIE";
-          apiValues.placeholder = "Search a movie...";
+          defaultValues.media = "MOVIE";
+          defaultValues.placeholder = "Search a movie...";
           break;
         case "tv":
-          apiValues.url = `https://api.themoviedb.org/3/search/tv?api_key=${
+          defaultValues.url = `https://api.themoviedb.org/3/search/tv?api_key=${
             import.meta.env.VITE_API_KEY
           }&language=en&page=1&include_adult=false&query=${search}`;
-          apiValues.media = "TV SHOW";
-          apiValues.placeholder = "Search a TV show...";
+          defaultValues.media = "TV SHOW";
+          defaultValues.placeholder = "Search a TV show...";
           break;
         default:
-          apiValues.url = `https://api.themoviedb.org/3/search/multi?api_key=${
+          defaultValues.url = `https://api.themoviedb.org/3/search/multi?api_key=${
             import.meta.env.VITE_API_KEY
           }&language=en&page=1&include_adult=false&query=${search}`;
-          apiValues.placeholder = "Search a movie, a TV show, or a person...";
+          defaultValues.placeholder =
+            "Search a movie, a TV show, or a person...";
           break;
       }
     }
-  };
-  getApiValues(media, genreId);
+  }, []);
 
   useEffect(() => {
     const timeOut = setTimeout(() => {
       axios
-        .get(apiValues.url)
+        .get(defaultValues.url)
         .then((res) => res.data)
         .then((data) => {
           setDisplay(data.results);
@@ -80,7 +80,7 @@ const Searchbar = ({ media = null, genreId = null }) => {
         <label htmlFor="search_home">Are you searching something ?</label>
         <input
           id="search_home"
-          placeholder={apiValues.placeholder}
+          placeholder={defaultValues.placeholder}
           onChange={handleSearch}
         />
       </div>
@@ -98,7 +98,7 @@ const Searchbar = ({ media = null, genreId = null }) => {
               />
               <div>
                 <span>
-                  {media ? apiValues.media : item.media_type.toUpperCase()}
+                  {media ? defaultValues.media : item.media_type.toUpperCase()}
                 </span>
                 <span>{item.title ? item.title : item.name}</span>
               </div>
