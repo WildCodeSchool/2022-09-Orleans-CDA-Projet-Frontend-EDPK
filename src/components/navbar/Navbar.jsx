@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.scss";
 
 const Navbar = () => {
@@ -57,33 +58,32 @@ const Navbar = () => {
               </div>
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
-                  <a
-                    href="#"
-                    className="titles hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Home
-                  </a>
-
-                  <a
-                    href="#"
-                    className="titles hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Movies
-                  </a>
-
-                  <a
-                    href="#"
-                    className="titles hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Show TV
-                  </a>
-
-                  <a
-                    href="#"
-                    className="titles hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Contact
-                  </a>
+                  <ul>
+                    <li>
+                      <Link
+                        to="/"
+                        className="titles hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      >
+                        Home
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/"
+                        className="titles hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      >
+                        Movies
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/"
+                        className="titles hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      >
+                        Show TV
+                      </Link>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>

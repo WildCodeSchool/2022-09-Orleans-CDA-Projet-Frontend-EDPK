@@ -1,7 +1,16 @@
 .search-input {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.search-input label {
+  color: #fff;
+}
+
+.search-input button {
+  color: #fff;
 }
 
 .search-input input {
