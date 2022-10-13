@@ -125,9 +125,14 @@ const Navbar = () => {
                         <div className="py-1" role="none">
                           {category &&
                             category.map((genre) => (
-                              <Link key={genre.id} to={`/category/${genre.id}`}>
-                                {genre.name}
-                              </Link>
+                              <div>
+                                <Link
+                                  key={genre.id}
+                                  to={`/category/${genre.id}`}
+                                >
+                                  {genre.name}
+                                </Link>
+                              </div>
                             ))}
                           {/* <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">{category}</a> */}
                         </div>
@@ -139,7 +144,7 @@ const Navbar = () => {
                         to="/"
                         className="titles inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                       >
-                        TV Show
+                        Show TV
                       </Link>
                     </li>
                   </ul>
