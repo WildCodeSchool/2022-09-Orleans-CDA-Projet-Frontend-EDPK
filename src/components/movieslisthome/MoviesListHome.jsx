@@ -75,7 +75,7 @@ vote_count
 326 */
     <div>
       <div className="movieList mt-5">
-        <h2 className="mb-3">Trending</h2>
+        <h2 className="mb-3">Trending Movies</h2>
         <div className="board">
           {trending
             ?.filter((t) => t.media_type === "movie")
@@ -91,7 +91,31 @@ vote_count
                     />
                   </a>
                   <div class="pt-2">
-                    <h3 class="text-xl font-medium mb-2">{t.original_title}</h3>
+                    <h3 class="text-xl font-medium mb-2">{t.title}</h3>
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
+      <div className="movieList mt-5">
+        <h2 className="mb-3">Trending TV Shows</h2>
+        <div className="board">
+          {trending
+            ?.filter((t) => t.media_type === "tv")
+            .slice(0, 10)
+            .map((t) => (
+              <div class="flex p-2">
+                <div class="rounded-lg  max-w-sm">
+                  <a href="#!">
+                    <img
+                      class="rounded-t-lg"
+                      src={`https://image.tmdb.org/t/p/w500${t.poster_path}`}
+                      alt={t.original_title}
+                    />
+                  </a>
+                  <div class="pt-2">
+                    <h3 class="text-xl font-medium mb-2">{t.name}</h3>
                   </div>
                 </div>
               </div>
