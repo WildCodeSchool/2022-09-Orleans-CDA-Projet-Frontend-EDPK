@@ -27,10 +27,9 @@ const Movie = () => {
   async function getActorsByMovie(signal) {
     const response = await axios
       .get(url_movie_actors + apiKey, signal)
-      .then((res) => res.data);
-    const [...actors] = response["cast"];
-    actors && setCharacters(actors);
-    console.log(characters);
+      .then((res) => res?.data?.cast);
+
+    if (response && Array.isArray(response)) setCharacters(response);
   }
 
   useEffect(() => {
@@ -45,7 +44,9 @@ const Movie = () => {
       <div
         className="container h-screen w-screen"
         style={{
-          backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://image.tmdb.org/t/p/original${movie.backdrop_path}')`,
+          backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://image.tmdb.org/t/p/original${
+            movie.backdrop_path ?? "/1"
+          }')`,
           backgroundSize: "100%",
           backgroundRepeat: "no-repeat",
         }}
@@ -54,18 +55,22 @@ const Movie = () => {
           <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
             <img
               className=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              src={
+                movie.poster_path
+                  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                  : ""
+              }
               alt=""
             />
             <div className="p-6 flex flex-col justify-start">
-              <h5 className="text-gray-900 text-xl font-medium mb-2">
+              <h1 className="text-gray-900 text-xl font-medium mb-2">
                 {movie.title}
-              </h5>
+              </h1>
               <ul>
-                {movie.genres?.map((g) => (
+                {movie.genres?.map((g, key) => (
                   <button
                     type="button"
-                    key={g.id}
+                    id={key}
                     className="inline-block px-6 py-2 border-2 border-blue-400 text-blue-400 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                   >
                     {g.name}
@@ -100,9 +105,10 @@ const Movie = () => {
                     .map((c, key) => (
                       <>
                         <img
+                          id={key}
                           className="inline-block h-24 w-24 rounded-3xl pic-star transition duration-150 ease-in-out"
                           data-bs-toggle="tooltip"
-                          title="Hi! I'm tooltip"
+                          title={c.name}
                           src={
                             "https://image.tmdb.org/t/p/w500" + c.profile_path
                           }
