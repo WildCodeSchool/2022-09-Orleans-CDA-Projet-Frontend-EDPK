@@ -1,0 +1,6 @@
+img.pic-star {
+  transition: transform 0.2s;
+}
+img.pic-star:hover {
+  transform: scale(1.5);
+}
