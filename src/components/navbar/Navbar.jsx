@@ -139,7 +139,7 @@ const Navbar = () => {
                         to="/"
                         className="titles inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                       >
-                        Show TV
+                        TV Show
                       </Link>
                     </li>
                   </ul>
