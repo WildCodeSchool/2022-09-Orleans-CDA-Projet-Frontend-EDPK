@@ -13,7 +13,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="category" element={<TypePage />} />
+          <Route path="category/:id" element={<TypePage />} />
         </Routes>
         <Footer />
       </>
