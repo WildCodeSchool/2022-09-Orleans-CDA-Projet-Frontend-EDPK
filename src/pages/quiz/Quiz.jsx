@@ -210,21 +210,17 @@ const Quiz = () => {
 
   const handleRounds = (e) => {
     const quizRounds = document.getElementsByClassName("quiz_round");
+    for (const elem of quizRounds) elem.style.backgroundColor = "#d9d9d9";
+    e.target.style.backgroundColor = "green";
     switch (e.target.id) {
       case "rounds_3":
         setRounds(3);
-        for (const elem of quizRounds) elem.style.backgroundColor = "#d9d9d9";
-        e.target.style.backgroundColor = "green";
         break;
       case "rounds_5":
         setRounds(5);
-        for (const elem of quizRounds) elem.style.backgroundColor = "#d9d9d9";
-        e.target.style.backgroundColor = "green";
         break;
       case "rounds_10":
         setRounds(10);
-        for (const elem of quizRounds) elem.style.backgroundColor = "#d9d9d9";
-        e.target.style.backgroundColor = "green";
         break;
       default:
         setRounds(10);
