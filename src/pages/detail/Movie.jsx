@@ -4,7 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const Movie = () => {
-  let { movieId } = useParams();
+  const { movieId } = useParams();
   const apiKey = import.meta.env.VITE_API_KEY;
   const url_movie_detail = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
   const url_movie_actors = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`;
