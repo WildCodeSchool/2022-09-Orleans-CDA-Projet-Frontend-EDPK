@@ -31,7 +31,7 @@ const Quiz = () => {
     },
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     setBackHeight(document.getElementsByClassName("quiz_back")[0].offsetHeight);
     setFrontHeight(
       document.getElementsByClassName("quiz_front")[0].offsetHeight
@@ -40,7 +40,7 @@ const Quiz = () => {
       document.getElementsByClassName("quiz_back")[0].style.height =
         frontHeight + "px";
     }
-  });
+  });*/
 
   useEffect(() => {
     if (start) {
@@ -253,7 +253,7 @@ const Quiz = () => {
         <div
           className="quiz_background"
           style={{
-            backgroundImage: `url(https://image.tmdb.org/t/p/w500${question.backdrop_path})`,
+            backgroundImage: `url(https://image.tmdb.org/t/p/w500${apiData.backdrop_path})`,
           }}
         ></div>
       </div>
