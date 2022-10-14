@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./movie.scss";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const Movie = () => {
+  let { movieId } = useParams();
   const apiKey = import.meta.env.VITE_API_KEY;
-  const url_movie_detail = "https://api.themoviedb.org/3/movie/550?api_key=";
-  const url_movie_actors =
-    "https://api.themoviedb.org/3/movie/550/credits?api_key=";
+  const url_movie_detail = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
+  const url_movie_actors = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`;
   const [movie, setMovie] = useState({});
   const [characters, setCharacters] = useState([]);
 
   async function getMovieById(signal) {
     const response = await axios
-      .get(url_movie_detail + apiKey, signal)
+      .get(url_movie_detail, signal)
       .then((res) => res.data);
     return response && setMovie(response);
   }
@@ -26,7 +27,7 @@ const Movie = () => {
 
   async function getActorsByMovie(signal) {
     const response = await axios
-      .get(url_movie_actors + apiKey, signal)
+      .get(url_movie_actors, signal)
       .then((res) => res?.data?.cast);
 
     if (response && Array.isArray(response)) setCharacters(response);
@@ -51,7 +52,7 @@ const Movie = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="flex justify-center mt-20">
+        <div className="flex justify-center">
           <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
             <img
               className=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
@@ -63,22 +64,22 @@ const Movie = () => {
               alt=""
             />
             <div className="p-6 flex flex-col justify-start">
-              <h1 className="text-gray-900 text-xl font-medium mb-2">
+              <h5 className="text-gray-900 text-4xl font-medium mb-2">
                 {movie.title}
-              </h1>
-              <ul>
-                {movie.genres?.map((g, key) => (
+              </h5>
+
+              <ul className="py-2">
+                {movie.genres?.map((g) => (
                   <button
+                    key={g.id}
                     type="button"
-                    id={key}
                     className="inline-block px-6 py-2 border-2 border-blue-400 text-blue-400 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                   >
                     {g.name}
                   </button>
                 ))}
               </ul>
-              <br />
-              <p className="text-gray-400">
+              <p className="text-gray-400 py-2">
                 release date : ({movie.release_date})
               </p>
               <p className="text-gray-600 text-base mb-4">
@@ -102,19 +103,15 @@ const Movie = () => {
                   {characters
                     ?.filter((char) => char.known_for_department === "Acting")
                     .slice(0, 3)
-                    .map((c, key) => (
-                      <>
-                        <img
-                          id={key}
-                          className="inline-block h-24 w-24 rounded-3xl pic-star transition duration-150 ease-in-out"
-                          data-bs-toggle="tooltip"
-                          title={c.name}
-                          src={
-                            "https://image.tmdb.org/t/p/w500" + c.profile_path
-                          }
-                          alt={c.name}
-                        />
-                      </>
+                    .map((c) => (
+                      <img
+                        key={c.id}
+                        className="inline-block h-24 w-24 rounded-3xl pic-star transition duration-150 ease-in-out"
+                        data-bs-toggle="tooltip"
+                        title={c.name}
+                        src={"https://image.tmdb.org/t/p/w500" + c.profile_path}
+                        alt={c.name}
+                      />
                     ))}
                 </div>
               </div>
