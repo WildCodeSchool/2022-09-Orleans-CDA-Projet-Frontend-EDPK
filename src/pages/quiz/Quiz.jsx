@@ -33,16 +33,6 @@ const Quiz = () => {
   };
 
   useEffect(() => {
-    console.log("sizeFront =", sizeFront?.height);
-    console.log(
-      "backHeight =",
-      document?.getElementsByClassName("quiz_back")[0]?.style?.height
-    );
-    console.log(
-      !!document?.getElementsByClassName("quiz_back")[0]?.style?.height &&
-        sizeFront?.height
-    );
-
     if (
       document?.getElementsByClassName("quiz_back")[0]?.style?.height &&
       sizeFront?.height
@@ -51,7 +41,6 @@ const Quiz = () => {
         document.getElementsByClassName("quiz_back")[0].style.height !==
         sizeFront.height + "px"
       ) {
-        console.log("sizeFront = ", sizeFront);
         document.getElementsByClassName("quiz_back")[0].style.height =
           sizeFront.height + "px";
       }
