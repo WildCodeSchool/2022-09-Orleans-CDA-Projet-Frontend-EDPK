@@ -22,6 +22,7 @@ const Movie = () => {
     const abortCtrl = new AbortController();
     const opts = { signal: abortCtrl.signal };
     getMovieById(opts);
+    window.scrollTo(0, 0);
     return () => abortCtrl.abort();
   }, []);
 
