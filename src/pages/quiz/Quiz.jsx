@@ -1,10 +1,11 @@
 import "./Quiz.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import useSize from "../../hooks/useSize";
 import axios from "axios";
 
 const Quiz = () => {
-  const [backHeight, setBackHeight] = useState("");
-  const [frontHeight, setFrontHeight] = useState("");
+  const targetFront = useRef(null);
+  const sizeFront = useSize(targetFront);
   const [displayRules, setDisplayRules] = useState(true);
   const [start, setStart] = useState(false);
   const [rounds, setRounds] = useState(3);
@@ -32,15 +33,30 @@ const Quiz = () => {
   };
 
   useEffect(() => {
-    setBackHeight(document.getElementsByClassName("quiz_back")[0].offsetHeight);
-    setFrontHeight(
-      document.getElementsByClassName("quiz_front")[0].offsetHeight
+    console.log("sizeFront =", sizeFront?.height);
+    console.log(
+      "backHeight =",
+      document?.getElementsByClassName("quiz_back")[0]?.style?.height
     );
-    if (backHeight !== frontHeight) {
-      document.getElementsByClassName("quiz_back")[0].style.height =
-        frontHeight + "px";
+    console.log(
+      !!document?.getElementsByClassName("quiz_back")[0]?.style?.height &&
+        sizeFront?.height
+    );
+
+    if (
+      document?.getElementsByClassName("quiz_back")[0]?.style?.height &&
+      sizeFront?.height
+    ) {
+      if (
+        document.getElementsByClassName("quiz_back")[0].style.height !==
+        sizeFront.height + "px"
+      ) {
+        console.log("sizeFront = ", sizeFront);
+        document.getElementsByClassName("quiz_back")[0].style.height =
+          sizeFront.height + "px";
+      }
     }
-  });
+  }, [sizeFront]);
 
   useEffect(() => {
     if (start) {
@@ -71,7 +87,7 @@ const Quiz = () => {
         .then((data) => {
           setApiData(data);
           setQuestion(
-            sentences.date.first + '"' + data.title + '"' + sentences.date.last
+            `${sentences.date.first}"${data.title}"${sentences.date.last}`
           );
         });
     }
@@ -249,15 +265,19 @@ const Quiz = () => {
 
   return (
     <>
-      <div className="quiz_back">
+      <div className="quiz_back" style={{ height: "80vh" }}>
         <div
           className="quiz_background"
-          style={{
-            backgroundImage: `url(https://image.tmdb.org/t/p/w500${apiData.backdrop_path})`,
-          }}
+          style={
+            displayGame && apiData.backdrop_path
+              ? {
+                  backgroundImage: `url(https://image.tmdb.org/t/p/w500${apiData.backdrop_path})`,
+                }
+              : null
+          }
         ></div>
       </div>
-      <div className="quiz_front">
+      <div className="quiz_front" ref={targetFront}>
         {displayRules && (
           <>
             <div className="quiz_title">Quiz</div>
