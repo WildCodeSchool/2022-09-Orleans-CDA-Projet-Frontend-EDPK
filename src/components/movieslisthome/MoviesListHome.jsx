@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./MoviesListHome.scss";
 import axios from "axios";
 
@@ -11,7 +11,7 @@ const MoviesListHome = () => {
     const response = await axios
       .get(url_trending + apiKey, signal)
       .then((res) => res.data);
-    const trends = response["results"];
+    const trends = response.results;
     setTrending(trends);
   }
 
