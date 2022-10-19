@@ -48,6 +48,7 @@ const TypePage = () => {
 
       <div className="mt-9 flex text-white justify-self-center gap-32">
         <button onClick={() => setPage(page - 2)}>Precedent</button>
+        {page}
         <button onClick={() => setPage(page + 2)}>Suivante</button>
       </div>
     </div>
