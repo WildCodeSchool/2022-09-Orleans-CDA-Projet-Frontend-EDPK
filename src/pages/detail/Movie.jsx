@@ -10,6 +10,7 @@ const Movie = () => {
   const url_movie_actors = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`;
   const [movie, setMovie] = useState({});
   const [characters, setCharacters] = useState([]);
+  const [actors, setActors] = useState([]);
 
   async function getMovieById(signal) {
     const response = await axios
@@ -40,6 +41,20 @@ const Movie = () => {
     getActorsByMovie(opts);
     return () => abortCtrl.abort();
   }, [movie]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    
+    // Do only if characters is not empty and actors is empty for use only once time
+    if(characters.length > 0 && actors.length === 0) {
+      //give me only the 3 pincipals 'actors' of the movie 
+      const actors = characters?.filter((c) => c.known_for_department === "Acting")?.slice(0, 3);
+      setActors(actors);
+    }
+
+    return () => controller.abort();
+
+  }, [characters]);
 
   return (
     <>
@@ -101,10 +116,8 @@ const Movie = () => {
                   </h4>
                 </div>
                 <div className="mt-3 flex overflow-hidden">
-                  {characters
-                    ?.filter((char) => char.known_for_department === "Acting")
-                    .slice(0, 3)
-                    .map((c) => (
+                  {actors
+                    ?.map((c) => (
                       <img
                         key={c.id}
                         className="inline-block h-24 w-24 rounded-3xl pic-star transition duration-150 ease-in-out"
