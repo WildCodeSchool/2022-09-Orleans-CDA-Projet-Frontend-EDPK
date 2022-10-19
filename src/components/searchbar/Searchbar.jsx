@@ -23,18 +23,22 @@ const Searchbar = ({ media = null, genreId = null }) => {
       }
       switch (media) {
         case "movie":
-          defaultValues.url = `https://api.themoviedb.org/3/discover/movie?api_key=${
-            import.meta.env.VITE_API_KEY
-          }&with_genres=${genreId}`;
-          defaultValues.media = "MOVIE";
-          defaultValues.placeholder = `Search a movie of ${defaultValues.genre}...`;
+          setDefaultValues({
+            url: `https://api.themoviedb.org/3/discover/movie?api_key=${
+              import.meta.env.VITE_API_KEY
+            }&with_genres=${genreId}`,
+            media: "MOVIE",
+            placeholder: `Search a movie of ${defaultValues.genre}...`,
+          });
           break;
         case "tv":
-          defaultValues.url = `https://api.themoviedb.org/3/discover/tv?api_key=${
-            import.meta.env.VITE_API_KEY
-          }&with_genres=${genreId}`;
-          defaultValues.media = "TV SHOW";
-          defaultValues.placeholder = `Search a TV show of ${defaultValues.genre}...`;
+          setDefaultValues({
+            url: `https://api.themoviedb.org/3/discover/tv?api_key=${
+              import.meta.env.VITE_API_KEY
+            }&with_genres=${genreId}`,
+            media: "TV SHOW",
+            placeholder: `Search a TV show of ${defaultValues.genre}...`,
+          });
           break;
         default:
           break;
@@ -42,25 +46,30 @@ const Searchbar = ({ media = null, genreId = null }) => {
     } else {
       switch (media) {
         case "movie":
-          defaultValues.url = `https://api.themoviedb.org/3/search/movie?api_key=${
-            import.meta.env.VITE_API_KEY
-          }&language=en&page=1&include_adult=false&query=`;
-          defaultValues.media = "MOVIE";
-          defaultValues.placeholder = "Search a movie...";
+          setDefaultValues({
+            url: `https://api.themoviedb.org/3/search/movie?api_key=${
+              import.meta.env.VITE_API_KEY
+            }&language=en&page=1&include_adult=false&query=`,
+            media: "MOVIE",
+            placeholder: "Search a movie...",
+          });
           break;
         case "tv":
-          defaultValues.url = `https://api.themoviedb.org/3/search/tv?api_key=${
-            import.meta.env.VITE_API_KEY
-          }&language=en&page=1&include_adult=false&query=`;
-          defaultValues.media = "TV SHOW";
-          defaultValues.placeholder = "Search a TV show...";
+          setDefaultValues({
+            url: `https://api.themoviedb.org/3/search/tv?api_key=${
+              import.meta.env.VITE_API_KEY
+            }&language=en&page=1&include_adult=false&query=`,
+            media: "TV SHOW",
+            placeholder: "Search a TV show...",
+          });
           break;
         default:
-          defaultValues.url = `https://api.themoviedb.org/3/search/multi?api_key=${
-            import.meta.env.VITE_API_KEY
-          }&language=en&page=1&include_adult=false&query=`;
-          defaultValues.placeholder =
-            "Search a movie, a TV show, or a person...";
+          setDefaultValues({
+            url: `https://api.themoviedb.org/3/search/multi?api_key=${
+              import.meta.env.VITE_API_KEY
+            }&language=en&page=1&include_adult=false&query=`,
+            placeholder: "Search a movie, a TV show, or a person...",
+          });
           break;
       }
     }
