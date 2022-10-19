@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./MoviesListHome.scss";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const MoviesListHome = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -38,13 +39,14 @@ const MoviesListHome = () => {
           {movies.map((t) => (
             <div key={t.id} className="flex p-2">
               <div className="rounded-lg  max-w-sm">
-                <a href="#!">
+                <Link to={`/movie/${t.id}`}>
                   <img
                     className="rounded-t-lg"
                     src={`https://image.tmdb.org/t/p/w500${t.poster_path}`}
                     alt={t.original_title}
                   />
-                </a>
+                </Link>
+
                 <div className="pt-2">
                   <h3 className="text-xl font-medium mb-2">{t.title}</h3>
                 </div>

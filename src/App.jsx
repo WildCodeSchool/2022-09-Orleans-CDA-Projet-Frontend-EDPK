@@ -5,6 +5,7 @@ import Quiz from "./pages/quiz/Quiz";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Movie from "./pages/detail/Movie";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/movie/:movieId" element={<Movie />} />
           <Route path="/quiz/" element={<Quiz />} />
         </Routes>
         <Footer />
