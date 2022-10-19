@@ -32,9 +32,9 @@ const TypePage = () => {
             console.log(data.page);
           });
       });
-  }, [page]);
+  }, [page, genre]);
   return (
-    <div className="m-9 flex items-stretch flex-wrap gap-4">
+    <div className="m-9 flex justify-items-stretch flex-wrap gap-4">
       {movies.map((movie) => (
         <div key={movie.id}>
           <img
@@ -46,7 +46,7 @@ const TypePage = () => {
         </div>
       ))}
 
-      <div className="flex text-white justify-center">
+      <div className="mt-9 flex text-white justify-self-center gap-32">
         <button onClick={() => setPage(page - 2)}>Precedent</button>
         <button onClick={() => setPage(page + 2)}>Suivante</button>
       </div>
