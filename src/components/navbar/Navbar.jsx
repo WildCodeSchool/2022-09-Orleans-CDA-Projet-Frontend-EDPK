@@ -150,7 +150,7 @@ const Navbar = () => {
                     <li>
                       <Link
                         to="/quiz/"
-                        className="titles hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                        className="titles inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                       >
                         Quiz
                       </Link>
