@@ -2,3 +2,13 @@
   color: var(--var-secondary);
   font-family: var(--title-font);
 }
+
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
+
+.dropdown {
+  background-color: var(--var-primary);
+}
