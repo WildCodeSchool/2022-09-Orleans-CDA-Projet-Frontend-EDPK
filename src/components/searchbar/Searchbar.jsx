@@ -77,7 +77,7 @@ const Searchbar = ({ media = null, genreId = null }) => {
 
   useEffect(() => {
     const timeOut = setTimeout(() => {
-      if (search != "") {
+      if (search !== "") {
         axios
           .get(genreId ? defaultValues.url : defaultValues.url + search)
           .then((res) => res.data)
