@@ -13,26 +13,38 @@ const Movie = () => {
   const [actors, setActors] = useState([]);
 
   async function getMovieById(signal) {
-    const response = await axios
-      .get(url_movie_detail, signal)
-      .then((res) => res.data);
-    return response && setMovie(response);
+    try {
+      const response = await axios
+        .get(url_movie_detail, signal)
+        .then((res) => res.data);
+      setMovie(response);
+    }
+    catch(error) {
+      console.log(error.message);
+    }
+
   }
 
   useEffect(() => {
     const abortCtrl = new AbortController();
     const opts = { signal: abortCtrl.signal };
     getMovieById(opts);
+    console.log('test');
     window.scrollTo(0, 0);
     return () => abortCtrl.abort();
   }, []);
 
   async function getActorsByMovie(signal) {
-    const response = await axios
-      .get(url_movie_actors, signal)
-      .then((res) => res?.data?.cast);
+    try {
+      const response = await axios
+        .get(url_movie_actors, signal)
+        .then((res) => res?.data?.cast);  
 
-    if (response && Array.isArray(response)) setCharacters(response);
+      if (response && Array.isArray(response)) setCharacters(response);
+    }
+    catch(error) {
+      console.log(error.message);
+    }
   }
 
   useEffect(() => {
@@ -44,16 +56,17 @@ const Movie = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-    
+
     // Do only if characters is not empty and actors is empty for use only once time
-    if(characters.length > 0 && actors.length === 0) {
-      //give me only the 3 pincipals 'actors' of the movie 
-      const actors = characters?.filter((c) => c.known_for_department === "Acting")?.slice(0, 3);
+    if (characters.length > 0 && actors.length === 0) {
+      //give me only the 3 pincipals 'actors' of the movie
+      const actors = characters
+        ?.filter((c) => c.known_for_department === "Acting")
+        ?.slice(0, 3);
       setActors(actors);
     }
 
     return () => controller.abort();
-
   }, [characters]);
 
   return (
@@ -116,17 +129,16 @@ const Movie = () => {
                   </h4>
                 </div>
                 <div className="mt-3 flex overflow-hidden">
-                  {actors
-                    ?.map((c) => (
-                      <img
-                        key={c.id}
-                        className="inline-block h-24 w-24 rounded-3xl pic-star transition duration-150 ease-in-out"
-                        data-bs-toggle="tooltip"
-                        title={c.name}
-                        src={"https://image.tmdb.org/t/p/w500" + c.profile_path}
-                        alt={c.name}
-                      />
-                    ))}
+                  {actors?.map((c) => (
+                    <img
+                      key={c.id}
+                      className="inline-block h-24 w-24 rounded-3xl pic-star transition duration-150 ease-in-out"
+                      data-bs-toggle="tooltip"
+                      title={c.name}
+                      src={"https://image.tmdb.org/t/p/w500" + c.profile_path}
+                      alt={c.name}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
