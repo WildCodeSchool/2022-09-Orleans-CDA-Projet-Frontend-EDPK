@@ -4,7 +4,7 @@ import Home from "./pages/home/Home";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import TypePage from "./pages/typepage/TypePage";
+import CategoryPage from "./pages/typepage/CategoryPage";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="category/:genre" element={<TypePage />} />
+          <Route path="category/:genre" element={<CategoryPage />} />
         </Routes>
         <Footer />
       </>

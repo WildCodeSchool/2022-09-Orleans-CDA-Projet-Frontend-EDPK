@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const TypePage = () => {
+const CategoryPage = () => {
   const { genre } = useParams();
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
@@ -47,12 +47,12 @@ const TypePage = () => {
       ))}
 
       <div className="mt-9 flex text-white justify-self-center gap-32">
-        <button onClick={() => setPage(page - 2)}>Precedent</button>
+        <button onClick={() => setPage(page - 2)}>Previous</button>
         {page}
-        <button onClick={() => setPage(page + 2)}>Suivante</button>
+        <button onClick={() => setPage(page + 2)}>Next</button>
       </div>
     </div>
   );
 };
 
-export default TypePage;
+export default CategoryPage;
