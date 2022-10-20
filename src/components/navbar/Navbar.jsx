@@ -5,6 +5,7 @@ import axios from "axios";
 
 const Navbar = () => {
   const [isShow, setShow] = useState(false);
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [category, setCategory] = useState("");
 
   useEffect(() => {
@@ -22,15 +23,19 @@ const Navbar = () => {
 
   return (
     <div>
+      {isShow ? (
+        <div onClick={() => setShow(!isShow)} className="backdrop"></div>
+      ) : null}
       <nav className="">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
               <button
+                onClick={() => setDrawerOpen(!isDrawerOpen)}
                 type="button"
-                className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
+                className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               >
                 <span className="sr-only">Open main menu</span>
                 <svg
@@ -73,7 +78,11 @@ const Navbar = () => {
                   alt="CineFlix"
                 />
               </div>
-              <div className="hidden sm:ml-6 sm:block">
+              <div
+                className={`${
+                  isDrawerOpen ? "hidden" : "block"
+                } sm:ml-6 sm:block`}
+              >
                 <div className="flex space-x-4">
                   <ul>
                     <li>
@@ -116,16 +125,19 @@ const Navbar = () => {
                           isShow
                             ? "transition ease-out duration-100 transform opacity-100 scale-100"
                             : "transition ease-in duration-75 transform opacity-0 scale-95"
-                        } absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
+                        } w-full sm:w-auto md:w-auto absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
                         role="menu"
                         aria-orientation="vertical"
                         aria-labelledby="menu-button"
                         tabIndex="-1"
                       >
-                        <div className="py-1" role="none">
+                        <div
+                          className="dropdown overflow-y-auto h-96 rounded border-l border-r border-b py-1 text-white"
+                          role="none"
+                        >
                           {category &&
                             category.map((genre) => (
-                              <div>
+                              <div className="m-4">
                                 <Link
                                   key={genre.id}
                                   to={`/category/${genre.id}`}
@@ -150,7 +162,7 @@ const Navbar = () => {
                     <li>
                       <Link
                         to="/quiz/"
-                        className="titles hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                        className="titles inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                       >
                         Quiz
                       </Link>
