@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./CategoryPage.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -34,21 +35,24 @@ const CategoryPage = () => {
       });
   }, [page, genre]);
   return (
-    <div className="m-9 flex justify-items-stretch flex-wrap gap-4">
-      {movies.map((movie) => (
-        <div key={movie.id}>
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            className="w-40"
-            alt={movie.title}
-          />
-          <h2 className="mt-5 w-40 truncate text-white">{movie.title}</h2>
-        </div>
-      ))}
-
-      <div className="mt-9 flex text-white justify-self-center gap-32">
+    <div>
+      <div className="m-9 justify-items-stretch grid grid-cols-5 ">
+        {movies.map((movie) => (
+          <div key={movie.id}>
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              className="w-60 rounded"
+              alt={movie.title}
+            />
+            <h2 className="mt-3 mb-5 w-60 truncate text-white">
+              {movie.title}
+            </h2>
+          </div>
+        ))}
+      </div>
+      <div className="mt-9 mb-8 pagination">
         <button onClick={() => setPage(page - 2)}>Previous</button>
-        {page}
+        {page} & {page + 1}
         <button onClick={() => setPage(page + 2)}>Next</button>
       </div>
     </div>
