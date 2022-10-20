@@ -28,7 +28,7 @@ const Navbar = () => {
       ) : null}
       <nav className="">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <div className="relative flex h-16 items-center justify-between">
+          <div className="relative flex h-24 items-center justify-between ">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
               <button
                 onClick={() => setDrawerOpen(!isDrawerOpen)}
@@ -88,7 +88,7 @@ const Navbar = () => {
                     <li>
                       <Link
                         to="/"
-                        className="titles inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                        className="titles text-lg inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                       >
                         Home
                       </Link>
@@ -98,14 +98,14 @@ const Navbar = () => {
                         <li
                           onClick={() => setShow(!isShow)}
                           type="button"
-                          className="titles inline-flex w-full rounded-md px-4 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                          className="titles text-lg inline-flex w-full rounded-md px-4 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                           id="menu-button"
                           aria-expanded="true"
                           aria-haspopup="true"
                         >
                           Movies
                           <svg
-                            className="-mr-1 ml-2 h-5 w-5"
+                            className="-mr-1 ml-2 h-5 w-5 self-center"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"
                             fill="currentColor"
@@ -154,15 +154,15 @@ const Navbar = () => {
                     <li>
                       <Link
                         to="/"
-                        className="titles inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                        className="titles text-lg inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                       >
-                        Show TV
+                        TV Shows
                       </Link>
                     </li>
                     <li>
                       <Link
                         to="/quiz/"
-                        className="titles inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                        className="titles text-lg inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                       >
                         Quiz
                       </Link>
