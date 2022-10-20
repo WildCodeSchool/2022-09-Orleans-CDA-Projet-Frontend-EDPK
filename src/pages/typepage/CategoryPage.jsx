@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const CategoryPage = () => {
   const { genre } = useParams();
@@ -36,14 +36,16 @@ const CategoryPage = () => {
   return (
     <div className="m-9 flex justify-items-stretch flex-wrap gap-4">
       {movies.map((movie) => (
-        <div key={movie.id}>
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            className="w-40"
-            alt={movie.title}
-          />
-          <h2 className="mt-5 w-40 truncate text-white">{movie.title}</h2>
-        </div>
+        <Link to={`/movie/${movie.id}`}>
+          <div key={movie.id}>
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              className="w-40"
+              alt={movie.title}
+            />
+            <h2 className="mt-5 w-40 truncate text-white">{movie.title}</h2>
+          </div>
+        </Link>
       ))}
 
       <div className="mt-9 flex text-white justify-self-center gap-32">
