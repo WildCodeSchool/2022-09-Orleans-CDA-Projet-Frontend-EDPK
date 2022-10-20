@@ -25,7 +25,6 @@ const Movie = () => {
     const abortCtrl = new AbortController();
     const opts = { signal: abortCtrl.signal };
     getMovieById(opts);
-    window.scrollTo(0, 0);
     return () => abortCtrl.abort();
   }, []);
 
@@ -47,8 +46,6 @@ const Movie = () => {
   }, [movie]);
 
   useEffect(() => {
-    const controller = new AbortController();
-
     // Do only if characters is not empty and actors is empty for use only once time
     if (characters.length > 0 && actors.length === 0) {
       //find the 3 pincipals 'actors' of the movie
@@ -57,9 +54,19 @@ const Movie = () => {
         ?.slice(0, 3);
       setActors(actors);
     }
-
-    return () => controller.abort();
+    window.scrollTo(0, 100);
   }, [characters]);
+
+  const handleOver = (status, idActor) => {
+    status === "on" &&
+      document.getElementById(idActor).classList.add("scale-125");
+    status === "off" &&
+      document.getElementById(idActor).classList.remove("scale-125");
+    status === "on" &&
+      document.getElementById("text-" + idActor).classList.add("scale-125");
+    status === "off" &&
+      document.getElementById("text-" + idActor).classList.remove("scale-125");
+  };
 
   return (
     <>
@@ -123,17 +130,27 @@ const Movie = () => {
                     Main actors :
                   </h4>
                 </div>
-                <div className="mt-3 mr-4 flex overflow-hidden">
+                <div className="mt-3 mr-4 p-4 flex overflow-hidden">
                   {actors?.map((c) => (
                     <div key={c.id} className="relative mr-6">
                       <img
-                        className="inline-block transition duration-20 ease-in-out shadow-inner border rounded-lg max-w-full h-auto"
+                        id={c.id}
+                        className={
+                          "inline-block transition duration-20 ease-in-out shadow-inner border rounded-lg max-w-full h-auto "
+                        }
                         data-bs-toggle="tooltip"
                         title={c.name}
                         src={"https://image.tmdb.org/t/p/w500" + c.profile_path}
                         alt={c.name}
+                        onMouseOver={() => handleOver("on", c.id)}
+                        onMouseLeave={() => handleOver("off", c.id)}
                       />
-                      <div class="absolute bottom-0 left-0 right-0 px-2 py-1 bg-gray-800 opacity-70">
+                      <div
+                        id={"text-" + c.id}
+                        className={
+                          "absolute bottom-0 left-0 right-0 px-2 py-1 bg-gray-800 opacity-70 "
+                        }
+                      >
                         <p className="text-xs text-white font-bold">{c.name}</p>
                       </div>
                     </div>
