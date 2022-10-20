@@ -58,14 +58,13 @@ const Movie = () => {
   }, [characters]);
 
   const handleOver = (status, idActor) => {
-    status === "on" &&
+    if (status === "on") {
       document.getElementById(idActor).classList.add("scale-125");
-    status === "off" &&
-      document.getElementById(idActor).classList.remove("scale-125");
-    status === "on" &&
       document.getElementById("text-" + idActor).classList.add("scale-125");
-    status === "off" &&
+    } else {
+      document.getElementById(idActor).classList.remove("scale-125");
       document.getElementById("text-" + idActor).classList.remove("scale-125");
+    }
   };
 
   return (
