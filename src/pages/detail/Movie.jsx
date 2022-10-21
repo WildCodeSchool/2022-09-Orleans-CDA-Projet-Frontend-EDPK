@@ -121,11 +121,11 @@ const Movie = () => {
                 </div>
                 <div className="mt-3 mr-4 p-4 flex overflow-hidden">
                   {actors?.map((c) => (
-                    <div key={c.id} className="relative mr-6">
+                    <div key={c.id} className="relative mr-6 hover:scale-125">
                       <img
                         id={c.id}
                         className={
-                          "inline-block transition duration-20 ease-in-out shadow-inner border rounded-lg max-w-full h-auto hover:scale-125"
+                          "inline-block transition duration-20 ease-in-out shadow-inner border rounded-lg max-w-full h-auto "
                         }
                         data-bs-toggle="tooltip"
                         title={c.name}
