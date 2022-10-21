@@ -91,7 +91,7 @@ const Navbar = () => {
                     <li>
                       <Link
                         to="/"
-                        className="titles text-lg inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                        className="titles text-xl inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"
                       >
                         Home
                       </Link>
@@ -101,7 +101,7 @@ const Navbar = () => {
                         <li
                           onClick={() => setShow(!isShow)}
                           type="button"
-                          className="titles text-lg inline-flex w-full rounded-md px-4 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                          className="titles text-xl inline-flex w-full rounded-md px-4 py-2 font-medium hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                           id="menu-button"
                           aria-expanded="true"
                           aria-haspopup="true"
@@ -155,7 +155,7 @@ const Navbar = () => {
                     <li>
                       <Link
                         to="/"
-                        className="titles text-lg inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                        className="titles text-xl inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"
                       >
                         TV Shows
                       </Link>
@@ -163,7 +163,7 @@ const Navbar = () => {
                     <li>
                       <Link
                         to="/quiz/"
-                        className="titles text-lg inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                        className="titles text-xl inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"
                       >
                         Quiz
                       </Link>
