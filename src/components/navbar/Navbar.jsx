@@ -6,19 +6,22 @@ import axios from "axios";
 const Navbar = () => {
   const [isShow, setShow] = useState(false);
   const [isDrawerOpen, setDrawerOpen] = useState(false);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${
-          import.meta.env.VITE_API_KEY
-        }&language=en-US`
-      )
-      .then((response) => response.data)
-      .then((data) => {
-        setCategory(data.genres);
-      });
+    if (category.length === 0) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/genre/movie/list?api_key=${
+            import.meta.env.VITE_API_KEY
+          }&language=en-US`
+        )
+        .then((response) => response.data)
+        .then((data) => {
+          setCategory(data.genres);
+          console.log(data);
+        });
+    }
   }, []);
 
   return (
@@ -132,16 +135,14 @@ const Navbar = () => {
                         tabIndex="-1"
                       >
                         <div
+                          onClick={() => setShow(!isShow)}
                           className="dropdown overflow-y-auto h-96 rounded border-l border-r border-b py-1 text-white"
                           role="none"
                         >
                           {category &&
                             category.map((genre) => (
-                              <div className="m-4">
-                                <Link
-                                  key={genre.id}
-                                  to={`/category/${genre.id}`}
-                                >
+                              <div className="m-4" key={genre.id}>
+                                <Link to={`/category/${genre.id}`}>
                                   {genre.name}
                                 </Link>
                               </div>
