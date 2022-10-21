@@ -6,19 +6,22 @@ import axios from "axios";
 const Navbar = () => {
   const [isShow, setShow] = useState(false);
   const [isDrawerOpen, setDrawerOpen] = useState(false);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${
-          import.meta.env.VITE_API_KEY
-        }&language=en-US`
-      )
-      .then((response) => response.data)
-      .then((data) => {
-        setCategory(data.genres);
-      });
+    if (category.length === 0) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/genre/movie/list?api_key=${
+            import.meta.env.VITE_API_KEY
+          }&language=en-US`
+        )
+        .then((response) => response.data)
+        .then((data) => {
+          setCategory(data.genres);
+          console.log(data);
+        });
+    }
   }, []);
 
   return (
@@ -88,7 +91,7 @@ const Navbar = () => {
                     <li>
                       <Link
                         to="/"
-                        className="titles text-lg inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                        className="titles text-xl inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"
                       >
                         Home
                       </Link>
@@ -98,7 +101,7 @@ const Navbar = () => {
                         <li
                           onClick={() => setShow(!isShow)}
                           type="button"
-                          className="titles text-lg inline-flex w-full rounded-md px-4 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                          className="titles text-xl inline-flex w-full rounded-md px-4 py-2 font-medium hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                           id="menu-button"
                           aria-expanded="true"
                           aria-haspopup="true"
@@ -132,16 +135,14 @@ const Navbar = () => {
                         tabIndex="-1"
                       >
                         <div
+                          onClick={() => setShow(!isShow)}
                           className="dropdown overflow-y-auto h-96 rounded border-l border-r border-b py-1 text-white"
                           role="none"
                         >
                           {category &&
                             category.map((genre) => (
-                              <div className="m-4">
-                                <Link
-                                  key={genre.id}
-                                  to={`/category/${genre.id}`}
-                                >
+                              <div className="m-4" key={genre.id}>
+                                <Link to={`/category/${genre.id}`}>
                                   {genre.name}
                                 </Link>
                               </div>
@@ -154,7 +155,7 @@ const Navbar = () => {
                     <li>
                       <Link
                         to="/"
-                        className="titles text-lg inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                        className="titles text-xl inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"
                       >
                         TV Shows
                       </Link>
@@ -162,7 +163,7 @@ const Navbar = () => {
                     <li>
                       <Link
                         to="/quiz/"
-                        className="titles text-lg inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                        className="titles text-xl inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"
                       >
                         Quiz
                       </Link>

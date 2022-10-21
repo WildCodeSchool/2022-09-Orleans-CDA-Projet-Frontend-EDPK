@@ -30,15 +30,14 @@ const CategoryPage = () => {
           .then((response) => response.data)
           .then((data2) => {
             setMovies([...data.results, ...data2.results]);
-            console.log(data.page);
           });
       });
   }, [page, genre]);
   return (
-    <div className="m-9 justify-items-stretch grid grid-cols-">
+    <div className="m-9 justify-items-stretch grid grid-cols-5">
       {movies.map((movie) => (
-        <Link to={`/movie/${movie.id}`}>
-          <div key={movie.id}>
+        <Link key={movie.id} to={`/movie/${movie.id}`}>
+          <div>
             <img
               src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               className="w-60 rounded"
