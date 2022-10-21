@@ -35,7 +35,7 @@ const CategoryPage = () => {
       });
   }, [page, genre]);
   return (
-    <div className="m-9 justify-items-stretch grid grid-cols-">
+    <div className="m-9 justify-items-stretch grid grid-cols-5">
       {movies.map((movie) => (
         <Link to={`/movie/${movie.id}`}>
           <div key={movie.id}>
