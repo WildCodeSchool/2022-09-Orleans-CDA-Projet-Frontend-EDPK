@@ -57,16 +57,6 @@ const Movie = () => {
     window.scrollTo(0, 100);
   }, [characters]);
 
-  const handleOver = (status, idActor) => {
-    if (status === "on") {
-      document.getElementById(idActor).classList.add("scale-125");
-      document.getElementById("text-" + idActor).classList.add("scale-125");
-    } else {
-      document.getElementById(idActor).classList.remove("scale-125");
-      document.getElementById("text-" + idActor).classList.remove("scale-125");
-    }
-  };
-
   return (
     <>
       <div
@@ -135,14 +125,12 @@ const Movie = () => {
                       <img
                         id={c.id}
                         className={
-                          "inline-block transition duration-20 ease-in-out shadow-inner border rounded-lg max-w-full h-auto "
+                          "inline-block transition duration-20 ease-in-out shadow-inner border rounded-lg max-w-full h-auto hover:scale-125"
                         }
                         data-bs-toggle="tooltip"
                         title={c.name}
                         src={"https://image.tmdb.org/t/p/w500" + c.profile_path}
                         alt={c.name}
-                        onMouseOver={() => handleOver("on", c.id)}
-                        onMouseLeave={() => handleOver("off", c.id)}
                       />
                       <div
                         id={"text-" + c.id}
