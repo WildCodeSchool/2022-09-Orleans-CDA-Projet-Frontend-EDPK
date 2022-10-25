@@ -1,0 +1,82 @@
+.person {
+  min-height: 80vh;
+  padding: 5rem 0;
+}
+
+.person_box {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background-color: #fff;
+  min-height: 20rem;
+  width: 90%;
+  border-radius: 0.5rem;
+  margin: auto;
+  max-width: 64rem;
+}
+
+.person_profile {
+  min-width: 53vh;
+  min-height: 80vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0.5rem 0 0 0.5rem;
+  box-shadow: inset -10px 0px 20px 0px rgb(0 0 0 / 50%);
+}
+
+.person_content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 1rem;
+}
+
+.person_name {
+  font-family: var(--title-font);
+  font-size: 2.5rem;
+  letter-spacing: -0.07rem;
+}
+
+.person_dates {
+  display: flex;
+  flex-direction: row;
+  margin-top: -0.5rem;
+}
+
+.person_dates_label {
+  font-family: var(--title-font);
+  color: #9ca3af;
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-right: 0.5rem;
+}
+
+.person_dates_content {
+  font-family: var(--text-font);
+  font-size: 1.3rem;
+  color: #9ca3af;
+}
+
+.person_birthday_content {
+  font-family: var(--text-font);
+}
+
+.person_bio h2,
+.person_filmo h2 {
+  padding: 0;
+  font-family: var(--title-font);
+  color: #000;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.person_bio div {
+  display: block;
+  width: 100%;
+  max-height: 5.25rem;
+  font-family: var(--text-font);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
