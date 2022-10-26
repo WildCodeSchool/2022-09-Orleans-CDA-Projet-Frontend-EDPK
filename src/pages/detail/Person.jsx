@@ -1,11 +1,13 @@
 import "./Person.scss";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 const Person = () => {
   const { personId } = useParams();
   const [person, setPerson] = useState();
+  const [filmography, setFilmography] = useState();
+  const [randMedia, setRandMedia] = useState();
 
   useEffect(() => {
     (async () => {
@@ -17,35 +19,65 @@ const Person = () => {
             }&language=en-US`
           )
           .then((res) => res.data);
+        setPerson(personDetails);
 
         if (personDetails.known_for_department === "Directing") {
-          await axios
+          const personFilmo = await axios
             .get(
               `https://api.themoviedb.org/3/person/${personId}/movie_credits?api_key=${
                 import.meta.env.VITE_API_KEY
               }&language=en-US`
             )
             .then((res) => {
-              res.data.crew.job.includes("");
+              const raw = res.data.crew.filter(({ job }) => job === "Director");
+              return raw
+                .sort((a, b) =>
+                  a.vote_count < b.vote_count
+                    ? 1
+                    : b.vote_count < a.vote_count
+                    ? -1
+                    : 0
+                )
+                .slice(0, 10);
             });
+          setFilmography(personFilmo);
+          setRandMedia(Math.floor(Math.random() * 10));
         } else {
-          await axios
+          const personFilmo = await axios
             .get(
-              `https://api.themoviedb.org/3/person/${personId}?api_key=${
+              `https://api.themoviedb.org/3/person/${personId}/movie_credits?api_key=${
                 import.meta.env.VITE_API_KEY
               }&language=en-US`
             )
-            .then((res) => res.data);
+            .then((res) => {
+              return res.data.cast
+                .sort((a, b) =>
+                  a.vote_count < b.vote_count
+                    ? 1
+                    : b.vote_count < a.vote_count
+                    ? -1
+                    : 0
+                )
+                .slice(0, 10);
+            });
+          setFilmography(personFilmo);
+          setRandMedia(Math.floor(Math.random() * 10));
         }
-
-        setPerson(personDetails);
       } catch (error) {}
     })();
   }, []);
 
   return (
     <div className="person">
-      <div className="person_box">
+      <div
+        className="person_back"
+        style={{
+          backgroundImage: `url(https://image.tmdb.org/t/p/w500${
+            filmography ? filmography[randMedia]?.backdrop_path : null
+          })`,
+        }}
+      ></div>
+      <div className="person_front">
         <div
           className="person_profile"
           style={{
@@ -72,7 +104,23 @@ const Person = () => {
           </div>
           <div className="person_filmo">
             <h2>Filmography</h2>
-            <div></div>
+            <div className="person_filmo_frame">
+              {filmography?.map((elem, index) => (
+                <Link
+                  to={`/movie/${elem.id}`}
+                  className="person_filmo_media"
+                  key={index}
+                >
+                  <div
+                    className="person_filmo_poster"
+                    style={{
+                      backgroundImage: `url(https://image.tmdb.org/t/p/w500${elem.poster_path})`,
+                    }}
+                  ></div>
+                  <div className="person_filmo_title">{elem.title}</div>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

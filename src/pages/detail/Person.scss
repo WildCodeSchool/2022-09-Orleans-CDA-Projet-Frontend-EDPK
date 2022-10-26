@@ -1,18 +1,32 @@
 .person {
   min-height: 80vh;
-  padding: 5rem 0;
+  overflow: hidden;
 }
 
-.person_box {
+.person_back {
+  min-height: calc(80vh + 10rem);
+  padding: 5rem 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(5px);
+}
+
+.person_front {
+  position: absolute;
+  top: 11rem;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  background-color: #fff;
+  background-color: var(--var-primary);
   min-height: 20rem;
   width: 90%;
   border-radius: 0.5rem;
   margin: auto;
   max-width: 64rem;
+  box-shadow: 0px 0px 15px -3px rgb(0 0 0 / 50%);
 }
 
 .person_profile {
@@ -29,7 +43,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
+  width: calc(100% - 53vh);
   padding: 1rem;
 }
 
@@ -42,7 +56,9 @@
 .person_dates {
   display: flex;
   flex-direction: row;
-  margin-top: -0.5rem;
+  width: 100%;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .person_dates_label {
@@ -67,7 +83,7 @@
 .person_filmo h2 {
   padding: 0;
   font-family: var(--title-font);
-  color: #000;
+  color: #fff;
   font-size: 1.5rem;
   margin-top: 1rem;
 }
@@ -79,4 +95,67 @@
   font-family: var(--text-font);
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #fff;
+}
+
+.person_filmo {
+  position: relative;
+  width: 100%;
+}
+
+.person_filmo::after {
+  position: absolute;
+  content: " ";
+  top: 0;
+  right: 0;
+  width: 10%;
+  height: 100%;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 0),
+    var(--var-primary)
+  );
+}
+
+.person_filmo_frame {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  scrollbar-width: 2px;
+}
+
+.person_filmo_frame::-webkit-scrollbar {
+  height: 0.5rem;
+  background: radial-gradient(
+    circle,
+    #00000076 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.person_filmo_frame::-webkit-scrollbar-thumb {
+  background-color: rgb(19 197 178 / 37%);
+  border-radius: 10px;
+}
+
+.person_filmo_media {
+  margin: 0.5rem;
+}
+
+.person_filmo_poster {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 10rem;
+  height: 15rem;
+  border-radius: 10px;
+}
+
+.person_filmo_title {
+  color: #fff;
+  font-family: var(--title-font);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 10rem;
+  overflow: hidden;
 }
