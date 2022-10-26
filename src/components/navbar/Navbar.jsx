@@ -19,7 +19,6 @@ const Navbar = () => {
         .then((response) => response.data)
         .then((data) => {
           setCategory(data.genres);
-          0;
         });
     }
   }, []);
