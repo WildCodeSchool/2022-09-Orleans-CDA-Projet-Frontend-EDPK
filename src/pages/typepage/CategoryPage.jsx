@@ -35,6 +35,7 @@ const CategoryPage = () => {
           });
       });
   }, [pageNumber, genre]);
+  console.log(movies);
   return (
     <div className="mt-14">
       <div className="justify-items-center grid grid-cols-5">
@@ -48,6 +49,7 @@ const CategoryPage = () => {
               />
               <h3 className="truncate w-80 text-xl font-medium mb-2 mt-2">
                 {movie.title}
+                {movie.name}
               </h3>
             </div>
           </Link>
