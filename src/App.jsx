@@ -7,6 +7,7 @@ import Navbar from "./components/navbar/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CategoryPage from "./pages/typepage/CategoryPage";
 import Movie from "./pages/detail/Movie";
+import Tv from "./pages/detail/Tv";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/category/:genre" element={<CategoryPage />} />
           <Route path="/movie/:movieId" element={<Movie />} />
+          <Route path="/tv/:tvId" element={<Tv />} />
           <Route path="/quiz/" element={<Quiz />} />
         </Routes>
         <Footer />

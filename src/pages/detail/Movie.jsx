@@ -26,6 +26,7 @@ const Movie = () => {
     const opts = { signal: abortCtrl.signal };
     getMovieById(opts);
     return () => abortCtrl.abort();
+    
   }, []);
 
   async function getActorsByMovie(signal) {
@@ -57,6 +58,8 @@ const Movie = () => {
     window.scrollTo(0, 100);
   }, [characters]);
 
+  
+
   return (
     <>
       <div
@@ -65,7 +68,7 @@ const Movie = () => {
           backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('${
             movie.backdrop_path
               ? "https://image.tmdb.org/t/p/original" + movie.backdrop_path
-              : "https://via.placeholder.com/1920x1080"
+              : "https://via.placeholder.com/1920x1080/000000"
           }')`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
@@ -84,10 +87,10 @@ const Movie = () => {
             />
             <div className="p-6 flex flex-col justify-start">
               <h5 className="text-gray-900 text-3xl font-medium mb-2 text-center">
-                {movie.title}
+                {movie.name}
               </h5>
 
-              <ul className="py-2">
+              <ul className="py-2 flex flex-row">
                 {movie.genres?.map((g) => (
                   <button
                     key={g.id}
@@ -98,6 +101,7 @@ const Movie = () => {
                   </button>
                 ))}
               </ul>
+              
               <p className="text-gray-400 py-2">
                 release date : {movie.release_date}
               </p>
@@ -135,7 +139,7 @@ const Movie = () => {
                       <div
                         id={"text-" + c.id}
                         className={
-                          "absolute bottom-0 left-0 right-0 px-2 py-1 bg-gray-800 opacity-70 "
+                          "absolute bottom-0 left-0 right-0 px-2 py-2 bg-gray-800 opacity-70 "
                         }
                       >
                         <p className="text-xs text-white font-bold">{c.name}</p>
