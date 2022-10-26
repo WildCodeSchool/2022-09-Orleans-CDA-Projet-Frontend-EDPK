@@ -6,16 +6,15 @@ import axios from "axios";
 const Quiz = () => {
   const targetFront = useRef(null);
   const sizeFront = useSize(targetFront);
+
   const [displayRules, setDisplayRules] = useState(true);
   const [start, setStart] = useState(false);
   const [rounds, setRounds] = useState(3);
   const [count, setCount] = useState(0);
   const [mediaId, setMediaId] = useState("");
-  const [apiData, setApiData] = useState("");
+  const [mediaData, setMediaData] = useState("");
   const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("");
   const [answers, setAnswers] = useState({});
-  const [answerPosition, setAnswerPosition] = useState("");
   const [displayGame, setDisplayGame] = useState(false);
   const [answerClicked, setAnswerClicked] = useState(false);
   const [nextQuestion, setNextQuestion] = useState(false);
@@ -23,11 +22,24 @@ const Quiz = () => {
   const [seeResults, setSeeResults] = useState(false);
   const [score, setScore] = useState([]);
   const [displayScore, setDisplayScore] = useState(false);
+
   const randPage = () => Math.floor(Math.random() * 49 + 1);
+  const randPosition = () => Math.floor(Math.random() * 4 + 1);
+  const randQuestion = () => Math.floor(Math.random() * 3);
   const randResult = () => Math.floor(Math.random() * 19);
+
   const sentences = {
     date: {
       first: "When was released ",
+      last: " ?",
+    },
+    character: {
+      first: "Who played the character of ",
+      second: " in ",
+      last: " ?",
+    },
+    director: {
+      first: "Who was the director of ",
       last: " ?",
     },
   };
@@ -66,80 +78,215 @@ const Quiz = () => {
 
   useEffect(() => {
     if (mediaId) {
-      axios
-        .get(
+      (async () => {
+        const { data: fetchData } = await axios.get(
           `https://api.themoviedb.org/3/movie/${mediaId}?api_key=${
             import.meta.env.VITE_API_KEY
           }`
-        )
-        .then((res) => res.data)
-        .then((data) => {
-          setApiData(data);
+        );
+
+        setMediaData(fetchData);
+
+        const randomQuestion = randQuestion();
+        let rightAnswerPosition = randPosition();
+
+        // DATE QUESTION
+        if (randomQuestion === 0) {
           setQuestion(
-            `${sentences.date.first}"${data.title}"${sentences.date.last}`
+            `${sentences.date.first} "${fetchData.title}" ${sentences.date.last}`
           );
-        });
+
+          const parsedDate = parseInt(fetchData.release_date.slice(0, 4), 10);
+          const currentYear = new Date().getFullYear();
+          if (randomQuestion === 0 && parsedDate === currentYear) {
+            rightAnswerPosition = 4;
+          }
+
+          switch (rightAnswerPosition) {
+            case 1:
+              setAnswers({
+                rightAnswer: "a",
+                a: parsedDate,
+                b: parsedDate + 1,
+                c: parsedDate + 2,
+                d: parsedDate + 3,
+              });
+              break;
+            case 2:
+              setAnswers({
+                rightAnswer: "b",
+                a: parsedDate - 1,
+                b: parsedDate,
+                c: parsedDate + 1,
+                d: parsedDate + 2,
+              });
+              break;
+            case 3:
+              setAnswers({
+                rightAnswer: "c",
+                a: parsedDate - 2,
+                b: parsedDate - 1,
+                c: parsedDate,
+                d: parsedDate + 1,
+              });
+              break;
+            case 4:
+              setAnswers({
+                rightAnswer: "d",
+                a: parsedDate - 3,
+                b: parsedDate - 2,
+                c: parsedDate - 1,
+                d: parsedDate,
+              });
+              break;
+            default:
+              break;
+          }
+        }
+
+        // CHARACTER QUESTION
+        else if (randomQuestion === 1) {
+          (async () => {
+            const { data: fetchCharacter } = await axios.get(
+              `https://api.themoviedb.org/3/movie/${mediaId}/credits?api_key=${
+                import.meta.env.VITE_API_KEY
+              }`
+            );
+
+            setQuestion(
+              `${sentences.character.first}${fetchCharacter.cast[0].character}${sentences.character.second}"${fetchData.title}"${sentences.character.last}`
+            );
+
+            switch (rightAnswerPosition) {
+              case 1:
+                setAnswers({
+                  rightAnswer: "a",
+                  a: fetchCharacter.cast[0].name,
+                  b: fetchCharacter.cast[1].name,
+                  c: fetchCharacter.cast[2].name,
+                  d: fetchCharacter.cast[3].name,
+                });
+                break;
+              case 2:
+                setAnswers({
+                  rightAnswer: "b",
+                  a: fetchCharacter.cast[1].name,
+                  b: fetchCharacter.cast[0].name,
+                  c: fetchCharacter.cast[2].name,
+                  d: fetchCharacter.cast[3].name,
+                });
+                break;
+              case 3:
+                setAnswers({
+                  rightAnswer: "c",
+                  a: fetchCharacter.cast[1].name,
+                  b: fetchCharacter.cast[2].name,
+                  c: fetchCharacter.cast[0].name,
+                  d: fetchCharacter.cast[3].name,
+                });
+                break;
+              case 4:
+                setAnswers({
+                  rightAnswer: "d",
+                  a: fetchCharacter.cast[1].name,
+                  b: fetchCharacter.cast[2].name,
+                  c: fetchCharacter.cast[3].name,
+                  d: fetchCharacter.cast[0].name,
+                });
+                break;
+              default:
+                break;
+            }
+          })();
+        }
+
+        // DIRECTOR QUESTION
+        else if (randomQuestion === 2) {
+          (async () => {
+            setQuestion(
+              `${sentences.director.first}"${fetchData.title}"${sentences.director.last}`
+            );
+
+            const { data: fetchDirector } = await axios.get(
+              `https://api.themoviedb.org/3/movie/${mediaId}/credits?api_key=${
+                import.meta.env.VITE_API_KEY
+              }`
+            );
+
+            const { name: rightDirector } = fetchDirector.crew.filter(
+              ({ job }) => job === "Director"
+            )[0];
+
+            const otherDirectors = [];
+            while (otherDirectors.length <= 2) {
+              const {
+                data: { results: resultsOtherMedia },
+              } = await axios.get(
+                `https://api.themoviedb.org/3/discover/movie?api_key=${
+                  import.meta.env.VITE_API_KEY
+                }&language=en-US&sort_by=popularity.desc&include_adult=false&page=${randPage()}
+                `
+              );
+              const fetchOtherMedia = resultsOtherMedia[randResult()];
+
+              const { data: fetchOtherCredits } = await axios.get(
+                `https://api.themoviedb.org/3/movie/${
+                  fetchOtherMedia.id
+                }/credits?api_key=${import.meta.env.VITE_API_KEY}`
+              );
+
+              const director = fetchOtherCredits.crew.filter(
+                ({ job }) => job === "Director"
+              )[0].name;
+
+              otherDirectors.push(director);
+            }
+
+            switch (rightAnswerPosition) {
+              case 1:
+                setAnswers({
+                  rightAnswer: "a",
+                  a: rightDirector,
+                  b: otherDirectors[0],
+                  c: otherDirectors[1],
+                  d: otherDirectors[2],
+                });
+                break;
+              case 2:
+                setAnswers({
+                  rightAnswer: "b",
+                  a: otherDirectors[0],
+                  b: rightDirector,
+                  c: otherDirectors[1],
+                  d: otherDirectors[2],
+                });
+                break;
+              case 3:
+                setAnswers({
+                  rightAnswer: "c",
+                  a: otherDirectors[0],
+                  b: otherDirectors[1],
+                  c: rightDirector,
+                  d: otherDirectors[2],
+                });
+                break;
+              case 4:
+                setAnswers({
+                  rightAnswer: "d",
+                  a: otherDirectors[0],
+                  b: otherDirectors[1],
+                  c: otherDirectors[2],
+                  d: rightDirector,
+                });
+                break;
+              default:
+                break;
+            }
+          })();
+        }
+      })();
     }
   }, [mediaId]);
-
-  useEffect(() => {
-    if (apiData) {
-      const parsedDate = parseInt(apiData.release_date.slice(0, 4));
-      const currentYear = new Date().getFullYear();
-      setAnswer(parsedDate);
-
-      if (parsedDate === currentYear) {
-        setAnswerPosition(4);
-      } else {
-        setAnswerPosition(Math.floor(Math.random() * 4 + 1));
-      }
-    }
-  }, [apiData]);
-
-  useEffect(() => {
-    if (answerPosition) {
-      switch (answerPosition) {
-        case 1:
-          setAnswers({
-            rightAnswer: "a",
-            a: answer,
-            b: answer + 1,
-            c: answer + 2,
-            d: answer + 3,
-          });
-          break;
-        case 2:
-          setAnswers({
-            rightAnswer: "b",
-            a: answer - 1,
-            b: answer,
-            c: answer + 1,
-            d: answer + 2,
-          });
-          break;
-        case 3:
-          setAnswers({
-            rightAnswer: "c",
-            a: answer - 2,
-            b: answer - 1,
-            c: answer,
-            d: answer + 1,
-          });
-          break;
-        case 4:
-          setAnswers({
-            rightAnswer: "d",
-            a: answer - 3,
-            b: answer - 2,
-            c: answer - 1,
-            d: answer,
-          });
-          break;
-        default:
-          break;
-      }
-    }
-  }, [answerPosition, answer]);
 
   useEffect(() => {
     if (Object.entries(answers).length) {
@@ -254,9 +401,9 @@ const Quiz = () => {
         <div
           className="quiz_background"
           style={
-            displayGame && apiData.backdrop_path
+            displayGame && mediaData.backdrop_path
               ? {
-                  backgroundImage: `url(https://image.tmdb.org/t/p/w500${apiData.backdrop_path})`,
+                  backgroundImage: `url(https://image.tmdb.org/t/p/w500${mediaData.backdrop_path})`,
                 }
               : null
           }
@@ -294,10 +441,10 @@ const Quiz = () => {
             <img
               className="quiz_image"
               src={`https://image.tmdb.org/t/p/w500${
-                apiData.poster_path ? apiData.poster_path : null
+                mediaData.poster_path ? mediaData.poster_path : null
               }`}
             />
-            <div className="quiz_q&a">
+            <div className="quiz_qanda">
               <div className="quiz_question">{question ? question : "???"}</div>
               <div className="quiz_answers">
                 <div id="a" className="quiz_answer" onClick={handleAnswer}>
@@ -318,8 +465,6 @@ const Quiz = () => {
                     {answers.b ? answers.b : "???"}
                   </div>
                 </div>
-              </div>
-              <div className="quiz_answers">
                 <div id="c" className="quiz_answer" onClick={handleAnswer}>
                   <img
                     className="quiz_answer_letter"
@@ -346,7 +491,7 @@ const Quiz = () => {
               </div>
             )}
             {seeResults && (
-              <div className="quiz_next" onClick={handleSeeResults}>
+              <div className="quiz_seeresult" onClick={handleSeeResults}>
                 See results
               </div>
             )}
@@ -354,13 +499,14 @@ const Quiz = () => {
         )}
         {displayScore && (
           <>
-            <div className="quiz_score_title">Score board</div>
-            <div className="quiz_score_title">
+            <div className="quiz_score_title">Scoreboard</div>
+            <div className="quiz_score_total">
               {score.length &&
                 score
                   .map((elem) => elem.point)
-                  .reduce((prev, curr) => prev + curr)}
-              / {rounds}
+                  .reduce((prev, curr) => prev + curr) +
+                  " / " +
+                  rounds}
             </div>
             {score.map((elem, index) => (
               <div
