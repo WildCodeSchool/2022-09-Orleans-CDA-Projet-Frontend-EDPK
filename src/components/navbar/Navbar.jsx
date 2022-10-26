@@ -37,9 +37,12 @@ const Navbar = () => {
 
   return (
     <div>
-      {isShowMovies ? (
+      {isShowMovies || isShowTV ? (
         <div
-          onClick={() => setShowMovies(!isShowMovies)}
+          onClick={() => {
+            setShowMovies(false);
+            setShowTV(false);
+          }}
           className="backdrop"
         ></div>
       ) : null}
