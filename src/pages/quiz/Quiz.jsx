@@ -78,246 +78,217 @@ const Quiz = () => {
 
   useEffect(() => {
     if (mediaId) {
-      axios
-        .get(
+      (async () => {
+        const { data: fetchData } = await axios.get(
           `https://api.themoviedb.org/3/movie/${mediaId}?api_key=${
             import.meta.env.VITE_API_KEY
           }`
-        )
-        .then((res) => res.data)
-        .then((data) => {
-          setMediaData(data);
-          const fetchData = data;
+        );
 
-          const randomQuestion = randQuestion();
-          let rightAnswerPosition = randPosition();
+        setMediaData(fetchData);
 
-          // DATE QUESTION
-          if (randomQuestion === 0) {
-            setQuestion(
-              `${sentences.date.first} "${fetchData.title}" ${sentences.date.last}`
+        const randomQuestion = randQuestion();
+        let rightAnswerPosition = randPosition();
+
+        // DATE QUESTION
+        if (randomQuestion === 0) {
+          setQuestion(
+            `${sentences.date.first} "${fetchData.title}" ${sentences.date.last}`
+          );
+
+          const parsedDate = parseInt(fetchData.release_date.slice(0, 4), 10);
+          const currentYear = new Date().getFullYear();
+          if (randomQuestion === 0 && parsedDate === currentYear) {
+            rightAnswerPosition = 4;
+          }
+
+          switch (rightAnswerPosition) {
+            case 1:
+              setAnswers({
+                rightAnswer: "a",
+                a: parsedDate,
+                b: parsedDate + 1,
+                c: parsedDate + 2,
+                d: parsedDate + 3,
+              });
+              break;
+            case 2:
+              setAnswers({
+                rightAnswer: "b",
+                a: parsedDate - 1,
+                b: parsedDate,
+                c: parsedDate + 1,
+                d: parsedDate + 2,
+              });
+              break;
+            case 3:
+              setAnswers({
+                rightAnswer: "c",
+                a: parsedDate - 2,
+                b: parsedDate - 1,
+                c: parsedDate,
+                d: parsedDate + 1,
+              });
+              break;
+            case 4:
+              setAnswers({
+                rightAnswer: "d",
+                a: parsedDate - 3,
+                b: parsedDate - 2,
+                c: parsedDate - 1,
+                d: parsedDate,
+              });
+              break;
+            default:
+              break;
+          }
+        }
+
+        // CHARACTER QUESTION
+        else if (randomQuestion === 1) {
+          (async () => {
+            const { data: fetchCharacter } = await axios.get(
+              `https://api.themoviedb.org/3/movie/${mediaId}/credits?api_key=${
+                import.meta.env.VITE_API_KEY
+              }`
             );
 
-            const parsedDate = parseInt(fetchData.release_date.slice(0, 4));
-            const currentYear = new Date().getFullYear();
-            if (randomQuestion === 0 && parsedDate === currentYear) {
-              rightAnswerPosition = 4;
+            setQuestion(
+              `${sentences.character.first}${fetchCharacter.cast[0].character}${sentences.character.second}"${fetchData.title}"${sentences.character.last}`
+            );
+
+            switch (rightAnswerPosition) {
+              case 1:
+                setAnswers({
+                  rightAnswer: "a",
+                  a: fetchCharacter.cast[0].name,
+                  b: fetchCharacter.cast[1].name,
+                  c: fetchCharacter.cast[2].name,
+                  d: fetchCharacter.cast[3].name,
+                });
+                break;
+              case 2:
+                setAnswers({
+                  rightAnswer: "b",
+                  a: fetchCharacter.cast[1].name,
+                  b: fetchCharacter.cast[0].name,
+                  c: fetchCharacter.cast[2].name,
+                  d: fetchCharacter.cast[3].name,
+                });
+                break;
+              case 3:
+                setAnswers({
+                  rightAnswer: "c",
+                  a: fetchCharacter.cast[1].name,
+                  b: fetchCharacter.cast[2].name,
+                  c: fetchCharacter.cast[0].name,
+                  d: fetchCharacter.cast[3].name,
+                });
+                break;
+              case 4:
+                setAnswers({
+                  rightAnswer: "d",
+                  a: fetchCharacter.cast[1].name,
+                  b: fetchCharacter.cast[2].name,
+                  c: fetchCharacter.cast[3].name,
+                  d: fetchCharacter.cast[0].name,
+                });
+                break;
+              default:
+                break;
+            }
+          })();
+        }
+
+        // DIRECTOR QUESTION
+        else if (randomQuestion === 2) {
+          (async () => {
+            setQuestion(
+              `${sentences.director.first}"${fetchData.title}"${sentences.director.last}`
+            );
+
+            const { data: fetchDirector } = await axios.get(
+              `https://api.themoviedb.org/3/movie/${mediaId}/credits?api_key=${
+                import.meta.env.VITE_API_KEY
+              }`
+            );
+
+            const { name: rightDirector } = fetchDirector.crew.filter(
+              ({ job }) => job === "Director"
+            )[0];
+
+            const otherDirectors = [];
+            while (otherDirectors.length <= 2) {
+              const {
+                data: { results: resultsOtherMedia },
+              } = await axios.get(
+                `https://api.themoviedb.org/3/discover/movie?api_key=${
+                  import.meta.env.VITE_API_KEY
+                }&language=en-US&sort_by=popularity.desc&include_adult=false&page=${randPage()}
+                `
+              );
+              const fetchOtherMedia = resultsOtherMedia[randResult()];
+
+              const { data: fetchOtherCredits } = await axios.get(
+                `https://api.themoviedb.org/3/movie/${
+                  fetchOtherMedia.id
+                }/credits?api_key=${import.meta.env.VITE_API_KEY}`
+              );
+
+              const director = fetchOtherCredits.crew.filter(
+                ({ job }) => job === "Director"
+              )[0].name;
+
+              otherDirectors.push(director);
             }
 
             switch (rightAnswerPosition) {
               case 1:
                 setAnswers({
                   rightAnswer: "a",
-                  a: parsedDate,
-                  b: parsedDate + 1,
-                  c: parsedDate + 2,
-                  d: parsedDate + 3,
+                  a: rightDirector,
+                  b: otherDirectors[0],
+                  c: otherDirectors[1],
+                  d: otherDirectors[2],
                 });
                 break;
               case 2:
                 setAnswers({
                   rightAnswer: "b",
-                  a: parsedDate - 1,
-                  b: parsedDate,
-                  c: parsedDate + 1,
-                  d: parsedDate + 2,
+                  a: otherDirectors[0],
+                  b: rightDirector,
+                  c: otherDirectors[1],
+                  d: otherDirectors[2],
                 });
                 break;
               case 3:
                 setAnswers({
                   rightAnswer: "c",
-                  a: parsedDate - 2,
-                  b: parsedDate - 1,
-                  c: parsedDate,
-                  d: parsedDate + 1,
+                  a: otherDirectors[0],
+                  b: otherDirectors[1],
+                  c: rightDirector,
+                  d: otherDirectors[2],
                 });
                 break;
               case 4:
                 setAnswers({
                   rightAnswer: "d",
-                  a: parsedDate - 3,
-                  b: parsedDate - 2,
-                  c: parsedDate - 1,
-                  d: parsedDate,
+                  a: otherDirectors[0],
+                  b: otherDirectors[1],
+                  c: otherDirectors[2],
+                  d: rightDirector,
                 });
                 break;
               default:
                 break;
             }
-          }
-
-          // CHARACTER QUESTION
-          else if (randomQuestion === 1) {
-            axios
-              .get(
-                `https://api.themoviedb.org/3/movie/${mediaId}/credits?api_key=${
-                  import.meta.env.VITE_API_KEY
-                }`
-              )
-              .then((res) => res.data)
-              .then((data) => {
-                const fetchCharacter = data;
-
-                setQuestion(
-                  `${sentences.character.first}${fetchCharacter.cast[0].character}${sentences.character.second}"${fetchData.title}"${sentences.character.last}`
-                );
-
-                switch (rightAnswerPosition) {
-                  case 1:
-                    setAnswers({
-                      rightAnswer: "a",
-                      a: fetchCharacter.cast[0].name,
-                      b: fetchCharacter.cast[1].name,
-                      c: fetchCharacter.cast[2].name,
-                      d: fetchCharacter.cast[3].name,
-                    });
-                    break;
-                  case 2:
-                    setAnswers({
-                      rightAnswer: "b",
-                      a: fetchCharacter.cast[1].name,
-                      b: fetchCharacter.cast[0].name,
-                      c: fetchCharacter.cast[2].name,
-                      d: fetchCharacter.cast[3].name,
-                    });
-                    break;
-                  case 3:
-                    setAnswers({
-                      rightAnswer: "c",
-                      a: fetchCharacter.cast[1].name,
-                      b: fetchCharacter.cast[2].name,
-                      c: fetchCharacter.cast[0].name,
-                      d: fetchCharacter.cast[3].name,
-                    });
-                    break;
-                  case 4:
-                    setAnswers({
-                      rightAnswer: "d",
-                      a: fetchCharacter.cast[1].name,
-                      b: fetchCharacter.cast[2].name,
-                      c: fetchCharacter.cast[3].name,
-                      d: fetchCharacter.cast[0].name,
-                    });
-                    break;
-                  default:
-                    break;
-                }
-              });
-          }
-
-          // DIRECTOR QUESTION
-          else if (randomQuestion === 2) {
-            setQuestion(
-              `${sentences.director.first}"${fetchData.title}"${sentences.director.last}`
-            );
-
-            axios
-              .get(
-                `https://api.themoviedb.org/3/movie/${mediaId}/credits?api_key=${
-                  import.meta.env.VITE_API_KEY
-                }`
-              )
-              .then((res) => res.data)
-              .then((data) => {
-                const fetchDirector = data;
-
-                const rightDirector = fetchDirector.crew.filter(
-                  ({ job }) => job === "Director"
-                )[0];
-
-                const getOtherDirectors = () => {
-                  return new Promise((resolve) => {
-                    const arrDirectors = [];
-                    const fetchLoop = () => {
-                      axios
-                        .get(
-                          `https://api.themoviedb.org/3/discover/movie?api_key=${
-                            import.meta.env.VITE_API_KEY
-                          }&language=en-US&sort_by=popularity.desc&include_adult=false&page=${randPage()}
-                    `
-                        )
-                        .then((res) => res.data)
-                        .then((data) => {
-                          const fetchOtherMedia = data.results[randResult()];
-
-                          axios
-                            .get(
-                              `https://api.themoviedb.org/3/movie/${
-                                fetchOtherMedia.id
-                              }/credits?api_key=${import.meta.env.VITE_API_KEY}`
-                            )
-                            .then((res) => res.data)
-                            .then((data) => {
-                              const fetchOtherCredits = data;
-
-                              const director = fetchOtherCredits.crew.filter(
-                                ({ job }) => job === "Director"
-                              )[0].name;
-
-                              arrDirectors.push(director);
-
-                              if (Object.keys(arrDirectors).length <= 2) {
-                                fetchLoop();
-                              } else {
-                                resolve(arrDirectors);
-                              }
-                            });
-                        });
-                    };
-                    fetchLoop();
-                  });
-                };
-
-                getOtherDirectors().then((otherDirectors) => {
-                  switch (rightAnswerPosition) {
-                    case 1:
-                      setAnswers({
-                        rightAnswer: "a",
-                        a: rightDirector.name,
-                        b: otherDirectors[0],
-                        c: otherDirectors[1],
-                        d: otherDirectors[2],
-                      });
-                      break;
-                    case 2:
-                      setAnswers({
-                        rightAnswer: "b",
-                        a: otherDirectors[0],
-                        b: rightDirector.name,
-                        c: otherDirectors[1],
-                        d: otherDirectors[2],
-                      });
-                      break;
-                    case 3:
-                      setAnswers({
-                        rightAnswer: "c",
-                        a: otherDirectors[0],
-                        b: otherDirectors[1],
-                        c: rightDirector.name,
-                        d: otherDirectors[2],
-                      });
-                      break;
-                    case 4:
-                      setAnswers({
-                        rightAnswer: "d",
-                        a: otherDirectors[0],
-                        b: otherDirectors[1],
-                        c: otherDirectors[2],
-                        d: rightDirector.name,
-                      });
-                      break;
-                    default:
-                      break;
-                  }
-                });
-              });
-          }
-        });
+          })();
+        }
+      })();
     }
   }, [mediaId]);
 
   useEffect(() => {
-    console.log("answers :", answers);
     if (Object.entries(answers).length) {
       setDisplayGame(true);
     }
