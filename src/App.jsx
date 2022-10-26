@@ -1,12 +1,13 @@
 import "./App.scss";
 import "tw-elements";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Quiz from "./pages/quiz/Quiz";
-import Footer from "./components/footer/Footer";
-import Navbar from "./components/navbar/Navbar";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CategoryPage from "./pages/typepage/CategoryPage";
 import Movie from "./pages/detail/Movie";
+import Person from "./pages/detail/Person";
+import Footer from "./components/footer/Footer";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             element={<CategoryPage />}
           />
           <Route path="/movie/:movieId" element={<Movie />} />
+          <Route path="/person/:personId" element={<Person />} />
           <Route path="/quiz/" element={<Quiz />} />
         </Routes>
         <Footer />
