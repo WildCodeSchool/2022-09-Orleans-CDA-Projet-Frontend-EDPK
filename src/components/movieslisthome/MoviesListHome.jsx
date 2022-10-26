@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 
 const MoviesListHome = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
-  const url_trending = "https://api.themoviedb.org/3/trending/all/day?api_key="+ apiKey;
+  const url_trending =
+    "https://api.themoviedb.org/3/trending/all/day?api_key=" + apiKey;
   const [trending, setTrending] = useState([]);
   const [tv, setTv] = useState([]);
   const [movies, setMovies] = useState([]);
