@@ -15,7 +15,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/:genre/:pageNumber" element={<CategoryPage />} />
+          <Route
+            path="/category/:type/:genre/:pageNumber"
+            element={<CategoryPage />}
+          />
           <Route path="/movie/:movieId" element={<Movie />} />
           <Route path="/quiz/" element={<Quiz />} />
         </Routes>
