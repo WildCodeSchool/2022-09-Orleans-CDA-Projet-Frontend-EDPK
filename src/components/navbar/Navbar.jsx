@@ -19,7 +19,6 @@ const Navbar = () => {
         .then((response) => response.data)
         .then((data) => {
           setCategory(data.genres);
-          console.log(data);
         });
     }
   }, []);
@@ -29,7 +28,7 @@ const Navbar = () => {
       {isShow ? (
         <div onClick={() => setShow(!isShow)} className="backdrop"></div>
       ) : null}
-      <nav className="">
+      <nav className="border-b-2">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-24 items-center justify-between ">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -142,7 +141,7 @@ const Navbar = () => {
                           {category &&
                             category.map((genre) => (
                               <div className="m-4" key={genre.id}>
-                                <Link to={`/category/${genre.id}`}>
+                                <Link to={`/category/${genre.id}/1`}>
                                   {genre.name}
                                 </Link>
                               </div>
