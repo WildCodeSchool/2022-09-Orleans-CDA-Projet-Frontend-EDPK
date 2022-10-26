@@ -35,7 +35,7 @@ const CategoryPage = () => {
           });
       });
   }, [pageNumber, genre]);
-  console.log(movies);
+
   return (
     <div className="mt-14">
       <div className="justify-items-center grid grid-cols-5">
