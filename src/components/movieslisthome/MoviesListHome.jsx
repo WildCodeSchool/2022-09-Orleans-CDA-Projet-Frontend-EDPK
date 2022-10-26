@@ -59,7 +59,7 @@ const MoviesListHome = () => {
         <div className="board">
           {tv.map((t) => (
             <div key={t.id} className="flex p-2">
-              <div className="rounded-lg  max-w-sm">   
+              <div className="rounded-lg  max-w-sm">
                 <Link to={`/tv/${t.id}`}>
                   <img
                     className="rounded-t-lg"
