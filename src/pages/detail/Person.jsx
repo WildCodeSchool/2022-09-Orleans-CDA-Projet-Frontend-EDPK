@@ -1,13 +1,32 @@
 import "./Person.scss";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
+import useSize from "../../hooks/useSize";
 import axios from "axios";
 
 const Person = () => {
+  const targetFront = useRef(null);
+  const sizeFront = useSize(targetFront);
+
   const { personId } = useParams();
   const [person, setPerson] = useState();
   const [filmography, setFilmography] = useState();
   const [randMedia, setRandMedia] = useState();
+
+  useEffect(() => {
+    if (
+      document?.getElementsByClassName("person_back")[0]?.style?.height &&
+      sizeFront?.height
+    ) {
+      if (
+        document.getElementsByClassName("person_back")[0].style.height !==
+        sizeFront.height + "px"
+      ) {
+        document.getElementsByClassName("person_back")[0].style.height =
+          "calc(10rem + " + sizeFront.height + "px)";
+      }
+    }
+  }, [sizeFront]);
 
   useEffect(() => {
     (async () => {
@@ -75,9 +94,10 @@ const Person = () => {
           backgroundImage: `url(https://image.tmdb.org/t/p/w500${
             filmography ? filmography[randMedia]?.backdrop_path : null
           })`,
+          height: "80vh",
         }}
       ></div>
-      <div className="person_front">
+      <div className="person_front" ref={targetFront}>
         <div
           className="person_profile"
           style={{

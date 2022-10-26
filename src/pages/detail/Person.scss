@@ -4,7 +4,6 @@
 }
 
 .person_back {
-  min-height: calc(80vh + 10rem);
   padding: 5rem 0;
   background-size: cover;
   background-position: center;
@@ -79,6 +78,10 @@
   font-family: var(--text-font);
 }
 
+.person_bio {
+  position: relative;
+}
+
 .person_bio h2,
 .person_filmo h2 {
   padding: 0;
@@ -96,6 +99,16 @@
   overflow: hidden;
   text-overflow: ellipsis;
   color: #fff;
+}
+
+.person_bio div::after {
+  position: absolute;
+  content: " ";
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 50%;
+  background-image: linear-gradient(rgba(255, 0, 0, 0), var(--var-primary));
 }
 
 .person_filmo {
