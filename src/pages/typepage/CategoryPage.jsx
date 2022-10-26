@@ -46,7 +46,9 @@ const CategoryPage = () => {
                 className="w-80 rounded"
                 alt={movie.title}
               />
-              <h3 className="text-xl font-medium mb-2 mt-2">{movie.title}</h3>
+              <h3 className="truncate w-80 text-xl font-medium mb-2 mt-2">
+                {movie.title}
+              </h3>
             </div>
           </Link>
         ))}
