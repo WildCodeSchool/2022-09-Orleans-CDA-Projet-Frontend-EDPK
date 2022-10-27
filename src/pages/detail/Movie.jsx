@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./movie.scss";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 
 const Movie = () => {
   const { movieId } = useParams();
@@ -83,26 +83,26 @@ const Movie = () => {
     <>
       <div
         id="video-player"
-        class={`relative z-10 ${videoPlayer ? "" : "hidden"}`}
+        className={`relative z-10 ${videoPlayer ? "" : "hidden"}`}
         aria-labelledby="modal-title"
         role="dialog"
         aria-modal="true"
       >
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
         <div
-          class="fixed inset-0 z-10 overflow-y-auto"
+          className="fixed inset-0 z-10 overflow-y-auto"
           onClick={() => setVideoPlayer(!videoPlayer)}
         >
-          <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <iframe
               width="560"
               height="315"
               src={videoPlayer ? getYoutubeLink() : null}
               title="YouTube video player"
-              frameborder="0"
+              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen="allowfullscreen"
+              allowFullScreen="allowfullscreen"
               mozallowfullscreen="mozallowfullscreen"
               msallowfullscreen="msallowfullscreen"
               oallowfullscreen="oallowfullscreen"
@@ -127,16 +127,16 @@ const Movie = () => {
         <div className="flex justify-center">
           <div className="flex flex-col md:flex-row md:max-w-5xl rounded-lg bg-white shadow-lg md:my-20 shadow-2xl">
             {getYoutubeLink() ? (
-              <div className="absolute w-full h-96 md:h-auto object-cover md:w-90 rounded-t-lg md:rounded-none md:rounded-l-lg">
+              <div className="absolute w-full h-96 text-center md:h-auto object-cover md:w-40 rounded-t-lg md:rounded-none md:rounded-l-lg">
                 <button
                   type="button"
-                  class="my-96 ml-28 md:ml-44 inline-block align-middle px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
+                  className="md:mt-96 mt-48 ml-25 md:ml-44 px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
                   onClick={() => setVideoPlayer(!videoPlayer)}
                 >
                   <span className="">Watch Trailer </span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 inline-block align-middle"
+                    className="h-6 w-6 inline-block align-middle"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -165,20 +165,26 @@ const Movie = () => {
               }
               alt=""
             />
-            <div className="p-6 flex flex-col justify-start mt-12 md:mt-0">
+            <div className="p-6 flex flex-col justify-start">
               <h5 className="text-gray-900 text-3xl font-medium mb-2 text-center">
                 {movie.title}
               </h5>
-
+              
               <ul className="py-2 flex flex-row">
                 {movie.genres?.slice(0,4).map((g) => (
-                  <li
-                    key={g.id}
-                    type="button"
-                    className="inline-block px-4 py-2 border-2 border-blue-400 text-blue-400 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
-                  >
-                    {g.name}
-                  </li>
+              
+                    <NavLink to={`/category/${g.id}/1`} key={g.id}>
+                  
+                      <li
+
+                        type="button"
+                        className="inline-block cursor-pointer px-4 py-2 border-2 border-blue-400 text-blue-400 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                      >
+                        {g.name}
+                      </li>
+              
+                    </NavLink>
+              
                   
                 ))}
               </ul>
@@ -206,9 +212,9 @@ const Movie = () => {
                 </div>
                 <div className="mt-3 mr-4 p-4 flex overflow-hidden">
                   {actors?.map((c) => (
-                    <Link to={`/person/${c.id}`}>
+                    <Link to={`/person/${c.id}`} key={c.id}>
 
-                      <div key={c.id} className="relative mr-6 hover:scale-125">
+                      <div className="relative mr-6 hover:scale-125">
                         
                         <img
                           id={c.id}
