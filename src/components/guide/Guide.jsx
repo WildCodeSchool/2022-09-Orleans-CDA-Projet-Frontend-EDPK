@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Guide.scss";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Guide = () => {
   const questions = [
@@ -25,6 +27,23 @@ const Guide = () => {
       answerOptions: [{ answerText: 4 }, { answerText: 3 }, { answerText: 2 }],
     },
   ];
+  const apiKey = import.meta.env.VITE_API_KEY;
+  const url_trending = "https://api.themoviedb.org/3/trending/all/day?api_key=";
+  const [trending, setTrending] = useState([]);
+
+  async function getTrending(signal) {
+    const response = await axios
+      .get(url_trending + apiKey, signal)
+      .then((res) => res.data);
+    const trends = response.results;
+    setTrending(trends);
+  }
+  useEffect(() => {
+    const abortCtrl = new AbortController();
+    const opts = { signal: abortCtrl.signal };
+    const trendingList = getTrending(opts);
+    return () => abortCtrl.abort();
+  }, []);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentAnswer, setCurrentAnswer] = useState("");
@@ -46,9 +65,17 @@ const Guide = () => {
     }
   };
 
-  //useEffect(() => { }, [guideAnswers]); setFilteredList(trending ?.filter((t) => t.genre === { categoryAnswer } && t.release_date > { latestAnswer } &&t.vote_average > { ratingAnswer } )
-  // .slice(0, 10)
-  //);
+  useEffect(() => {}, [guideAnswers]);
+  setFilteredList(
+    trending
+      ?.filter(
+        (t) =>
+          t.genre === { categoryAnswer } &&
+          t.release_date > { latestAnswer } &&
+          t.vote_average > { ratingAnswer }
+      )
+      .slice(0, 10)
+  );
 
   return (
     <div className="app">
@@ -56,7 +83,7 @@ const Guide = () => {
         <div className="movieList mt-5">
           <h2 className="mb-3">For You!</h2>
           <div className="board">
-            {tv.map((t) => (
+            {filteredList.map((t) => (
               <div key={t.id} className="flex p-2">
                 <div className="rounded-lg  max-w-sm">
                   <a href="#!">
