@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./movie.scss";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Movie = () => {
   const { movieId } = useParams();
@@ -130,7 +130,7 @@ const Movie = () => {
               <div className="absolute w-full h-96 md:h-auto object-cover md:w-90 rounded-t-lg md:rounded-none md:rounded-l-lg">
                 <button
                   type="button"
-                  class="my-96 ml-44 inline-block align-middle px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
+                  class="my-96 ml-28 md:ml-44 inline-block align-middle px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
                   onClick={() => setVideoPlayer(!videoPlayer)}
                 >
                   <span className="">Watch Trailer </span>
@@ -165,20 +165,21 @@ const Movie = () => {
               }
               alt=""
             />
-            <div className="p-6 flex flex-col justify-start">
+            <div className="p-6 flex flex-col justify-start mt-12 md:mt-0">
               <h5 className="text-gray-900 text-3xl font-medium mb-2 text-center">
-                {movie.name}
+                {movie.title}
               </h5>
 
               <ul className="py-2 flex flex-row">
-                {movie.genres?.map((g) => (
-                  <button
+                {movie.genres?.slice(0,4).map((g) => (
+                  <li
                     key={g.id}
                     type="button"
-                    className="inline-block px-6 py-2 border-2 border-blue-400 text-blue-400 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                    className="inline-block px-4 py-2 border-2 border-blue-400 text-blue-400 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                   >
                     {g.name}
-                  </button>
+                  </li>
+                  
                 ))}
               </ul>
 
@@ -205,26 +206,30 @@ const Movie = () => {
                 </div>
                 <div className="mt-3 mr-4 p-4 flex overflow-hidden">
                   {actors?.map((c) => (
-                    <div key={c.id} className="relative mr-6 hover:scale-125">
-                      <img
-                        id={c.id}
-                        className={
-                          "inline-block transition duration-20 ease-in-out shadow-inner border rounded-lg max-w-full h-auto "
-                        }
-                        data-bs-toggle="tooltip"
-                        title={c.name}
-                        src={"https://image.tmdb.org/t/p/w500" + c.profile_path}
-                        alt={c.name}
-                      />
-                      <div
-                        id={"text-" + c.id}
-                        className={
-                          "absolute bottom-0 left-0 right-0 px-2 py-2 bg-gray-800 opacity-70 "
-                        }
-                      >
-                        <p className="text-xs text-white font-bold">{c.name}</p>
+                    <Link to={`/person/${c.id}`}>
+
+                      <div key={c.id} className="relative mr-6 hover:scale-125">
+                        
+                        <img
+                          id={c.id}
+                          className={
+                            "inline-block transition duration-20 ease-in-out shadow-inner border rounded-lg max-w-full h-auto "
+                          }
+                          data-bs-toggle="tooltip"
+                          title={c.name}
+                          src={"https://image.tmdb.org/t/p/w500" + c.profile_path}
+                          alt={c.name}
+                        />
+                        <div
+                          id={"text-" + c.id}
+                          className={
+                            "absolute bottom-0 left-0 right-0 px-2 py-2 bg-gray-800 opacity-70 "
+                          }
+                        >
+                          <p className="text-xs text-white font-bold">{c.name}</p>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
