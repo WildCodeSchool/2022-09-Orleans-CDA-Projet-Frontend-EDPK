@@ -8,7 +8,6 @@ function Home() {
   return (
     <div className="home">
       <header>
-        {" "}
         <video src="/videos/video3.mp4" autoPlay loop muted />
       </header>
       <Searchbar />
