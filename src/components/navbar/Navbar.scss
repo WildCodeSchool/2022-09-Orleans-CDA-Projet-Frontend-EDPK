@@ -1,6 +1,7 @@
 .titles {
   color: var(--var-secondary);
   font-family: var(--title-font);
+  margin-top: 1.8rem;
 }
 
 .backdrop {
@@ -11,4 +12,9 @@
 
 .dropdown {
   background-color: var(--var-primary);
+}
+
+.logo {
+  height: 6rem;
+  width: 6rem;
 }
