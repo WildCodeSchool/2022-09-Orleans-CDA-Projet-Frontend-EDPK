@@ -37,7 +37,7 @@ const CategoryPage = () => {
   }, [pageNumber, genre]);
   return (
     <div className="mt-14">
-      <div className="justify-items-center grid grid-cols-5">
+      <div className="justify-items-center grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5">
         {movies.map((movie) => (
           <Link className="mb-14" key={movie.id} to={`/movie/${movie.id}`}>
             <div>
