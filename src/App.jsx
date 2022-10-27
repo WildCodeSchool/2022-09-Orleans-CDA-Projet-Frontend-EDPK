@@ -5,6 +5,7 @@ import Home from "./pages/home/Home";
 import Quiz from "./pages/quiz/Quiz";
 import CategoryPage from "./pages/typepage/CategoryPage";
 import Movie from "./pages/detail/Movie";
+import Tv from "./pages/detail/Tv";
 import Person from "./pages/detail/Person";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
@@ -21,6 +22,7 @@ function App() {
             element={<CategoryPage />}
           />
           <Route path="/movie/:movieId" element={<Movie />} />
+          <Route path="/tv/:tvId" element={<Tv />} />
           <Route path="/person/:personId" element={<Person />} />
           <Route path="/quiz/" element={<Quiz />} />
         </Routes>
