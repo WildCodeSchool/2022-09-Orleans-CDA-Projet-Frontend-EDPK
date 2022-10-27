@@ -26,8 +26,8 @@ const MoviesListHome = () => {
   }, []);
 
   useEffect(() => {
-    setMovies(trending?.filter((t) => t.media_type === "movie").slice(0, 10));
-    setTv(trending?.filter((t) => t.media_type === "tv").slice(0, 10));
+    setMovies(trending?.filter((t) => t.media_type === "movie").slice(0, 7));
+    setTv(trending?.filter((t) => t.media_type === "tv").slice(0, 7));
   }, [trending]);
 
   return (
