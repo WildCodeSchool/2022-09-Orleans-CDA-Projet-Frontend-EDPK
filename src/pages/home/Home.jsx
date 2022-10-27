@@ -6,7 +6,7 @@ import Searchbar from "../../components/searchbar/Searchbar";
 function Home() {
   return (
     <div className="home">
-      <video src="/videos/video2.mp4" autoPlay loop muted />
+      <header></header>
       <Searchbar />
       <div className="card">
         <MoviesListHome />
