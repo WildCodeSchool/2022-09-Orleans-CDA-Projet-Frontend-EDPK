@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
-            path="/category/:genre/:pageNumber"
+            path="/category/:type/:genre/:pageNumber"
             element={<CategoryPage />}
           />
           <Route path="/movie/:movieId" element={<Movie />} />

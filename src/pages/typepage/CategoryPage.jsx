@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const CategoryPage = () => {
-  const { genre, pageNumber } = useParams();
+  const { genre, pageNumber, type } = useParams();
   const [movies, setMovies] = useState([]);
   const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ const CategoryPage = () => {
     axios
       .get(
         `
-        https://api.themoviedb.org/3/discover/movie?api_key=${
+        https://api.themoviedb.org/3/discover/${type}?api_key=${
           import.meta.env.VITE_API_KEY
         }&language=en-US&adult=false&include_video=false&page=${
           pageNumber * 2 - 1
@@ -23,9 +23,9 @@ const CategoryPage = () => {
         axios
           .get(
             `
-          https://api.themoviedb.org/3/discover/movie?api_key=${
-            import.meta.env.VITE_API_KEY
-          }&language=en-US&adult=false&include_video=false&page=${
+          https://api.themoviedb.org/3/discover/${type}?api_key=${
+              import.meta.env.VITE_API_KEY
+            }&language=en-US&adult=false&include_video=false&page=${
               pageNumber * 2
             }&with_genres=${genre}&with_watch_monetization_types=flatrate`
           )
@@ -35,6 +35,7 @@ const CategoryPage = () => {
           });
       });
   }, [pageNumber, genre]);
+
   return (
     <div className="mt-14">
       <div className="justify-items-center grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5">
@@ -48,6 +49,7 @@ const CategoryPage = () => {
               />
               <h3 className="truncate w-80 text-xl font-medium mb-2 mt-2">
                 {movie.title}
+                {movie.name}
               </h3>
             </div>
           </Link>
@@ -56,7 +58,9 @@ const CategoryPage = () => {
       <div className="mb-8 pagination">
         <button
           onClick={() =>
-            navigate(`/category/${genre}/${parseInt(pageNumber) - 1}`)
+            navigate(
+              `/category/${type}/${genre}/${parseInt(pageNumber, 10) - 1}`
+            )
           }
         >
           Previous
@@ -64,7 +68,9 @@ const CategoryPage = () => {
         {pageNumber}
         <button
           onClick={() =>
-            navigate(`/category/${genre}/${parseInt(pageNumber) + 1}`)
+            navigate(
+              `/category/${type}/${genre}/${parseInt(pageNumber, 10) + 1}`
+            )
           }
         >
           Next
