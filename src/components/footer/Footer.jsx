@@ -3,12 +3,18 @@ import "./Footer.scss";
 
 const Footer = () => {
   return (
-    <div className="footer">
-      <ul>
-        <li>Legal notice</li>
-        <li>Contact</li>
-      </ul>
-    </div>
+    <footer>
+      <div className="footer_logo">
+        <img src="../../../public/images/logo.png" />
+        <span>Cineflix</span>
+      </div>
+      <div className="footer_content">
+        <span>Emmanuel, Dan, Kylian, Paul</span>
+      </div>
+      <div className="footer_content">
+        <span>Mettre TMDB en remerciements</span>
+      </div>
+    </footer>
   );
 };
 
