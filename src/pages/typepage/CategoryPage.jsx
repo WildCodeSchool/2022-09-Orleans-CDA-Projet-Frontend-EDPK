@@ -58,7 +58,9 @@ const CategoryPage = () => {
       <div className="mb-8 pagination">
         <button
           onClick={() =>
-            navigate(`/category/${type}/${genre}/${parseInt(pageNumber) - 1}`)
+            navigate(
+              `/category/${type}/${genre}/${parseInt(pageNumber, 10) - 1}`
+            )
           }
         >
           Previous
@@ -66,7 +68,9 @@ const CategoryPage = () => {
         {pageNumber}
         <button
           onClick={() =>
-            navigate(`/category/${type}/${genre}/${parseInt(pageNumber) + 1}`)
+            navigate(
+              `/category/${type}/${genre}/${parseInt(pageNumber, 10) + 1}`
+            )
           }
         >
           Next
