@@ -48,10 +48,11 @@ const Guide = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentAnswer, setCurrentAnswer] = useState("");
   const [guideAnswers, setGuideAnswers] = useState([]);
+
   const categoryAnswer = guideAnswers[0];
   const latestAnswer = guideAnswers[1];
   const ratingAnswer = guideAnswers[2];
-  const [filteredList, setFilteredList] = useState(false);
+  const [isFiltered, setIsFiltered] = useState(false);
 
   const toggleQuestion = (e) => {
     if (!guideAnswers.includes(e.target.value))
@@ -61,44 +62,44 @@ const Guide = () => {
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
-      setFilteredList(true);
+      setIsFiltered(true);
     }
   };
 
-  useEffect(() => {}, [guideAnswers]);
-  setFilteredList(
-    trending
-      ?.filter(
-        (t) =>
-          t.genre === { categoryAnswer } &&
-          t.release_date > { latestAnswer } &&
-          t.vote_average > { ratingAnswer }
-      )
-      .slice(0, 10)
-  );
+  // useEffect(() => {}, [guideAnswers]);
+  // setFilteredList(
+  //   trending
+  //     ?.filter(
+  //       (t) =>
+  //         t.genre === { categoryAnswer } &&
+  //         t.release_date > { latestAnswer } &&
+  //         t.vote_average > { ratingAnswer }
+  //     )
+  //     .slice(0, 10)
+  // );
 
   return (
     <div className="app">
-      {filteredList ? (
+      {isFiltered ? (
         <div className="movieList mt-5">
           <h2 className="mb-3">For You!</h2>
           <div className="board">
-            {filteredList.map((t) => (
-              <div key={t.id} className="flex p-2">
-                <div className="rounded-lg  max-w-sm">
-                  <a href="#!">
-                    <img
-                      className="rounded-t-lg"
-                      src={`https://image.tmdb.org/t/p/w500${t.poster_path}`}
-                      alt={t.original_title}
-                    />
-                  </a>
-                  <div className="pt-2">
-                    <h3 className="text-xl font-medium mb-2">{t.name}</h3>
-                  </div>
+            {/* {filteredList.map((t) => ( */}
+            <div key="key" className="flex p-2">
+              <div className="rounded-lg  max-w-sm">
+                <a href="#!">
+                  <img
+                    className="rounded-t-lg"
+                    src="https://images.pexels.com/photos/12268516/pexels-photo-12268516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="image"
+                  />
+                </a>
+                <div className="pt-2">
+                  <h3 className="text-xl font-medium mb-2">mon film</h3>
                 </div>
               </div>
-            ))}
+            </div>
+            {/* ))} */}
           </div>
         </div>
       ) : (
