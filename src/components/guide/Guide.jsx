@@ -1,30 +1,32 @@
 import React, { useState, useEffect } from "react";
 import "./Guide.scss";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 const Guide = () => {
   const questions = [
     {
       questionText: "What category is giving you the vibe for tonight?",
       answerOptions: [
-        { answerText: "Action" },
-        { answerText: "Romance" },
-        { answerText: "Sci-Fi" },
-        { answerText: "Horror" },
-        { answerText: "Other" },
+        { answerText: "Action", id: 28 },
+        { answerText: "Romance", id: 10749 },
+        { answerText: "Science Ficton", id: 878 },
+        { answerText: "Horror", id: 27 },
       ],
     },
     {
       questionText: "Which do you prefer?",
       answerOptions: [
-        { answerText: "Latest Movies" },
-        { answerText: "Older Movies" },
+        { answerText: "Latest Movies", id: 1 },
+        { answerText: "Older Movies", id: 2 },
       ],
     },
     {
       questionText: "Do you want high rated movies.",
-      answerOptions: [{ answerText: 4 }, { answerText: 3 }, { answerText: 2 }],
+      answerOptions: [
+        { answerText: 9, id: 9 },
+        { answerText: 7, id: 7 },
+        { answerText: 5, id: 5 },
+      ],
     },
   ];
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -36,8 +38,10 @@ const Guide = () => {
       .get(url_trending + apiKey, signal)
       .then((res) => res.data);
     const trends = response.results;
+    console.log(trends, "trends");
     setTrending(trends);
   }
+
   useEffect(() => {
     const abortCtrl = new AbortController();
     const opts = { signal: abortCtrl.signal };
@@ -52,6 +56,7 @@ const Guide = () => {
   const categoryAnswer = guideAnswers[0];
   const latestAnswer = guideAnswers[1];
   const ratingAnswer = guideAnswers[2];
+  const [filtersList, setFilterList] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
 
   const toggleQuestion = (e) => {
@@ -66,40 +71,56 @@ const Guide = () => {
     }
   };
 
-  // useEffect(() => {}, [guideAnswers]);
-  // setFilteredList(
-  //   trending
-  //     ?.filter(
-  //       (t) =>
-  //         t.genre === { categoryAnswer } &&
-  //         t.release_date > { latestAnswer } &&
-  //         t.vote_average > { ratingAnswer }
-  //     )
-  //     .slice(0, 10)
-  // );
+  useEffect(() => {
+    let filteredMovies = trending;
+    if (categoryAnswer) {
+      filteredMovies = trending.filter((movie) => {
+        return movie.genre_ids.includes(parseInt(categoryAnswer));
+      });
+    }
+    if (latestAnswer && latestAnswer == 1) {
+      filteredMovies = trending.filter((movie) => {
+        return new Date(movie.release_date) > new Date(2020);
+      });
+    } else if (latestAnswer && latestAnswer == 2) {
+      filteredMovies = trending.filter((movie) => {
+        return new Date(movie.release_date) < new Date(2020);
+      });
+    }
+    if (ratingAnswer) {
+      filteredMovies = trending.filter((movie) => {
+        return movie.vote_average > ratingAnswer;
+      });
+    }
+    setTrending(filteredMovies);
+  }, [guideAnswers]);
 
   return (
     <div className="app">
       {isFiltered ? (
         <div className="movieList mt-5">
           <h2 className="mb-3">For You!</h2>
-          <div className="board">
-            {/* {filteredList.map((t) => ( */}
-            <div key="key" className="flex p-2">
-              <div className="rounded-lg  max-w-sm">
-                <a href="#!">
-                  <img
-                    className="rounded-t-lg"
-                    src="https://images.pexels.com/photos/12268516/pexels-photo-12268516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    alt="image"
-                  />
-                </a>
-                <div className="pt-2">
-                  <h3 className="text-xl font-medium mb-2">mon film</h3>
-                </div>
-              </div>
-            </div>
-            {/* ))} */}
+          <div className="board flex flex-wrap">
+            {trending.length > 0
+              ? trending.map((movie) => (
+                  <div key={movie.id} className="flex p-2">
+                    <div className="rounded-lg  max-w-sm">
+                      <a href="#!">
+                        <img
+                          className="rounded-t-lg"
+                          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                          alt={movie.original_title}
+                        />
+                      </a>
+                      <div className="pt-2">
+                        <h3 className="text-xl font-medium mb-2">
+                          {movie.title}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              : "Sorry, no movie for you for the moment! :'("}
           </div>
         </div>
       ) : (
@@ -114,7 +135,7 @@ const Guide = () => {
           </div>
           <div className="answer-section">
             {questions[currentQuestion].answerOptions.map((answerOption) => (
-              <button value={answerOption.answerText} onClick={toggleQuestion}>
+              <button value={answerOption.id} onClick={toggleQuestion}>
                 {answerOption.answerText}
               </button>
             ))}
