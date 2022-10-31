@@ -165,7 +165,7 @@ const Navbar = () => {
                         isShowTV
                           ? "transition ease-out duration-100 transform opacity-100 scale-100"
                           : "transition ease-in duration-75 transform opacity-0 scale-95 hidden"
-                      } w-full sm:w-auto md:w-auto absolute z-10 ml-20 mt-20 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
+                      } w-full sm:w-auto md:w-auto absolute z-10 ml-40 mt-20 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
                       role="menu"
                       aria-orientation="vertical"
                       aria-labelledby="menu-button"
