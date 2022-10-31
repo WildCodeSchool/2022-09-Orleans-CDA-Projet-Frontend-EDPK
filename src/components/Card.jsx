@@ -19,12 +19,12 @@ function Card({ type, data, actors, videos }) {
             }
             alt=""
           />
-          <div className="p-6 flex flex-col justify-start">
+          <div className="p-6 flex flex-col justify-start items-center">
             <h5 className="text-gray-900 text-3xl font-medium mb-2 text-center">
               {type === "movie" ? data.title : data.name}
             </h5>
 
-            <Categories data={data} />
+            <Categories type={type} data={data} />
 
             <p className="text-gray-400 py-2">
               release date : {data.release_date}
