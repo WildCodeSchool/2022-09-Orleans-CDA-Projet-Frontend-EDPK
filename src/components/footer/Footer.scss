@@ -1,17 +1,142 @@
-ul {
-  display: flex;
-  justify-content: space-around;
-  margin: 1rem;
-}
-
-.footer {
-  background-color: #022631;
-  border-top: 2px solid;
+footer {
+  background-color: #070707;
   color: rgba(240, 248, 255, 0.377);
-  height: 4rem;
+  padding: 3rem 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.footer ul li {
-  color: var(--var-text);
-  margin-top: 1rem;
+.footer_logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer_logo img {
+  width: 4rem;
+}
+
+.footer_logo span {
+  margin-left: 1rem;
+  font-size: 3.5rem;
+  font-family: var(--title-font);
+}
+
+.footer_aside {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer_authors {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem auto;
+  max-width: 500px;
+  width: 100%;
+}
+
+.footer_authors_title,
+.footer_api_title {
+  width: 100%;
+  font-size: 2rem;
+  font-family: var(--title-font);
+  margin-left: 1rem;
+}
+
+.footer_authors_content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer_author {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+.footer_author img {
+  width: 2rem;
+  border-radius: 100%;
+}
+
+.footer_author_firstname {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+  font-family: var(--title-font);
+  width: 100%;
+}
+
+.footer_author_lastname {
+  display: none;
+  margin: 0;
+}
+
+.footer_api {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  max-width: 500px;
+  width: 100%;
+}
+
+.footer_api_description {
+  font-size: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer_api_content {
+  width: 100%;
+  margin-left: 1rem;
+}
+
+.footer_api_content img {
+  width: 15rem;
+}
+
+@media (max-width: 1000px) {
+  footer {
+    flex-direction: column;
+  }
+
+  .footer_logo {
+    margin: 2rem 0 4rem 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer_logo img {
+    width: 12vw;
+  }
+
+  .footer_logo span {
+    font-size: 10vw;
+    margin-left: 3vw;
+  }
+
+  .footer_authors_content {
+    flex-direction: column;
+  }
+
+  .footer_author {
+    min-width: 150px;
+    margin: 0.25rem 0 0.25rem 1rem;
+    width: 100%;
+  }
+
+  .footer_author_lastname {
+    display: inline;
+  }
 }
