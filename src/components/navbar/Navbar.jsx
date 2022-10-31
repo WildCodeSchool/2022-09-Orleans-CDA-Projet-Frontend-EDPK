@@ -63,7 +63,7 @@ const Navbar = () => {
                 } sm:ml-6 sm:block`}
               >
                 <div className="flex space-x-4">
-                  <ul>
+                  <ul className="flex flex-row">
                     <li>
                       <Link
                         to="/"
