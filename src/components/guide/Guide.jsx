@@ -23,9 +23,9 @@ const Guide = () => {
     {
       questionText: "Do you want high rated movies.",
       answerOptions: [
-        { answerText: 9, id: 9 },
-        { answerText: 7, id: 7 },
-        { answerText: 5, id: 5 },
+        { answerText: 8, id: 8 },
+        { answerText: 4, id: 4 },
+        { answerText: 2, id: 2 },
       ],
     },
   ];
@@ -100,7 +100,7 @@ const Guide = () => {
       {isFiltered ? (
         <div className="movieList mt-5">
           <h2 className="mb-3">For You!</h2>
-          <div className="board flex flex-wrap">
+          <div className="board">
             {trending.length > 0
               ? trending.map((movie) => (
                   <div key={movie.id} className="flex p-2">
