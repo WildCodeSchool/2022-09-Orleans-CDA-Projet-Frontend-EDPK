@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.scss";
 import MoviesListHome from "../../components/movieslisthome/MoviesListHome";
 import Searchbar from "../../components/searchbar/Searchbar";
+import Guide from "../../components/guide/Guide";
 
 function Home() {
   return (
@@ -12,6 +13,9 @@ function Home() {
       <Searchbar />
       <div className="card">
         <MoviesListHome />
+      </div>
+      <div className="guide">
+        <Guide />
       </div>
     </div>
   );
