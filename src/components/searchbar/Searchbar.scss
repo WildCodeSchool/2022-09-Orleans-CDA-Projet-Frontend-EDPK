@@ -1,4 +1,7 @@
 .searchbar {
+  top: 17rem;
+  margin-left: 50rem;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,9 +18,9 @@
 
 .search-input input {
   width: 500px;
-  height: 50px;
+  height: 65px;
   padding: 0 1rem;
-  font-size: 1rem;
+  font-size: 1.3rem;
   border-radius: 10px;
   border: none;
   text-align: left;
