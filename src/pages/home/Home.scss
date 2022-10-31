@@ -2,15 +2,25 @@
   margin: 0%;
 }
 
-.home {
+header {
   video {
     border-top: 2px rgba(240, 248, 255, 0.377) solid;
     border-bottom: 2px rgba(240, 248, 255, 0.377) solid;
-    margin-bottom: 10rem;
+    margin-bottom: 5rem;
     object-fit: cover;
     width: 100%;
-    height: 45vh;
+    height: 55vh;
+    opacity: 0.5;
   }
+}
+.background {
+  border-top: 2px rgba(240, 248, 255, 0.377) solid;
+  border-bottom: 2px rgba(240, 248, 255, 0.377) solid;
+  margin-bottom: 10rem;
+  object-fit: cover;
+  width: 100%;
+  height: 60vh;
+  opacity: 0.5;
 }
 h1 {
   color: #13c5b2;
