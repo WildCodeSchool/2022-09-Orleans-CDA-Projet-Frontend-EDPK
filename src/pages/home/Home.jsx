@@ -3,7 +3,6 @@ import "./Home.scss";
 import MoviesListHome from "../../components/movieslisthome/MoviesListHome";
 import Searchbar from "../../components/searchbar/Searchbar";
 
-document.querySelector("video").playbackRate = 0.75;
 function Home() {
   return (
     <div className="home">
