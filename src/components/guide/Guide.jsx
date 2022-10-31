@@ -54,7 +54,7 @@ const Guide = () => {
   const [currentAnswer, setCurrentAnswer] = useState("");
   const [guideAnswers, setGuideAnswers] = useState([]);
   const date = new Date();
-  let year = date.getFullYear() - 3;
+  const year = date.getFullYear() - 3;
   const categoryAnswer = guideAnswers[0];
   const latestAnswer = guideAnswers[1];
   const ratingAnswer = guideAnswers[2];
