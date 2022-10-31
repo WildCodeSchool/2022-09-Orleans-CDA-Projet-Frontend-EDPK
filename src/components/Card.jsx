@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import Categories from "./Categories";
 import Videoplayer from "./Videoplayer";
 
-function Card({ ...props }) {
-  const { type, data, actors, videos } = props;
-
+function Card({ type, data, actors, videos }) {
   return (
     <>
       <div className="flex justify-center">
