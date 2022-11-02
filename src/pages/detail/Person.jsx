@@ -42,7 +42,7 @@ const Person = () => {
         setPerson(personDetails);
 
         const birthday = new Date(personDetails.birthday);
-        if (personDetails.deathday != null) {
+        if (personDetails.deathday !== null) {
           const deathday = new Date(personDetails.deathday);
           setAge(
             Math.floor((deathday - birthday) / (1000 * 60 * 60 * 24 * 365))
@@ -132,7 +132,7 @@ const Person = () => {
             <div className="person_date">
               <span className="person_dates_label">Age</span>
               <span className="person_dates_content">
-                {age != null ? age : null} years
+                {age !== null ? age : null} years
               </span>
             </div>
           </div>
