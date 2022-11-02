@@ -22,7 +22,6 @@ function Card({ type, data, actors, videos }) {
           <div className="p-6 flex flex-col justify-start items-center">
             <h5 className="text-gray-900 text-3xl font-medium mb-2 text-center">
               {type === "movie" ? data.title : data.name}{" "}
-              {data.adult ? "interdit au moins de 18 ans" : ""}
             </h5>
 
             <Categories type={type} data={data} />
