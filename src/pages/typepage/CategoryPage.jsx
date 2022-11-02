@@ -35,6 +35,12 @@ const CategoryPage = () => {
             setMovies([...data.results, ...data2.results]);
           });
       });
+
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   }, [pageNumber, genre, type]);
 
   if (pageNumber < 1) {
