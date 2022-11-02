@@ -6,7 +6,7 @@ const Error404 = () => {
     <div className="error404">
       <div className="error404_title">Error 404</div>
       <div className="error404_text">
-        Sorry the page you're searching is not existing !
+        Sorry the page you are looking for does not exist!
       </div>
       <Link to="/" className="error404_back">
         Go back to home page
