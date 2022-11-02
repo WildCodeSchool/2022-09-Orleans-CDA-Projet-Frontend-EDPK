@@ -50,14 +50,16 @@ const Navbar = () => {
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-24 items-center gap-0 justify-between ">
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-              <div className="flex flex-shrink-0 items-center">
-                <img
-                  className="logo hidden lg:block"
-                  src="/images/logo.png"
-                  alt="CineFlix"
-                />
-                <p className="cineflix hidden lg:block">Cineflix</p>
-              </div>
+              <Link to="/">
+                <div className="flex flex-shrink-0 items-center">
+                  <img
+                    className="logo hidden lg:block"
+                    src="/images/logo.png"
+                    alt="CineFlix"
+                  />
+                  <p className="cineflix hidden lg:block">Cineflix</p>
+                </div>
+              </Link>
               <div
                 className={`${
                   isDrawerOpen ? "hidden" : "block"
