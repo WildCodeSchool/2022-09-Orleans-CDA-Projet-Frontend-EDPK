@@ -17,16 +17,16 @@ const Guide = () => {
     {
       questionText: "Which do you prefer?",
       answerOptions: [
-        { answerText: "Latest Movies", id: 1 },
+        { answerText: "The Latest Movies", id: 1 },
         { answerText: "Older Movies", id: 2 },
       ],
     },
     {
-      questionText: "Do you want high rated movies.",
+      questionText: "What's the minimum rating you'd prefer?",
       answerOptions: [
         { answerText: 8, id: 8 },
+        { answerText: 6, id: 6 },
         { answerText: 4, id: 4 },
-        { answerText: 2, id: 2 },
       ],
     },
   ];
@@ -101,7 +101,7 @@ const Guide = () => {
     <div className="app">
       {isFiltered ? (
         <div className="movieList mt-5">
-          <h2 className="mb-3">For You!</h2>
+          <h2 className="title mb-3">For You !</h2>
           <div className="board">
             {trending.length > 0
               ? trending.map((movie) => (
