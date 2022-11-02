@@ -7,6 +7,7 @@ import CategoryPage from "./pages/typepage/CategoryPage";
 import Movie from "./pages/detail/Movie";
 import Tv from "./pages/detail/Tv";
 import Person from "./pages/detail/Person";
+import Error404 from "./pages/error404/Error404";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/tv/:tvId" element={<Tv />} />
           <Route path="/person/:personId" element={<Person />} />
           <Route path="/quiz/" element={<Quiz />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />
       </>
