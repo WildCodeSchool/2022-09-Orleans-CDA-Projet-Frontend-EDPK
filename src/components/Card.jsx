@@ -19,12 +19,12 @@ function Card({ type, data, actors, videos }) {
             }
             alt=""
           />
-          <div className="p-6 flex flex-col justify-start">
+          <div className="p-6 flex flex-col justify-start items-center">
             <h5 className="text-gray-900 text-3xl font-medium mb-2 text-center">
-              {type === "movie" ? data.title : data.name}
+              {type === "movie" ? data.title : data.name}{" "}
             </h5>
 
-            <Categories data={data} />
+            <Categories type={type} data={data} />
 
             <p className="text-gray-400 py-2">
               release date : {data.release_date}
@@ -52,7 +52,7 @@ function Card({ type, data, actors, videos }) {
                       <img
                         id={c.id}
                         className={
-                          "inline-block transition duration-20 ease-in-out shadow-inner border rounded-lg max-w-full h-auto "
+                          "inline-block transition duration-20 ease-in-out shadow-inner border rounded-lg max-w-full h-auto"
                         }
                         data-bs-toggle="tooltip"
                         title={c.name}
@@ -62,7 +62,7 @@ function Card({ type, data, actors, videos }) {
                       <div
                         id={"text-" + c.id}
                         className={
-                          "absolute bottom-0 left-0 right-0 px-2 py-2 bg-gray-800 opacity-70 "
+                          "absolute bottom-0 left-0 right-0 px-2 py-2 bg-gray-800 opacity-70"
                         }
                       >
                         <p className="text-xs text-white font-bold">{c.name}</p>

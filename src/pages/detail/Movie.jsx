@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./movie.scss";
 import axios from "axios";
-import { Link, NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Card from "../../components/Card";
+import Popup from "../../components/Popup";
 
 const Movie = () => {
   const { movieId } = useParams();
@@ -88,7 +89,10 @@ const Movie = () => {
       >
         {/* card */}
         {Object.keys(movie).length ? (
-          <Card type="movie" data={movie} actors={actors} videos={videos} />
+          <>
+            {movie.adult ? <Popup /> : null}
+            <Card type="movie" data={movie} actors={actors} videos={videos} />
+          </>
         ) : null}
       </div>
     </>
