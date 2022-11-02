@@ -22,11 +22,11 @@ const Guide = () => {
       ],
     },
     {
-      questionText: "Do you want high rated movies.",
+      questionText: "What's the minium rated you'd prefer?",
       answerOptions: [
         { answerText: 8, id: 8 },
+        { answerText: 6, id: 6 },
         { answerText: 4, id: 4 },
-        { answerText: 2, id: 2 },
       ],
     },
   ];
@@ -101,7 +101,7 @@ const Guide = () => {
     <div className="app">
       {isFiltered ? (
         <div className="movieList mt-5">
-          <h2 className="mb-3">For You!</h2>
+          <h2 className="title mb-3">For You !</h2>
           <div className="board">
             {trending.length > 0
               ? trending.map((movie) => (
@@ -109,7 +109,7 @@ const Guide = () => {
                     <div className="rounded-lg  max-w-sm">
                       <Link to={`/movie/${movie.id}`}>
                         <img
-                          className="rounded-t-lg"
+                          className="forYou flex flex-wrap rounded-t-lg"
                           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                           alt={movie.original_title}
                         />
