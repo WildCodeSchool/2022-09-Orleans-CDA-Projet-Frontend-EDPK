@@ -58,6 +58,12 @@
   width: 100%;
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap;
+}
+
+.person_date {
+  margin-right: 1rem;
+  white-space: nowrap;
 }
 
 .person_dates_label {
@@ -72,10 +78,6 @@
   font-family: var(--text-font);
   font-size: 1.3rem;
   color: #9ca3af;
-}
-
-.person_birthday_content {
-  font-family: var(--text-font);
 }
 
 .person_bio {
@@ -199,7 +201,7 @@
   }
 
   .person_profile {
-    min-height: 100vw;
+    min-height: 50vh;
     border-radius: 0;
   }
 

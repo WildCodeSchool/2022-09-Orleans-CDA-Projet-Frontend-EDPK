@@ -10,6 +10,7 @@ const Person = () => {
 
   const { personId } = useParams();
   const [person, setPerson] = useState();
+  const [age, setAge] = useState("");
   const [filmography, setFilmography] = useState();
   const [randMedia, setRandMedia] = useState();
 
@@ -39,6 +40,17 @@ const Person = () => {
           )
           .then((res) => res.data);
         setPerson(personDetails);
+
+        const birthday = new Date(personDetails.birthday);
+        if (personDetails.deathday != null) {
+          const deathday = new Date(personDetails.deathday);
+          setAge(
+            Math.floor((deathday - birthday) / (1000 * 60 * 60 * 24 * 365))
+          );
+        } else {
+          const today = new Date();
+          setAge(Math.floor((today - birthday) / (1000 * 60 * 60 * 24 * 365)));
+        }
 
         if (personDetails.known_for_department === "Directing") {
           const personFilmo = await axios
@@ -107,16 +119,22 @@ const Person = () => {
         <div className="person_content">
           <h1 className="person_name">{person?.name}</h1>
           <div className="person_dates">
-            <div>
+            <div className="person_date">
               <span className="person_dates_label">Born</span>
               <span className="person_dates_content">{person?.birthday}</span>
             </div>
             {person?.deathday ? (
-              <div style={{ marginLeft: "1rem" }}>
+              <div className="person_date">
                 <span className="person_dates_label">Died</span>
                 <span className="person_dates_content">{person?.deathday}</span>
               </div>
             ) : null}
+            <div className="person_date">
+              <span className="person_dates_label">Age</span>
+              <span className="person_dates_content">
+                {age != null ? age : null} years
+              </span>
+            </div>
           </div>
           <div className="person_bio">
             <h2>Biography</h2>
