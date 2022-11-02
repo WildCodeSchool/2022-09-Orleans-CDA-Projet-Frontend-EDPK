@@ -4,6 +4,10 @@
   margin-top: 1.8rem;
 }
 
+nav {
+  border-bottom: 0;
+}
+
 .backdrop {
   width: 100vw;
   height: 100vh;
@@ -16,5 +20,12 @@
 
 .logo {
   height: 6rem;
-  width: 6rem;
+  width: 3.5rem;
+}
+
+.cineflix {
+  color: #bb0002;
+  font-size: 2.25rem;
+  font-family: var(--title-font);
+  margin-inline-start: 1rem;
 }

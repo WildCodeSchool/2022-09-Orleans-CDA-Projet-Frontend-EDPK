@@ -2,6 +2,7 @@ import axios from "axios";
 import "./CategoryPage.css";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import genres from "../../data/genres.json";
 
 const CategoryPage = () => {
   const { genre, pageNumber, type } = useParams();
@@ -38,16 +39,23 @@ const CategoryPage = () => {
 
   return (
     <div className="mt-14">
-      <div className="justify-items-center grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5">
+      <h1 className="titles text-center text-5xl mb-12 text-white">
+        {genres[genre]}
+      </h1>
+      <div className="justify-items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
         {movies.map((movie) => (
-          <Link className="mb-14" key={movie.id} to={`/movie/${movie.id}`}>
+          <Link
+            className="mb-14 ml-14"
+            key={movie.id}
+            to={`/movie/${movie.id}`}
+          >
             <div>
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                className="w-80 rounded"
+                className="w-60 rounded"
                 alt={movie.title}
               />
-              <h3 className="truncate w-80 text-xl font-medium mb-2 mt-2">
+              <h3 className="truncate w-60 text-xl font-medium mb-2 mt-2">
                 {movie.title}
                 {movie.name}
               </h3>
@@ -56,15 +64,22 @@ const CategoryPage = () => {
         ))}
       </div>
       <div className="mb-8 pagination">
-        <button
-          onClick={() =>
-            navigate(
-              `/category/${type}/${genre}/${parseInt(pageNumber, 10) - 1}`
-            )
-          }
-        >
-          Previous
-        </button>
+        {pageNumber > 1 ? (
+          <button
+            onClick={() =>
+              navigate(
+                `/category/${type}/${genre}/${parseInt(pageNumber, 10) - 1}`
+              )
+            }
+          >
+            Previous
+          </button>
+        ) : (
+          <button className="cursor-not-allowed" disabled="disabled">
+            Previous
+          </button>
+        )}
+
         {pageNumber}
         <button
           onClick={() =>

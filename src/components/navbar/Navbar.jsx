@@ -56,6 +56,7 @@ const Navbar = () => {
                   src="/images/logo.png"
                   alt="CineFlix"
                 />
+                <p className="cineflix hidden lg:block">Cineflix</p>
               </div>
               <div
                 className={`${
@@ -80,7 +81,7 @@ const Navbar = () => {
                             setShowTV(false);
                           }}
                           type="button"
-                          className="titles text-xl inline-flex w-full rounded-md px-4 py-2 font-medium hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                          className="titles cursor-pointer text-xl inline-flex w-full rounded-md px-4 py-2 font-medium hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                           id="menu-button"
                           aria-expanded="true"
                           aria-haspopup="true"
@@ -138,7 +139,7 @@ const Navbar = () => {
                           setShowMovies(false);
                         }}
                         type="button"
-                        className="titles text-xl inline-flex w-full rounded-md px-4 py-2 font-medium hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                        className="titles cursor-pointer text-xl inline-flex w-full rounded-md px-4 py-2 font-medium hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                         id="menu-button"
                         aria-expanded="true"
                         aria-haspopup="true"
