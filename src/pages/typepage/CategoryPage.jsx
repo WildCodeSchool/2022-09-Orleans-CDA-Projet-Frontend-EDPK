@@ -1,7 +1,7 @@
 import axios from "axios";
 import "./CategoryPage.css";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import genres from "../../data/genres.json";
 
 const CategoryPage = () => {
@@ -35,12 +35,17 @@ const CategoryPage = () => {
             setMovies([...data.results, ...data2.results]);
           });
       });
+
     window.scroll({
       top: 0,
       left: 0,
       behavior: "smooth",
     });
-  }, [pageNumber, genre]);
+  }, [pageNumber, genre, type]);
+
+  if (pageNumber < 1) {
+    return <Navigate to="/" replace={true} />;
+  }
 
   return (
     <div className="mt-14">
@@ -50,7 +55,7 @@ const CategoryPage = () => {
       <div className="justify-items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
         {movies.map((movie) => (
           <Link
-            className="mb-14 ml-14"
+            className="mb-14 ml-14 mr-14"
             key={movie.id}
             to={`/movie/${movie.id}`}
           >
