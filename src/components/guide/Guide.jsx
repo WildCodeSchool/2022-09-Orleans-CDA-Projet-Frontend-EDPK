@@ -22,7 +22,7 @@ const Guide = () => {
       ],
     },
     {
-      questionText: "What's the minium rated you'd prefer?",
+      questionText: "What's the minimum rating you'd prefer?",
       answerOptions: [
         { answerText: 8, id: 8 },
         { answerText: 6, id: 6 },
