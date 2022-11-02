@@ -17,7 +17,7 @@ const Guide = () => {
     {
       questionText: "Which do you prefer?",
       answerOptions: [
-        { answerText: "Latest Movies", id: 1 },
+        { answerText: "The Latest Movies", id: 1 },
         { answerText: "Older Movies", id: 2 },
       ],
     },
