@@ -99,7 +99,10 @@ const Tv = () => {
       >
         {/* card */}
         {Object.keys(tv).length ? (
-          <Card type="tv" data={tv} actors={actors} videos={videos} />
+          <>
+            {tv.adult ? <Popup /> : null}
+            <Card type="tv" data={tv} actors={actors} videos={videos} />
+          </>
         ) : null}
       </div>
     </>
