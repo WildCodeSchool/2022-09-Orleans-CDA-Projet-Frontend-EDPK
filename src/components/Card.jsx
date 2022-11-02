@@ -19,7 +19,7 @@ function Card({ type, data, actors, videos }) {
             }
             alt=""
           />
-          <div className="p-6 flex flex-col justify-start items-center">
+          <div className="p-6 flex flex-col justify-start items-center w-full">
             <h5 className="text-gray-900 text-3xl font-medium mb-2 text-center">
               {type === "movie" ? data.title : data.name}{" "}
             </h5>
@@ -29,9 +29,12 @@ function Card({ type, data, actors, videos }) {
             <p className="text-gray-400 py-2">
               release date : {data.release_date}
             </p>
-            <p className="text-gray-600 text-base mb-4">
+            <p className="text-gray-600 text-base mb-4 w-full">
               <b>Overview : </b>
-              {data.overview}
+              {data.overview
+                ? data.overview
+                : "No overview available for this " +
+                  ({ type } === "movie" ? "movie" : "tv show")}
             </p>
             <hr />
             <p className="text-gray-600 p-4">
