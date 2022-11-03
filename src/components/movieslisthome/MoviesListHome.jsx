@@ -32,12 +32,12 @@ const MoviesListHome = () => {
 
   return (
     <div>
-      <div className="movieList mt-5">
+      <div className="box movieList mt-5">
         <h2 className="mb-3">Trending Movies</h2>
         <div className="board">
           {movies.map((t) => (
             <div key={t.id} className="flex p-2">
-              <div className="rounded-lg  max-w-sm">
+              <div className="rounded-lg max-w-sm">
                 <Link to={`/movie/${t.id}`}>
                   <img
                     className="rounded-t-lg"
@@ -54,9 +54,9 @@ const MoviesListHome = () => {
           ))}
         </div>
       </div>
-      <div className="movieList mt-5">
+      <div className="box movieList mt-5">
         <h2 className="mb-3">Trending TV Shows</h2>
-        <div className="board">
+        <div className="board ">
           {tv.map((t) => (
             <div key={t.id} className="flex p-2">
               <div className="rounded-lg  max-w-sm">
