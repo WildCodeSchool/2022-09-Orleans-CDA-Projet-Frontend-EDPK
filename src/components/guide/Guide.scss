@@ -27,7 +27,8 @@
 }
 
 .question-text {
-  margin-bottom: 12px;
+  margin-left: 2rem;
+  overflow: auto;
   font-size: 2rem;
   font-family: var(--text-font);
 }
