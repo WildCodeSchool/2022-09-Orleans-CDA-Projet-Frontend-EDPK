@@ -56,7 +56,7 @@ const MoviesListHome = () => {
       </div>
       <div className="box movieList mt-5">
         <h2 className="mb-3">Trending TV Shows</h2>
-        <div className="board ">
+        <div className="board">
           {tv.map((t) => (
             <div key={t.id} className="flex p-2">
               <div className="rounded-lg  max-w-sm">
