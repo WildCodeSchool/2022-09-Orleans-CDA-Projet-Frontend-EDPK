@@ -82,6 +82,7 @@
 
 .person_bio {
   position: relative;
+  width: 100%;
 }
 
 .person_bio h2,
@@ -93,7 +94,7 @@
   margin-top: 1rem;
 }
 
-.person_bio div {
+.person_bio_content {
   display: block;
   width: 100%;
   max-height: 8rem;
@@ -102,7 +103,7 @@
   color: #fff;
 }
 
-.person_bio div::after {
+.person_bio_content::after {
   position: absolute;
   content: " ";
   bottom: 0;
@@ -112,7 +113,7 @@
   background-image: linear-gradient(rgba(255, 0, 0, 0), var(--var-primary));
 }
 
-.person_bio div::-webkit-scrollbar {
+.person_bio_content::-webkit-scrollbar {
   width: 0.5rem;
   background: radial-gradient(
     circle,
@@ -121,9 +122,21 @@
   );
 }
 
-.person_bio div::-webkit-scrollbar-thumb {
+.person_bio_content::-webkit-scrollbar-thumb {
   background-color: rgb(19 197 178 / 37%);
   border-radius: 10px;
+}
+
+.person_bio_empty {
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-style: italic;
+  max-height: 8rem;
+  font-family: var(--text-font);
+  overflow: auto;
+  color: #797979;
+  margin: 0.5rem 0;
 }
 
 .person_filmo {
@@ -145,14 +158,14 @@
   );
 }
 
-.person_filmo_frame {
+.person_filmo_content {
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
   scrollbar-width: 2px;
 }
 
-.person_filmo_frame::-webkit-scrollbar {
+.person_filmo_content::-webkit-scrollbar {
   height: 0.5rem;
   background: radial-gradient(
     circle,
@@ -161,9 +174,21 @@
   );
 }
 
-.person_filmo_frame::-webkit-scrollbar-thumb {
+.person_filmo_content::-webkit-scrollbar-thumb {
   background-color: rgb(19 197 178 / 37%);
   border-radius: 10px;
+}
+
+.person_filmo_empty {
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-style: italic;
+  max-height: 8rem;
+  font-family: var(--text-font);
+  overflow: auto;
+  color: #797979;
+  margin: 0.5rem 0;
 }
 
 .person_filmo_media {
