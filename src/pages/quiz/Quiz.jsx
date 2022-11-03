@@ -511,7 +511,6 @@ const Quiz = () => {
         )}
         {displayScore && (
           <>
-            {console.log(score)}
             <div className="quiz_score_title">Scoreboard</div>
             <div className="quiz_score_total">
               {score.length &&
