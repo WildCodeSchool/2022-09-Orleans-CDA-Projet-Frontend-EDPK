@@ -145,8 +145,6 @@ const Quiz = () => {
             default:
               break;
           }
-
-          setIsLoading(false);
         }
 
         // CHARACTER QUESTION
@@ -202,8 +200,6 @@ const Quiz = () => {
               default:
                 break;
             }
-
-            setIsLoading(false);
           })();
         }
 
@@ -289,10 +285,10 @@ const Quiz = () => {
               default:
                 break;
             }
-
-            setIsLoading(false);
           })();
         }
+
+        setIsLoading(false);
       })();
     }
   }, [mediaId]);
