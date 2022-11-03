@@ -129,7 +129,6 @@ const Navbar = () => {
                                 </Link>
                               </div>
                             ))}
-                          {/* <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">{category}</a> */}
                         </div>
                       </div>
                     </div>
@@ -187,7 +186,6 @@ const Navbar = () => {
                               </Link>
                             </div>
                           ))}
-                        {/* <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">{category}</a> */}
                       </div>
                     </div>
                     <li>
