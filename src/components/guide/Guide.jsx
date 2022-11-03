@@ -39,7 +39,6 @@ const Guide = () => {
       .get(url_trending + apiKey, signal)
       .then((res) => res.data);
     const trends = response.results;
-    console.log(trends, "trends");
     setTrending(trends);
   }
 
@@ -138,7 +137,11 @@ const Guide = () => {
           </div>
           <div className="answer-section">
             {questions[currentQuestion].answerOptions.map((answerOption) => (
-              <button value={answerOption.id} onClick={toggleQuestion}>
+              <button
+                key={answerOption.id}
+                value={answerOption.id}
+                onClick={toggleQuestion}
+              >
                 {answerOption.answerText}
               </button>
             ))}
