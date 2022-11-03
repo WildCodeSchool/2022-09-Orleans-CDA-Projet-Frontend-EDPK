@@ -43,8 +43,8 @@ const CarouselActors = ({ actors }) => {
         to={`/person/${actors[(current + i) % length].id}`}
         key={actors[(current + i) % length].id}
       >
-        <div className="carousel__container__slide hover:scale-105">
-          <div className="carousel__container__slide__img m-1">
+        <div className="carousel__container__slide hover:scale-105 m-1">
+          <div className="carousel__container__slide__img">
             <img
               src={url_photo + actors[(current + i) % length].profile_path}
               alt={actors[(current + i) % length].name}
@@ -68,7 +68,7 @@ const CarouselActors = ({ actors }) => {
     >
       <div
         id="carousel"
-        className="carousel__container flex flex-row justify-center carousel slide carousel-fade relative"
+        className="carousel__container flex flex-row justify-center carousel slide carousel-fade relative w-full"
         data-bs-ride="carousel"
       >
         <ActorsCards />

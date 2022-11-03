@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./movie.scss";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useHref, useParams } from "react-router-dom";
 import Card from "../../components/Card";
 import Popup from "../../components/Popup";
 
@@ -21,8 +21,16 @@ const Movie = () => {
       const response = await axios
         .get(url_movie_detail, signal)
         .then((res) => res.data);
+
       setMovie(response);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+      if (error.response.status && error.response.status === 404) {
+        window.location.href = "/2022-09-Orleans-CDA-Projet-Frontend-EDPK/404";
+      } else if (error.response.status && error.response.status === 500) {
+        window.location.href = "/2022-09-Orleans-CDA-Projet-Frontend-EDPK/500";
+      }
+    }
   }
 
   async function getVideosByTv(signal) {

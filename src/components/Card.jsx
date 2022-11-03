@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CarouselActors from "./carousel_actors/Carousel";
+import CarouselActors from "./carouselactors/Carousel";
 import Categories from "./Categories";
 import Videoplayer from "./Videoplayer";
 
@@ -27,7 +27,7 @@ function Card({ type, data, actors, videos }) {
             <Categories type={type} data={data} />
 
             <p className="text-gray-400 py-2">
-              release date: {data.release_date}
+              {data.release_date && `release date: ${data.release_date}`}
             </p>
             <p className="text-gray-600 text-base mb-4 w-full">
               <b>Overview: </b>
@@ -38,7 +38,8 @@ function Card({ type, data, actors, videos }) {
             </p>
             <hr />
             <p className="text-gray-600 p-4">
-              Average rating: {data.vote_average}
+              {data.vote_average > 0 &&
+                `Average rating: ${data.vote_average} / 10`}
             </p>
             <hr />
             <br />
@@ -52,9 +53,9 @@ function Card({ type, data, actors, videos }) {
             </div>
             {type === "tv" ? (
               data.seasons ? (
-                <div>
+                <div className="mt-4">
                   <p className="text-gray-600 p-4">
-                    Number of seasons:{" "}
+                    Number of seasons:&nbsp;
                     {
                       data.seasons.filter((s) => s.name.includes("Season"))
                         .length
