@@ -2,6 +2,7 @@ import "./Person.scss";
 import React, { useEffect, useState, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import useSize from "../../hooks/useSize";
+import Popup from "../../components/Popup";
 import axios from "axios";
 
 const Person = () => {
@@ -99,70 +100,112 @@ const Person = () => {
   }, []);
 
   return (
-    <div className="person">
-      <div
-        className="person_back"
-        style={{
-          backgroundImage: `url(https://image.tmdb.org/t/p/w500${
-            filmography ? filmography[randMedia]?.backdrop_path : null
-          })`,
-          height: "80vh",
-        }}
-      ></div>
-      <div className="person_front" ref={targetFront}>
-        <div
-          className="person_profile"
-          style={{
-            backgroundImage: `url(https://image.tmdb.org/t/p/w500${person?.profile_path})`,
-          }}
-        ></div>
-        <div className="person_content">
-          <h1 className="person_name">{person?.name}</h1>
-          <div className="person_dates">
-            <div className="person_date">
-              <span className="person_dates_label">Born</span>
-              <span className="person_dates_content">{person?.birthday}</span>
+    <>
+      {person?.adult ? <Popup /> : null}
+      <div className="person">
+        {filmography?.[randMedia] ? (
+          <div
+            className="person_back"
+            style={{
+              backgroundImage: `url(https://image.tmdb.org/t/p/w500${filmography[randMedia].backdrop_path})`,
+              height: "80vh",
+            }}
+          ></div>
+        ) : (
+          <div
+            className="person_back"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right top, #022631, #003842, #004a51, #005d5e, #0f7167)",
+              height: "80vh",
+            }}
+          ></div>
+        )}
+
+        <div className="person_front" ref={targetFront}>
+          {person?.profile_path ? (
+            <div
+              className="person_profile"
+              style={{
+                backgroundImage: `url(https://image.tmdb.org/t/p/w500${person?.profile_path})`,
+              }}
+            ></div>
+          ) : (
+            <div
+              className="person_profile"
+              style={{
+                backgroundImage: "url('/src/assets/default_img.jpg')",
+              }}
+            ></div>
+          )}
+          <div className="person_content">
+            <h1 className="person_name">{person?.name}</h1>
+            <div className="person_dates">
+              {person?.birthday ? (
+                <div className="person_date">
+                  <span className="person_dates_label">Born</span>
+                  <span className="person_dates_content">
+                    {person?.birthday}
+                  </span>
+                </div>
+              ) : null}
+              {person?.deathday ? (
+                <div className="person_date">
+                  <span className="person_dates_label">Died</span>
+                  <span className="person_dates_content">
+                    {person?.deathday}
+                  </span>
+                </div>
+              ) : null}
+              {person?.birthday ? (
+                <div className="person_date">
+                  <span className="person_dates_label">Age</span>
+                  <span className="person_dates_content">
+                    {age !== null ? age : null} years
+                  </span>
+                </div>
+              ) : null}
             </div>
-            {person?.deathday ? (
-              <div className="person_date">
-                <span className="person_dates_label">Died</span>
-                <span className="person_dates_content">{person?.deathday}</span>
-              </div>
-            ) : null}
-            <div className="person_date">
-              <span className="person_dates_label">Age</span>
-              <span className="person_dates_content">
-                {age !== null ? age : null} years
-              </span>
+            <div className="person_bio">
+              <h2>Biography</h2>
+              {person?.biography ? (
+                <div className="person_bio_content">{person?.biography}</div>
+              ) : (
+                <div className="person_bio_empty">
+                  There is no biography about this person.
+                </div>
+              )}
             </div>
-          </div>
-          <div className="person_bio">
-            <h2>Biography</h2>
-            <div>{person?.biography}</div>
-          </div>
-          <div className="person_filmo">
-            <h2>Filmography</h2>
-            <div className="person_filmo_frame">
-              {filmography?.map((elem, index) => (
-                <Link
-                  to={`/movie/${elem.id}`}
-                  className="person_filmo_media"
-                  key={index}
-                >
-                  <div
-                    className="person_filmo_poster"
-                    style={{
-                      backgroundImage: `url(https://image.tmdb.org/t/p/w500${elem.poster_path})`,
-                    }}
-                  ></div>
-                  <div className="person_filmo_title">{elem.title}</div>
-                </Link>
-              ))}
+            <div className="person_filmo">
+              <h2>Filmography</h2>
+              {filmography?.[0] ? (
+                <div className="person_filmo_content">
+                  {filmography?.map((elem, index) => (
+                    <Link
+                      to={`/movie/${elem.id}`}
+                      className="person_filmo_media"
+                      key={index}
+                    >
+                      <div
+                        className="person_filmo_poster"
+                        style={{
+                          backgroundImage: `url(https://image.tmdb.org/t/p/w500${elem.poster_path})`,
+                        }}
+                      ></div>
+                      <div className="person_filmo_title">{elem.title}</div>
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <div className="person_filmo_empty">
+                  There is no filmography about this person.
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
