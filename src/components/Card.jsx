@@ -34,7 +34,7 @@ function Card({ type, data, actors, videos }) {
               {data.overview
                 ? data.overview
                 : "No overview available for this " +
-                  ({ type } === "movie" ? "movie" : "tv show")}
+                  (type === "movie" ? "movie" : "tv show")}
             </p>
             <hr />
             <p className="text-gray-600 p-4">
