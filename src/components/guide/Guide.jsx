@@ -10,7 +10,7 @@ const Guide = () => {
       answerOptions: [
         { answerText: "Action", id: 28 },
         { answerText: "Romance", id: 10749 },
-        { answerText: "Science Ficton", id: 878 },
+        { answerText: "Science Fiction", id: 878 },
         { answerText: "Horror", id: 27 },
       ],
     },
