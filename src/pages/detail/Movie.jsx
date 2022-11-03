@@ -67,7 +67,7 @@ const Movie = () => {
         ?.filter(
           (c) => c.known_for_department === "Acting" && c.profile_path !== null
         )
-        ?.slice(0, 3);
+        ?.slice(0, 10);
       setActors(actors);
     }
     window.scrollTo(0, 100);

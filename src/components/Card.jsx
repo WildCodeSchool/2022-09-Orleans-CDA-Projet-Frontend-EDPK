@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import CarouselActors from "./carousel_actors/Carousel";
 import Categories from "./Categories";
 import Videoplayer from "./Videoplayer";
 
@@ -48,32 +48,7 @@ function Card({ type, data, actors, videos }) {
               <div className="flex items-center space-x-2 text-base">
                 <h4 className="font-semibold text-slate-900">Main actors :</h4>
               </div>
-              <div className="mt-3 mr-4 p-4 flex overflow-hidden">
-                {actors?.map((c) => (
-                  <Link to={`/person/${c.id}`} key={c.id}>
-                    <div className="relative mr-6 hover:scale-125">
-                      <img
-                        id={c.id}
-                        className={
-                          "inline-block transition duration-20 ease-in-out shadow-inner border rounded-lg max-w-full h-auto"
-                        }
-                        data-bs-toggle="tooltip"
-                        title={c.name}
-                        src={"https://image.tmdb.org/t/p/w500" + c.profile_path}
-                        alt={c.name}
-                      />
-                      <div
-                        id={"text-" + c.id}
-                        className={
-                          "absolute bottom-0 left-0 right-0 px-2 py-2 bg-gray-800 opacity-70"
-                        }
-                      >
-                        <p className="text-xs text-white font-bold">{c.name}</p>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+              <CarouselActors actors={actors} />
             </div>
             {type === "tv" ? (
               data.seasons ? (

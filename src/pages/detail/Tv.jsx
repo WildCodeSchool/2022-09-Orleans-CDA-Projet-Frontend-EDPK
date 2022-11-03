@@ -77,7 +77,7 @@ const Tv = () => {
       //find the 3 pincipals 'actors' of the movie
       const actors = characters
         ?.filter((c) => c.known_for_department === "Acting")
-        ?.slice(0, 3);
+        ?.slice(0, 10);
       setActors(actors);
     }
     window.scrollTo(0, 100);
