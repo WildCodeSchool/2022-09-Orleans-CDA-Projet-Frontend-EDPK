@@ -114,6 +114,11 @@ const Searchbar = ({ media = null, genreId = null }) => {
 
   const handleSearch = (e) => setSearch(e.target.value);
 
+  const handleClickedItem = () => {
+    handleSearch();
+    document.getElementsByTag(body)[0].scrollTop;
+  };
+
   return (
     <>
       <div className="searchbar">
@@ -126,7 +131,7 @@ const Searchbar = ({ media = null, genreId = null }) => {
           <div className="search-icon">
             <svg
               stroke="currentColor"
-              stroke-width="0"
+              strokeWidth="0"
               viewBox="0 0 1024 1024"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -140,20 +145,22 @@ const Searchbar = ({ media = null, genreId = null }) => {
         <div className="search-list">
           {display.map((item) => (
             <Link
+              onClick={handleClickedItem}
               to={`/${item.media_type}/${item.id}`}
               className="search-list-item"
               key={item.id}
               style={
                 item.media_type === "movie"
-                  ? { borderBottom: "0.5rem solid #710000" }
+                  ? { borderBottom: "0.15rem solid #710000" }
                   : item.media_type === "tv"
-                  ? { borderBottom: "0.5rem solid #1700a3" }
-                  : { borderBottom: "0.5rem solid #0c4e01" }
+                  ? { borderBottom: "0.15rem solid #1700a3" }
+                  : { borderBottom: "0.15rem solid #0c4e01" }
               }
             >
               <div className="search-title">
                 {item.media_type === "movie" ? (
                   <svg
+                    style={{ fill: "#710000" }}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 266.62 231.65"
                   >
@@ -163,6 +170,7 @@ const Searchbar = ({ media = null, genreId = null }) => {
                   </svg>
                 ) : item.media_type === "tv" ? (
                   <svg
+                    style={{ fill: "#1700a3" }}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 360.72 351.41"
                   >
@@ -170,6 +178,7 @@ const Searchbar = ({ media = null, genreId = null }) => {
                   </svg>
                 ) : (
                   <svg
+                    style={{ fill: "#0c4e01" }}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 340.79 408.86"
                   >
