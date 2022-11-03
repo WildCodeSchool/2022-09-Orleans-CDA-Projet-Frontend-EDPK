@@ -3,7 +3,7 @@
   overflow: hidden;
 }
 
-.person_back {
+.person-back {
   padding: 5rem 0;
   background-size: cover;
   background-position: center;
@@ -11,7 +11,7 @@
   filter: blur(5px);
 }
 
-.person_front {
+.person-front {
   position: absolute;
   top: 11rem;
   left: 0;
@@ -28,7 +28,7 @@
   box-shadow: 0px 0px 15px -3px rgb(0 0 0 / 50%);
 }
 
-.person_profile {
+.person-profile {
   min-width: 30vw;
   min-height: 80vh;
   background-size: cover;
@@ -38,7 +38,7 @@
   box-shadow: inset -10px 0px 20px 0px rgb(0 0 0 / 50%);
 }
 
-.person_content {
+.person-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -46,13 +46,13 @@
   padding: 1rem;
 }
 
-.person_name {
+.person-name {
   font-family: var(--title-font);
   font-size: 2.5rem;
   letter-spacing: -0.07rem;
 }
 
-.person_dates {
+.person-dates {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -61,12 +61,12 @@
   flex-wrap: wrap;
 }
 
-.person_date {
+.person-date {
   margin-right: 1rem;
   white-space: nowrap;
 }
 
-.person_dates_label {
+.person-dates-label {
   font-family: var(--title-font);
   color: #9ca3af;
   font-size: 1.3rem;
@@ -74,18 +74,18 @@
   margin-right: 0.5rem;
 }
 
-.person_dates_content {
+.person-dates-content {
   font-family: var(--text-font);
   font-size: 1.3rem;
   color: #9ca3af;
 }
 
-.person_bio {
+.person-bio {
   position: relative;
 }
 
-.person_bio h2,
-.person_filmo h2 {
+.person-bio h2,
+.person-filmo h2 {
   padding: 0;
   font-family: var(--title-font);
   color: #fff;
@@ -93,7 +93,7 @@
   margin-top: 1rem;
 }
 
-.person_bio div {
+.person-bio div {
   display: block;
   width: 100%;
   max-height: 8rem;
@@ -102,7 +102,7 @@
   color: #fff;
 }
 
-.person_bio div::after {
+.person-bio div::after {
   position: absolute;
   content: " ";
   bottom: 0;
@@ -112,7 +112,7 @@
   background-image: linear-gradient(rgba(255, 0, 0, 0), var(--var-primary));
 }
 
-.person_bio div::-webkit-scrollbar {
+.person-bio div::-webkit-scrollbar {
   width: 0.5rem;
   background: radial-gradient(
     circle,
@@ -121,17 +121,17 @@
   );
 }
 
-.person_bio div::-webkit-scrollbar-thumb {
+.person-bio div::-webkit-scrollbar-thumb {
   background-color: rgb(19 197 178 / 37%);
   border-radius: 10px;
 }
 
-.person_filmo {
+.person-filmo {
   position: relative;
   width: 100%;
 }
 
-.person_filmo::after {
+.person-filmo::after {
   position: absolute;
   content: " ";
   top: 0;
@@ -145,14 +145,14 @@
   );
 }
 
-.person_filmo_frame {
+.person-filmo-frame {
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
   scrollbar-width: 2px;
 }
 
-.person_filmo_frame::-webkit-scrollbar {
+.person-filmo-frame::-webkit-scrollbar {
   height: 0.5rem;
   background: radial-gradient(
     circle,
@@ -161,16 +161,16 @@
   );
 }
 
-.person_filmo_frame::-webkit-scrollbar-thumb {
+.person-filmo-frame::-webkit-scrollbar-thumb {
   background-color: rgb(19 197 178 / 37%);
   border-radius: 10px;
 }
 
-.person_filmo_media {
+.person-filmo-media {
   margin: 0.5rem;
 }
 
-.person_filmo_poster {
+.person-filmo-poster {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -179,7 +179,7 @@
   border-radius: 10px;
 }
 
-.person_filmo_title {
+.person-filmo-title {
   color: #fff;
   font-family: var(--title-font);
   white-space: nowrap;
@@ -189,10 +189,10 @@
 }
 
 @media (max-width: 768px) {
-  .person_back {
+  .person-back {
     display: none;
   }
-  .person_front {
+  .person-front {
     position: relative;
     top: 0;
     flex-direction: column;
@@ -200,16 +200,16 @@
     width: 100%;
   }
 
-  .person_profile {
+  .person-profile {
     min-height: 50vh;
     border-radius: 0;
   }
 
-  .person_content {
+  .person-content {
     width: 100%;
   }
 
-  .person_bio div {
+  .person-bio div {
     max-height: 20rem;
   }
 }

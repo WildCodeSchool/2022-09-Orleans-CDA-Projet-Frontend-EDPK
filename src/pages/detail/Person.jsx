@@ -16,14 +16,14 @@ const Person = () => {
 
   useEffect(() => {
     if (
-      document?.getElementsByClassName("person_back")[0]?.style?.height &&
+      document?.getElementsByClassName("person-back")[0]?.style?.height &&
       sizeFront?.height
     ) {
       if (
-        document.getElementsByClassName("person_back")[0].style.height !==
+        document.getElementsByClassName("person-back")[0].style.height !==
         sizeFront.height + "px"
       ) {
-        document.getElementsByClassName("person_back")[0].style.height =
+        document.getElementsByClassName("person-back")[0].style.height =
           "calc(10rem + " + sizeFront.height + "px)";
       }
     }
@@ -101,7 +101,7 @@ const Person = () => {
   return (
     <div className="person">
       <div
-        className="person_back"
+        className="person-back"
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/w500${
             filmography ? filmography[randMedia]?.backdrop_path : null
@@ -109,53 +109,53 @@ const Person = () => {
           height: "80vh",
         }}
       ></div>
-      <div className="person_front" ref={targetFront}>
+      <div className="person-front" ref={targetFront}>
         <div
-          className="person_profile"
+          className="person-profile"
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/w500${person?.profile_path})`,
           }}
         ></div>
-        <div className="person_content">
-          <h1 className="person_name">{person?.name}</h1>
-          <div className="person_dates">
-            <div className="person_date">
-              <span className="person_dates_label">Born</span>
-              <span className="person_dates_content">{person?.birthday}</span>
+        <div className="person-content">
+          <h1 className="person-name">{person?.name}</h1>
+          <div className="person-dates">
+            <div className="person-date">
+              <span className="person-dates-label">Born</span>
+              <span className="person-dates-content">{person?.birthday}</span>
             </div>
             {person?.deathday ? (
-              <div className="person_date">
-                <span className="person_dates_label">Died</span>
-                <span className="person_dates_content">{person?.deathday}</span>
+              <div className="person-date">
+                <span className="person-dates-label">Died</span>
+                <span className="person-dates-content">{person?.deathday}</span>
               </div>
             ) : null}
-            <div className="person_date">
-              <span className="person_dates_label">Age</span>
-              <span className="person_dates_content">
+            <div className="person-date">
+              <span className="person-dates-label">Age</span>
+              <span className="person-dates-content">
                 {age !== null ? age : null} years
               </span>
             </div>
           </div>
-          <div className="person_bio">
+          <div className="person-bio">
             <h2>Biography</h2>
             <div>{person?.biography}</div>
           </div>
-          <div className="person_filmo">
+          <div className="person-filmo">
             <h2>Filmography</h2>
-            <div className="person_filmo_frame">
+            <div className="person-filmo-frame">
               {filmography?.map((elem, index) => (
                 <Link
                   to={`/movie/${elem.id}`}
-                  className="person_filmo_media"
+                  className="person-filmo-media"
                   key={index}
                 >
                   <div
-                    className="person_filmo_poster"
+                    className="person-filmo-poster"
                     style={{
                       backgroundImage: `url(https://image.tmdb.org/t/p/w500${elem.poster_path})`,
                     }}
                   ></div>
-                  <div className="person_filmo_title">{elem.title}</div>
+                  <div className="person-filmo-title">{elem.title}</div>
                 </Link>
               ))}
             </div>
