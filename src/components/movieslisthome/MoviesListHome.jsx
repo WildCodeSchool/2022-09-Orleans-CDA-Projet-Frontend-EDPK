@@ -32,12 +32,12 @@ const MoviesListHome = () => {
 
   return (
     <div>
-      <div className="movieList mt-5">
+      <div className="box movieList mt-5">
         <h2 className="mb-3">Trending Movies</h2>
         <div className="board">
           {movies.map((t) => (
             <div key={t.id} className="flex p-2">
-              <div className="rounded-lg  max-w-sm">
+              <div className="rounded-lg max-w-sm">
                 <Link to={`/movie/${t.id}`}>
                   <img
                     className="rounded-t-lg"
@@ -54,7 +54,7 @@ const MoviesListHome = () => {
           ))}
         </div>
       </div>
-      <div className="movieList mt-5">
+      <div className="box movieList mt-5">
         <h2 className="mb-3">Trending TV Shows</h2>
         <div className="board">
           {tv.map((t) => (
@@ -79,20 +79,3 @@ const MoviesListHome = () => {
   );
 };
 export default MoviesListHome;
-
-/* <div className="">
-                  <div className="card flex justify-evenly">
-                  <a href="#!">
-                    <img
-                      className="rounded-t-lg"
-                      src={`https://image.tmdb.org/t/p/w500${t.poster_path}`}
-                      alt={t.original_title}
-                    />
-                  </a>
-                  </div>
-                  
-                    <h2 className="text-gray-1000 text-xl font-medium">
-                      {t.original_title}
-                    </h2>
-                  
-                </div> */

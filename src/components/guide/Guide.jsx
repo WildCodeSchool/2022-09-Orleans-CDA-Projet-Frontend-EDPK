@@ -10,7 +10,7 @@ const Guide = () => {
       answerOptions: [
         { answerText: "Action", id: 28 },
         { answerText: "Romance", id: 10749 },
-        { answerText: "Science Ficton", id: 878 },
+        { answerText: "Science Fiction", id: 878 },
         { answerText: "Horror", id: 27 },
       ],
     },
@@ -39,7 +39,6 @@ const Guide = () => {
       .get(url_trending + apiKey, signal)
       .then((res) => res.data);
     const trends = response.results;
-    console.log(trends, "trends");
     setTrending(trends);
   }
 
@@ -138,9 +137,11 @@ const Guide = () => {
           </div>
           <div className="answer-section">
             {questions[currentQuestion].answerOptions.map((answerOption) => (
-              <button value={answerOption.id} onClick={toggleQuestion}>
-                {answerOption.answerText}
-              </button>
+              <div key={answerOption.id} className="space">
+                <button value={answerOption.id} onClick={toggleQuestion}>
+                  {answerOption.answerText}
+                </button>
+              </div>
             ))}
           </div>
         </>

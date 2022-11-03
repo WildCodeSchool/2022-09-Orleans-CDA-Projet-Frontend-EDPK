@@ -9,6 +9,7 @@ const Quiz = () => {
 
   const [displayRules, setDisplayRules] = useState(true);
   const [start, setStart] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [rounds, setRounds] = useState(3);
   const [count, setCount] = useState(0);
   const [mediaId, setMediaId] = useState("");
@@ -61,6 +62,8 @@ const Quiz = () => {
 
   useEffect(() => {
     if (start) {
+      setIsLoading(true);
+
       axios
         .get(
           `https://api.themoviedb.org/3/discover/movie?api_key=${
@@ -284,6 +287,8 @@ const Quiz = () => {
             }
           })();
         }
+
+        setIsLoading(false);
       })();
     }
   }, [mediaId]);
@@ -438,52 +443,59 @@ const Quiz = () => {
             <div className="quiz_counter">
               {count} / {rounds}
             </div>
-            <img
-              className="quiz_image"
-              src={`https://image.tmdb.org/t/p/w500${
-                mediaData.poster_path ? mediaData.poster_path : null
-              }`}
-            />
+            {mediaData?.poster_path ? (
+              <img
+                className="quiz_image"
+                src={`https://image.tmdb.org/t/p/w500${mediaData.poster_path}`}
+              />
+            ) : null}
+
             <div className="quiz_qanda">
               <div className="quiz_question">{question ? question : "???"}</div>
-              <div className="quiz_answers">
-                <div id="a" className="quiz_answer" onClick={handleAnswer}>
-                  <img
-                    className="quiz_answer_letter"
-                    src="/src/assets/answer_a.svg"
-                  />
-                  <div className="quiz_answer_text">
-                    {answers.a ? answers.a : "???"}
+              {isLoading ? (
+                <div className="quiz_loader">
+                  <img src="/src/assets/loader.svg" alt="Loader gif" />
+                </div>
+              ) : (
+                <div className="quiz_answers">
+                  <div id="a" className="quiz_answer" onClick={handleAnswer}>
+                    <img
+                      className="quiz_answer_letter"
+                      src="/src/assets/answer_a.svg"
+                    />
+                    <div className="quiz_answer_text">
+                      {answers.a ? answers.a : "???"}
+                    </div>
+                  </div>
+                  <div id="b" className="quiz_answer" onClick={handleAnswer}>
+                    <img
+                      className="quiz_answer_letter"
+                      src="/src/assets/answer_b.svg"
+                    />
+                    <div className="quiz_answer_text">
+                      {answers.b ? answers.b : "???"}
+                    </div>
+                  </div>
+                  <div id="c" className="quiz_answer" onClick={handleAnswer}>
+                    <img
+                      className="quiz_answer_letter"
+                      src="/src/assets/answer_c.svg"
+                    />
+                    <div className="quiz_answer_text">
+                      {answers.c ? answers.c : "???"}
+                    </div>
+                  </div>
+                  <div id="d" className="quiz_answer" onClick={handleAnswer}>
+                    <img
+                      className="quiz_answer_letter"
+                      src="/src/assets/answer_d.svg"
+                    />
+                    <div className="quiz_answer_text">
+                      {answers.d ? answers.d : "???"}
+                    </div>
                   </div>
                 </div>
-                <div id="b" className="quiz_answer" onClick={handleAnswer}>
-                  <img
-                    className="quiz_answer_letter"
-                    src="/src/assets/answer_b.svg"
-                  />
-                  <div className="quiz_answer_text">
-                    {answers.b ? answers.b : "???"}
-                  </div>
-                </div>
-                <div id="c" className="quiz_answer" onClick={handleAnswer}>
-                  <img
-                    className="quiz_answer_letter"
-                    src="/src/assets/answer_c.svg"
-                  />
-                  <div className="quiz_answer_text">
-                    {answers.c ? answers.c : "???"}
-                  </div>
-                </div>
-                <div id="d" className="quiz_answer" onClick={handleAnswer}>
-                  <img
-                    className="quiz_answer_letter"
-                    src="/src/assets/answer_d.svg"
-                  />
-                  <div className="quiz_answer_text">
-                    {answers.d ? answers.d : "???"}
-                  </div>
-                </div>
-              </div>
+              )}
             </div>
             {nextQuestion && (
               <div className="quiz_next" onClick={handleNextQuestion}>
@@ -492,7 +504,7 @@ const Quiz = () => {
             )}
             {seeResults && (
               <div className="quiz_seeresult" onClick={handleSeeResults}>
-                See results
+                🏆 See results 🏆
               </div>
             )}
           </>

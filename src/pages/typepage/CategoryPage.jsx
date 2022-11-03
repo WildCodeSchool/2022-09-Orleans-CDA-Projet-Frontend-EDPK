@@ -57,7 +57,7 @@ const CategoryPage = () => {
           <Link
             className="mb-14 ml-14 mr-14"
             key={movie.id}
-            to={`/movie/${movie.id}`}
+            to={`/${type}/${movie.id}`}
           >
             <div>
               <img
