@@ -24,7 +24,13 @@ const Tv = () => {
         .get(url_tv_detail, signal)
         .then((res) => res.data);
       setTv(response);
-    } catch (error) {}
+    } catch (error) {
+      if (error.response.status && error.response.status === 404) {
+        window.location.href = "/2022-09-Orleans-CDA-Projet-Frontend-EDPK/404";
+      } else if (error.response.status && error.response.status === 500) {
+        window.location.href = "/2022-09-Orleans-CDA-Projet-Frontend-EDPK/500";
+      }
+    }
   }
 
   useEffect(() => {
@@ -41,13 +47,7 @@ const Tv = () => {
         .then((res) => res?.data?.cast);
 
       if (response && Array.isArray(response)) setCharacters(response);
-    } catch (error) {
-      if (error.response.status && error.response.status === 404) {
-        window.location.href = "/2022-09-Orleans-CDA-Projet-Frontend-EDPK/404";
-      } else if (error.response.status && error.response.status === 500) {
-        window.location.href = "/2022-09-Orleans-CDA-Projet-Frontend-EDPK/500";
-      }
-    }
+    } catch (error) {}
   }
 
   async function getVideosByTv(signal) {
