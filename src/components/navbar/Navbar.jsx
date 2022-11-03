@@ -50,7 +50,13 @@ const Navbar = () => {
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-24 items-center gap-0 justify-between ">
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-              <Link to="/">
+              <Link
+                onClick={() => {
+                  setShowMovies(false);
+                  setShowTV(false);
+                }}
+                to="/"
+              >
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="logo hidden lg:block"
@@ -67,7 +73,12 @@ const Navbar = () => {
               >
                 <div className="flex space-x-4">
                   <ul className="flex flex-row">
-                    <li>
+                    <li
+                      onClick={() => {
+                        setShowMovies(false);
+                        setShowTV(false);
+                      }}
+                    >
                       <Link
                         to="/"
                         className="titles text-xl inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"
@@ -190,7 +201,12 @@ const Navbar = () => {
                         {/* <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">{category}</a> */}
                       </div>
                     </div>
-                    <li>
+                    <li
+                      onClick={() => {
+                        setShowMovies(false);
+                        setShowTV(false);
+                      }}
+                    >
                       <Link
                         to="/quiz/"
                         className="titles text-xl inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"
