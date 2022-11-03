@@ -118,7 +118,7 @@ const Navbar = () => {
                       >
                         <div
                           onClick={() => setShowMovies(!isShowMovies)}
-                          className="dropdown overflow-y-auto h-96 rounded border-l border-r border-b py-1 text-white"
+                          className="scroll dropdown overflow-y-auto h-96 rounded border-l border-r border-b py-1 text-white"
                           role="none"
                         >
                           {categoryMovies &&
@@ -176,7 +176,7 @@ const Navbar = () => {
                     >
                       <div
                         onClick={() => setShowTV(!isShowTV)}
-                        className="dropdown overflow-y-auto h-96 rounded border-l border-r border-b py-1 text-white"
+                        className="scroll dropdown overflow-y-auto h-96 rounded border-l border-r border-b py-1 text-white"
                         role="none"
                       >
                         {categoryTV &&
