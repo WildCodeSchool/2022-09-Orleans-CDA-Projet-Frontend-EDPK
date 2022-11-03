@@ -25,9 +25,9 @@ const Movie = () => {
       setMovie(response);
     } catch (error) {
       if (error.response.status && error.response.status === 404) {
-        window.location.href = "/2022-09-Orleans-CDA-Projet-Frontend-EDPK/404";
+        window.location.href = import.meta.env.BASE_URL + "/404";
       } else if (error.response.status && error.response.status === 500) {
-        window.location.href = "/2022-09-Orleans-CDA-Projet-Frontend-EDPK/500";
+        window.location.href = import.meta.env.BASE_URL + "/500";
       }
     }
   }

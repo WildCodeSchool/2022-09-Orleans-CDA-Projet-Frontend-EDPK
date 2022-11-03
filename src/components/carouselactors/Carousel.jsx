@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./carousel.css";
 
 const CarouselActors = ({ actors }) => {
-  const url_photo = "https://image.tmdb.org/t/p/w500";
+  const urlPhoto = "https://image.tmdb.org/t/p/w500";
 
   const [current, setCurrent] = useState(0);
   const [mouseOver, setMouseOver] = useState(false);
@@ -43,14 +43,14 @@ const CarouselActors = ({ actors }) => {
         to={`/person/${actors[(current + i) % length].id}`}
         key={actors[(current + i) % length].id}
       >
-        <div className="carousel__container__slide hover:scale-105 m-1">
-          <div className="carousel__container__slide__img">
+        <div className="carousel-container-slide hover:scale-105 m-1">
+          <div className="carousel-container-slide-img">
             <img
-              src={url_photo + actors[(current + i) % length].profile_path}
+              src={urlPhoto + actors[(current + i) % length].profile_path}
               alt={actors[(current + i) % length].name}
             />
           </div>
-          <div className="carousel__container__slide__text">
+          <div className="carousel-container-slide-text">
             <p className="ml-1 mr-1 text-center">
               {actors[(current + i) % length].name}
             </p>
@@ -68,7 +68,7 @@ const CarouselActors = ({ actors }) => {
     >
       <div
         id="carousel"
-        className="carousel__container flex flex-row justify-center carousel slide carousel-fade relative w-full"
+        className="carousel-container flex flex-row justify-center carousel slide carousel-fade relative w-5/5"
         data-bs-ride="carousel"
       >
         <ActorsCards />
