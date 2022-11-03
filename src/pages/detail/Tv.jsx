@@ -7,11 +7,11 @@ import Card from "../../components/Card";
 const Tv = () => {
   const { tvId } = useParams();
   const apiKey = import.meta.env.VITE_API_KEY;
-  const url_tv_detail = `https://api.themoviedb.org/3/tv/${tvId}?api_key=${apiKey}`;
-  const url_tv_actors = `https://api.themoviedb.org/3/tv/${tvId}/credits?api_key=${apiKey}`;
-  const url_tv_seasons = `https://api.themoviedb.org/3/tv/${tvId}/season/1?api_key=${apiKey}`; //todo
-  const url_tv_episodes = `https://api.themoviedb.org/3/tv/${tvId}/season/1/episode/1?api_key=${apiKey}`; //todo
-  const url_tv_videos = `https://api.themoviedb.org/3/tv/${tvId}/videos?api_key=${apiKey}`;
+  const urlTvDetail = `https://api.themoviedb.org/3/tv/${tvId}?api_key=${apiKey}`;
+  const urlTvActors = `https://api.themoviedb.org/3/tv/${tvId}/credits?api_key=${apiKey}`;
+  const urlTvSeasons = `https://api.themoviedb.org/3/tv/${tvId}/season/1?api_key=${apiKey}`; //todo
+  const urlTvEpisodes = `https://api.themoviedb.org/3/tv/${tvId}/season/1/episode/1?api_key=${apiKey}`; //todo
+  const urlTvVideos = `https://api.themoviedb.org/3/tv/${tvId}/videos?api_key=${apiKey}`;
   const [tv, setTv] = useState({});
   const [characters, setCharacters] = useState([]);
   const [actors, setActors] = useState([]);
@@ -20,7 +20,7 @@ const Tv = () => {
   async function getTvById(signal) {
     try {
       const response = await axios
-        .get(url_tv_detail, signal)
+        .get(urlTvDetail, signal)
         .then((res) => res.data);
       setTv(response);
     } catch (error) {
@@ -42,7 +42,7 @@ const Tv = () => {
   async function getActorsByTv(signal) {
     try {
       const response = await axios
-        .get(url_tv_actors, signal)
+        .get(urlTvActors, signal)
         .then((res) => res?.data?.cast);
 
       if (response && Array.isArray(response)) setCharacters(response);
@@ -52,7 +52,7 @@ const Tv = () => {
   async function getVideosByTv(signal) {
     try {
       const response = await axios
-        .get(url_tv_videos, signal)
+        .get(urlTvVideos, signal)
         .then((res) => res?.data?.results);
 
       if (response && Array.isArray(response)) setVideos(response);

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./movie.scss";
 import axios from "axios";
-import { useHref, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Card from "../../components/Card";
 import Popup from "../../components/Popup";
 
 const Movie = () => {
   const { movieId } = useParams();
   const apiKey = import.meta.env.VITE_API_KEY;
-  const url_movie_detail = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
-  const url_movie_actors = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`;
-  const url_movie_videos = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`;
+  const urlMovieDetail = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
+  const urlMovieActors = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`;
+  const urlMovieVideos = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`;
   const [movie, setMovie] = useState({});
   const [characters, setCharacters] = useState([]);
   const [actors, setActors] = useState([]);
@@ -19,7 +19,7 @@ const Movie = () => {
   async function getMovieById(signal) {
     try {
       const response = await axios
-        .get(url_movie_detail, signal)
+        .get(urlMovieDetail, signal)
         .then((res) => res.data);
 
       setMovie(response);
@@ -35,7 +35,7 @@ const Movie = () => {
   async function getVideosByTv(signal) {
     try {
       const response = await axios
-        .get(url_movie_videos, signal)
+        .get(urlMovieVideos, signal)
         .then((res) => res?.data?.results);
       if (response && Array.isArray(response)) setVideos(response);
     } catch (error) {}
@@ -51,7 +51,7 @@ const Movie = () => {
   async function getActorsByMovie(signal) {
     try {
       const response = await axios
-        .get(url_movie_actors, signal)
+        .get(urlMovieActors, signal)
         .then((res) => res?.data?.cast);
 
       if (response && Array.isArray(response)) setCharacters(response);
