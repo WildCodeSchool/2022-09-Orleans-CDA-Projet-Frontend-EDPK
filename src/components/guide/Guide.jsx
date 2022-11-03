@@ -129,6 +129,7 @@ const Guide = () => {
         <>
           <div className="question-section">
             <div className="question-count">
+              <button className="return"></button>
               <span>Question {currentQuestion + 1}</span>/{questions.length}
             </div>
             <div className="question-text">
