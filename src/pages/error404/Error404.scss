@@ -6,19 +6,19 @@
   min-height: 70vh;
 }
 
-.error404_title {
+.error404-title {
   font-size: 3rem;
   color: var(--var-secondary);
   font-family: var(--title-font);
 }
 
-.error404_text {
+.error404-text {
   font-size: 2rem;
   color: var(--var-secondary);
   font-family: var(--title-font);
 }
 
-.error404_back {
+.error404-back {
   margin-top: 1rem;
   font-size: 1.5rem;
   color: var(--var-secondary);
@@ -26,6 +26,6 @@
   text-decoration: underline;
 }
 
-.error404_back:hover {
+.error404-back:hover {
   text-decoration: none;
 }
