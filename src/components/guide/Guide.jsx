@@ -50,14 +50,12 @@ const Guide = () => {
   }, []);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [currentAnswer, setCurrentAnswer] = useState("");
   const [guideAnswers, setGuideAnswers] = useState([]);
   const date = new Date();
   const year = date.getFullYear() - 3;
   const categoryAnswer = guideAnswers[0];
   const latestAnswer = guideAnswers[1];
   const ratingAnswer = guideAnswers[2];
-  const [filtersList, setFilterList] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
 
   const toggleQuestion = (e) => {
@@ -100,6 +98,17 @@ const Guide = () => {
     <div className="app">
       {isFiltered ? (
         <div className="movieList mt-5">
+          <button
+            className="return"
+            onClick={() => {
+              setCurrentQuestion(0);
+              setIsFiltered(false);
+              setGuideAnswers([]);
+              getTrending();
+            }}
+          >
+            Reset
+          </button>
           <h2 className="title mb-3">For You !</h2>
           <div className="board">
             {trending.length > 0
@@ -129,7 +138,17 @@ const Guide = () => {
         <>
           <div className="question-section">
             <div className="question-count">
-              <button className="return"></button>
+              <button
+                className="return"
+                onClick={() => {
+                  setCurrentQuestion(0);
+                  setIsFiltered(false);
+                  setGuideAnswers([]);
+                  getTrending();
+                }}
+              >
+                Reset
+              </button>
               <span>Question {currentQuestion + 1}</span>/{questions.length}
             </div>
             <div className="question-text">
