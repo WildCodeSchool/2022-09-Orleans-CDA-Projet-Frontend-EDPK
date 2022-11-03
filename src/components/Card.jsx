@@ -27,10 +27,10 @@ function Card({ type, data, actors, videos }) {
             <Categories type={type} data={data} />
 
             <p className="text-gray-400 py-2">
-              release date : {data.release_date}
+              release date: {data.release_date}
             </p>
             <p className="text-gray-600 text-base mb-4 w-full">
-              <b>Overview : </b>
+              <b>Overview: </b>
               {data.overview
                 ? data.overview
                 : "No overview available for this " +
@@ -38,7 +38,7 @@ function Card({ type, data, actors, videos }) {
             </p>
             <hr />
             <p className="text-gray-600 p-4">
-              Average rating : {data.vote_average}
+              Average rating: {data.vote_average}
             </p>
             <hr />
             <br />
@@ -54,7 +54,7 @@ function Card({ type, data, actors, videos }) {
               data.seasons ? (
                 <div>
                   <p className="text-gray-600 p-4">
-                    Number of seasons :{" "}
+                    Number of seasons:{" "}
                     {
                       data.seasons.filter((s) => s.name.includes("Season"))
                         .length
