@@ -107,7 +107,7 @@ const Guide = () => {
               getTrending();
             }}
           >
-            <img src="public/images/return.png"></img>
+            <img src="public/images/return.png" alt="return arrow" />
           </button>
           <h2 className="title mb-3">For You !</h2>
           <div className="board">
@@ -146,7 +146,7 @@ const Guide = () => {
                 getTrending();
               }}
             >
-              <img src="public/images/return.png"></img>
+              <img src="public/images/return.png" alt="return arrow" />
             </button>
             <div className="question-section">
               <div className="question-count">
