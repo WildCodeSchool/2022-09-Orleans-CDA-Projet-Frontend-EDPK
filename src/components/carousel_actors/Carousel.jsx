@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./Carousel.css";
+import "./carousel.css";
 
 const CarouselActors = ({ actors }) => {
   const url_photo = "https://image.tmdb.org/t/p/w500";
