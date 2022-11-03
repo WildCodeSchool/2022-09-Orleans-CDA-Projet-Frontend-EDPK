@@ -40,12 +40,16 @@
   display: flex;
   justify-content: center;
   justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
   width: 100%;
+  padding: 20px;
 }
-
+.space {
+  padding: 0.5rem;
+}
 button {
   height: 5rem;
-  width: 10rem;
   border-radius: 15px;
   border: 5px solid #13c5b346;
   cursor: pointer;
