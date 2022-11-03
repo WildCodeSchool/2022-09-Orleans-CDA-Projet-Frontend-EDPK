@@ -443,12 +443,13 @@ const Quiz = () => {
             <div className="quiz_counter">
               {count} / {rounds}
             </div>
-            <img
-              className="quiz_image"
-              src={`https://image.tmdb.org/t/p/w500${
-                mediaData.poster_path ? mediaData.poster_path : null
-              }`}
-            />
+            {mediaData?.poster_path ? (
+              <img
+                className="quiz_image"
+                src={`https://image.tmdb.org/t/p/w500${mediaData.poster_path}`}
+              />
+            ) : null}
+
             <div className="quiz_qanda">
               <div className="quiz_question">{question ? question : "???"}</div>
               {isLoading ? (
@@ -503,7 +504,7 @@ const Quiz = () => {
             )}
             {seeResults && (
               <div className="quiz_seeresult" onClick={handleSeeResults}>
-                See results
+                🏆 See results 🏆
               </div>
             )}
           </>
