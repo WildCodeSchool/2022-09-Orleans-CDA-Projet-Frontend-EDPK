@@ -10,7 +10,7 @@ const Guide = () => {
       answerOptions: [
         { answerText: "Action", id: 28 },
         { answerText: "Romance", id: 10749 },
-        { answerText: "Science Ficton", id: 878 },
+        { answerText: "Science Fiction", id: 878 },
         { answerText: "Horror", id: 27 },
       ],
     },
@@ -31,15 +31,14 @@ const Guide = () => {
     },
   ];
   const apiKey = import.meta.env.VITE_API_KEY;
-  const url_trending = "https://api.themoviedb.org/3/trending/all/day?api_key=";
+  const urlTrending = "https://api.themoviedb.org/3/trending/all/day?api_key=";
   const [trending, setTrending] = useState([]);
 
   async function getTrending(signal) {
     const response = await axios
-      .get(url_trending + apiKey, signal)
+      .get(urlTrending + apiKey, signal)
       .then((res) => res.data);
     const trends = response.results;
-    console.log(trends, "trends");
     setTrending(trends);
   }
 
@@ -51,14 +50,12 @@ const Guide = () => {
   }, []);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [currentAnswer, setCurrentAnswer] = useState("");
   const [guideAnswers, setGuideAnswers] = useState([]);
   const date = new Date();
   const year = date.getFullYear() - 3;
   const categoryAnswer = guideAnswers[0];
   const latestAnswer = guideAnswers[1];
   const ratingAnswer = guideAnswers[2];
-  const [filtersList, setFilterList] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
 
   const toggleQuestion = (e) => {
