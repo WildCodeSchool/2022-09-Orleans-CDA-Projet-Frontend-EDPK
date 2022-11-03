@@ -159,13 +159,11 @@ const Guide = () => {
           </div>
           <div className="answer-section">
             {questions[currentQuestion].answerOptions.map((answerOption) => (
-              <button
-                key={answerOption.id}
-                value={answerOption.id}
-                onClick={toggleQuestion}
-              >
-                {answerOption.answerText}
-              </button>
+              <div key={answerOption.id} className="space">
+                <button value={answerOption.id} onClick={toggleQuestion}>
+                  {answerOption.answerText}
+                </button>
+              </div>
             ))}
           </div>
         </>
