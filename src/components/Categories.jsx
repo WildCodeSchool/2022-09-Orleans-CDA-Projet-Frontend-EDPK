@@ -7,7 +7,7 @@ function Categories({ type, data }) {
         <NavLink to={`/category/${type}/${g.id}/1`} key={g.id}>
           <li
             type="button"
-            className="inline-block flex cursor-pointer px-4 py-2 border-2 border-blue-400 text-blue-400 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+            className="flex cursor-pointer px-4 py-2 border-2 border-blue-400 text-blue-400 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
           >
             {g.name}
           </li>

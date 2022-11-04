@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./movie.scss";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Card from "../../components/Card";
 import Popup from "../../components/Popup";
 
@@ -16,13 +16,22 @@ const Movie = () => {
   const [actors, setActors] = useState([]);
   const [videos, setVideos] = useState([]);
 
+  const navigate = useNavigate();
+
   async function getMovieById(signal) {
     try {
       const response = await axios
         .get(urlMovieDetail, signal)
         .then((res) => res.data);
+
       setMovie(response);
-    } catch (error) {}
+    } catch (error) {
+      if (error.response.status && error.response.status === 404) {
+        return navigate("/404");
+      } else if (error.response.status && error.response.status === 500) {
+        return navigate("/500");
+      }
+    }
   }
 
   async function getVideosByTv(signal) {
@@ -67,7 +76,7 @@ const Movie = () => {
         ?.filter(
           (c) => c.known_for_department === "Acting" && c.profile_path !== null
         )
-        ?.slice(0, 3);
+        ?.slice(0, 10);
       setActors(actors);
     }
     window.scrollTo(0, 100);

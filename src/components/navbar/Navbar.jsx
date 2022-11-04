@@ -50,11 +50,17 @@ const Navbar = () => {
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-24 items-center gap-0 justify-between ">
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-              <Link to="/">
+              <Link
+                onClick={() => {
+                  setShowMovies(false);
+                  setShowTV(false);
+                }}
+                to="/"
+              >
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="logo hidden lg:block"
-                    src={`${import.meta.env.BASE_URL}/images/logo.png`}
+                    src={`${import.meta.env.BASE_URL}images/logo.png`}
                     alt="Logo of CineFlix"
                   />
                   <p className="cineflix hidden lg:block">Cineflix</p>
@@ -67,7 +73,12 @@ const Navbar = () => {
               >
                 <div className="flex space-x-4">
                   <ul className="flex flex-row">
-                    <li>
+                    <li
+                      onClick={() => {
+                        setShowMovies(false);
+                        setShowTV(false);
+                      }}
+                    >
                       <Link
                         to="/"
                         className="titles text-xl inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"
@@ -118,7 +129,7 @@ const Navbar = () => {
                       >
                         <div
                           onClick={() => setShowMovies(!isShowMovies)}
-                          className="dropdown overflow-y-auto h-96 rounded border-l border-r border-b py-1 text-white"
+                          className="scroll dropdown overflow-y-auto h-96 rounded border-l border-r border-b py-1 text-white"
                           role="none"
                         >
                           {categoryMovies?.map((genre) => (
@@ -174,7 +185,7 @@ const Navbar = () => {
                     >
                       <div
                         onClick={() => setShowTV(!isShowTV)}
-                        className="dropdown overflow-y-auto h-96 rounded border-l border-r border-b py-1 text-white"
+                        className="scroll dropdown overflow-y-auto h-96 rounded border-l border-r border-b py-1 text-white"
                         role="none"
                       >
                         {categoryTV?.map((genre) => (
@@ -186,7 +197,12 @@ const Navbar = () => {
                         ))}
                       </div>
                     </div>
-                    <li>
+                    <li
+                      onClick={() => {
+                        setShowMovies(false);
+                        setShowTV(false);
+                      }}
+                    >
                       <Link
                         to="/quiz/"
                         className="titles text-xl inline-flex hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium"

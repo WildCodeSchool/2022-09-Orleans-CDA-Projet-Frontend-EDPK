@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import Carousel from "./carousel/Carousel";
 import Categories from "./Categories";
 import VideoPlayer from "./VideoPlayer";
 
@@ -19,7 +19,7 @@ function Card({ type, data, actors, videos }) {
             }
             alt=""
           />
-          <div className="p-6 flex flex-col justify-start items-center">
+          <div className="p-6 flex flex-col justify-start items-center w-full">
             <h5 className="text-gray-900 text-3xl font-medium mb-2 text-center">
               {type === "movie" ? data.title : data.name}
             </h5>
@@ -27,15 +27,19 @@ function Card({ type, data, actors, videos }) {
             <Categories type={type} data={data} />
 
             <p className="text-gray-400 py-2">
-              release date : {data.release_date}
+              {data.release_date && `release date: ${data.release_date}`}
             </p>
-            <p className="text-gray-600 text-base mb-4">
-              <b>Overview : </b>
-              {data.overview}
+            <p className="text-gray-600 text-base mb-4 w-full">
+              <b>Overview: </b>
+              {data.overview
+                ? data.overview
+                : "No overview available for this " +
+                  (type === "movie" ? "movie" : "tv show")}
             </p>
             <hr />
             <p className="text-gray-600 p-4">
-              Average rating : {data.vote_average}
+              {data.vote_average > 0 &&
+                `Average rating: ${data.vote_average} / 10`}
             </p>
             <hr />
             <br />
@@ -45,38 +49,13 @@ function Card({ type, data, actors, videos }) {
               <div className="flex items-center space-x-2 text-base">
                 <h4 className="font-semibold text-slate-900">Main actors :</h4>
               </div>
-              <div className="mt-3 mr-4 p-4 flex overflow-hidden">
-                {actors?.map((c) => (
-                  <Link to={`/person/${c.id}`} key={c.id}>
-                    <div className="relative mr-6 hover:scale-125">
-                      <img
-                        id={c.id}
-                        className={
-                          "inline-block transition duration-20 ease-in-out shadow-inner border rounded-lg max-w-full h-auto"
-                        }
-                        data-bs-toggle="tooltip"
-                        title={c.name}
-                        src={"https://image.tmdb.org/t/p/w500" + c.profile_path}
-                        alt={c.name}
-                      />
-                      <div
-                        id={"text-" + c.id}
-                        className={
-                          "absolute bottom-0 left-0 right-0 px-2 py-2 bg-gray-800 opacity-70"
-                        }
-                      >
-                        <p className="text-xs text-white font-bold">{c.name}</p>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+              <Carousel actors={actors} />
             </div>
             {type === "tv" ? (
               data.seasons ? (
-                <div>
+                <div className="mt-4">
                   <p className="text-gray-600 p-4">
-                    Number of seasons :&nbsp;
+                    Number of seasons:&nbsp;
                     {
                       data.seasons.filter((s) => s.name.includes("Season"))
                         .length
