@@ -97,7 +97,18 @@ const Guide = () => {
   return (
     <div className="app">
       {isFiltered ? (
-        <div className="movie-List mt-5">
+        <div>
+          <button
+            className="return"
+            onClick={() => {
+              setCurrentQuestion(0);
+              setIsFiltered(false);
+              setGuideAnswers([]);
+              getTrending();
+            }}
+          >
+            <img src="public/images/return.png" alt="return arrow" />
+          </button>
           <h2 className="title mb-3">For You !</h2>
           <div className="board">
             {trending.length > 0
@@ -125,12 +136,25 @@ const Guide = () => {
         </div>
       ) : (
         <>
-          <div className="question-section">
-            <div className="question-count">
-              <span>Question {currentQuestion + 1}</span>/{questions.length}
-            </div>
-            <div className="question-text">
-              {questions[currentQuestion].questionText}
+          <div>
+            <button
+              className="return"
+              onClick={() => {
+                setCurrentQuestion(0);
+                setIsFiltered(false);
+                setGuideAnswers([]);
+                getTrending();
+              }}
+            >
+              <img src="public/images/return.png" alt="return arrow" />
+            </button>
+            <div className="question-section">
+              <div className="question-count">
+                <span>Question {currentQuestion + 1}</span>/{questions.length}
+              </div>
+              <div className="question-text">
+                {questions[currentQuestion].questionText}
+              </div>
             </div>
           </div>
           <div className="answer-section">

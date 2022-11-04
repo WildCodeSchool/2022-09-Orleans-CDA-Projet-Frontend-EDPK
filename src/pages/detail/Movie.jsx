@@ -21,8 +21,15 @@ const Movie = () => {
       const response = await axios
         .get(urlMovieDetail, signal)
         .then((res) => res.data);
+
       setMovie(response);
-    } catch (error) {}
+    } catch (error) {
+      if (error.response.status && error.response.status === 404) {
+        window.location.href = import.meta.env.BASE_URL + "/404";
+      } else if (error.response.status && error.response.status === 500) {
+        window.location.href = import.meta.env.BASE_URL + "/500";
+      }
+    }
   }
 
   async function getVideosByTv(signal) {
@@ -67,7 +74,7 @@ const Movie = () => {
         ?.filter(
           (c) => c.known_for_department === "Acting" && c.profile_path !== null
         )
-        ?.slice(0, 3);
+        ?.slice(0, 10);
       setActors(actors);
     }
     window.scrollTo(0, 100);
