@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 
 const MoviesListHome = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
-  const url_trending = "https://api.themoviedb.org/3/trending/all/day?api_key=";
+  const urlTrending = "https://api.themoviedb.org/3/trending/all/day?api_key=";
   const [trending, setTrending] = useState([]);
   const [tv, setTv] = useState([]);
   const [movies, setMovies] = useState([]);
 
   async function getTrending(signal) {
     const response = await axios
-      .get(url_trending + apiKey, signal)
+      .get(urlTrending + apiKey, signal)
       .then((res) => res.data);
     const trends = response.results;
     setTrending(trends);
