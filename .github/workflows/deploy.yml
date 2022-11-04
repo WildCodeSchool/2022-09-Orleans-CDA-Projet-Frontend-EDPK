@@ -31,6 +31,8 @@ jobs:
 
       - name: "Build"
         run: yarn build && cp dist/index.html dist/404.html
+        env:
+          VITE_API_KEY: ${{ env.VITE_API_KEY }}
 
       - name: "Upload artifact"
         uses: actions/upload-pages-artifact@v1.0.4
