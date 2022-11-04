@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 
 const MoviesListHome = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
-  const url_trending = "https://api.themoviedb.org/3/trending/all/day?api_key=";
+  const urlTrending = "https://api.themoviedb.org/3/trending/all/day?api_key=";
   const [trending, setTrending] = useState([]);
   const [tv, setTv] = useState([]);
   const [movies, setMovies] = useState([]);
 
   async function getTrending(signal) {
     const response = await axios
-      .get(url_trending + apiKey, signal)
+      .get(urlTrending + apiKey, signal)
       .then((res) => res.data);
     const trends = response.results;
     setTrending(trends);
@@ -32,7 +32,7 @@ const MoviesListHome = () => {
 
   return (
     <div>
-      <div className="movieList mt-5">
+      <div className="movie-List mt-5">
         <h2 className="mb-3">Trending Movies</h2>
         <div className="board">
           {movies.map((t) => (
@@ -54,7 +54,7 @@ const MoviesListHome = () => {
           ))}
         </div>
       </div>
-      <div className="movieList mt-5">
+      <div className="movie-List mt-5">
         <h2 className="mb-3">Trending TV Shows</h2>
         <div className="board">
           {tv.map((t) => (
@@ -79,20 +79,3 @@ const MoviesListHome = () => {
   );
 };
 export default MoviesListHome;
-
-/* <div className="">
-                  <div className="card flex justify-evenly">
-                  <a href="#!">
-                    <img
-                      className="rounded-t-lg"
-                      src={`https://image.tmdb.org/t/p/w500${t.poster_path}`}
-                      alt={t.original_title}
-                    />
-                  </a>
-                  </div>
-                  
-                    <h2 className="text-gray-1000 text-xl font-medium">
-                      {t.original_title}
-                    </h2>
-                  
-                </div> */

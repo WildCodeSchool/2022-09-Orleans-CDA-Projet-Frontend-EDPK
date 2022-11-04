@@ -74,14 +74,14 @@ const Guide = () => {
     let filteredMovies = trending;
     if (categoryAnswer) {
       filteredMovies = trending.filter((movie) => {
-        return movie.genre_ids.includes(parseInt(categoryAnswer));
+        return movie.genre_ids.includes(parseInt(categoryAnswer, 10));
       });
     }
-    if (latestAnswer && latestAnswer == 1) {
+    if (latestAnswer && latestAnswer === 1) {
       filteredMovies = trending.filter((movie) => {
         return new Date(movie.release_date) > new Date(year);
       });
-    } else if (latestAnswer && latestAnswer == 2) {
+    } else if (latestAnswer && latestAnswer === 2) {
       filteredMovies = trending.filter((movie) => {
         return new Date(movie.release_date) < new Date(year);
       });
@@ -97,7 +97,7 @@ const Guide = () => {
   return (
     <div className="app">
       {isFiltered ? (
-        <div className="movieList mt-5">
+        <div className="movie-List mt-5">
           <h2 className="title mb-3">For You !</h2>
           <div className="board">
             {trending.length > 0
