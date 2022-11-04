@@ -94,7 +94,7 @@
   margin-top: 1rem;
 }
 
-.person_bio_content {
+.person-bio-content {
   display: block;
   width: 100%;
   max-height: 8rem;
@@ -103,7 +103,7 @@
   color: #fff;
 }
 
-.person_bio_content::after {
+.person-bio-content::after {
   position: absolute;
   content: " ";
   bottom: 0;
@@ -113,7 +113,7 @@
   background-image: linear-gradient(rgba(255, 0, 0, 0), var(--var-primary));
 }
 
-.person_bio_content::-webkit-scrollbar {
+.person-bio-content::-webkit-scrollbar {
   width: 0.5rem;
   background: radial-gradient(
     circle,
@@ -122,12 +122,12 @@
   );
 }
 
-.person_bio_content::-webkit-scrollbar-thumb {
+.person-bio-content::-webkit-scrollbar-thumb {
   background-color: rgb(19 197 178 / 37%);
   border-radius: 10px;
 }
 
-.person_bio_empty {
+.person-bio-empty {
   display: block;
   text-align: center;
   width: 100%;
@@ -139,7 +139,7 @@
   margin: 0.5rem 0;
 }
 
-.person_filmo {
+.person-filmo {
   position: relative;
   width: 100%;
 }
@@ -158,14 +158,14 @@
   );
 }
 
-.person_filmo_content {
+.person-filmo-content {
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
   scrollbar-width: 2px;
 }
 
-.person_filmo_content::-webkit-scrollbar {
+.person-filmo-content::-webkit-scrollbar {
   height: 0.5rem;
   background: radial-gradient(
     circle,
@@ -174,12 +174,12 @@
   );
 }
 
-.person_filmo_content::-webkit-scrollbar-thumb {
+.person-filmo-content::-webkit-scrollbar-thumb {
   background-color: rgb(19 197 178 / 37%);
   border-radius: 10px;
 }
 
-.person_filmo_empty {
+.person-filmo-empty {
   display: block;
   text-align: center;
   width: 100%;
@@ -191,7 +191,7 @@
   margin: 0.5rem 0;
 }
 
-.person_filmo_media {
+.person-filmo-media {
   margin: 0.5rem;
 }
 

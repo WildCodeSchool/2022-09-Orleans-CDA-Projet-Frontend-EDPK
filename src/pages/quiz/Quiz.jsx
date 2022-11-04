@@ -445,57 +445,60 @@ const Quiz = () => {
             </div>
             {mediaData?.poster_path ? (
               <img
-                className="quiz_image"
+                className="quiz-image"
                 src={`https://image.tmdb.org/t/p/w500${mediaData.poster_path}`}
               />
             ) : null}
 
-            <div className="quiz_qanda">
-              <div className="quiz_question">{question ? question : "???"}</div>
+            <div className="quiz-qanda">
+              <div className="quiz-question">{question ? question : "???"}</div>
               {isLoading ? (
-                <div className="quiz_loader">
-                  <img src="/src/assets/loader.svg" alt="Loader gif" />
+                <div className="quiz-loader">
+                  <img
+                    src={`${import.meta.env.BASE_URL}/images/loader.svg`}
+                    alt="Loader gif"
+                  />
                 </div>
               ) : (
-                <div className="quiz_answers">
-                  <div id="a" className="quiz_answer" onClick={handleAnswer}>
+                <div className="quiz-answers">
+                  <div id="a" className="quiz-answer" onClick={handleAnswer}>
                     <img
-                      className="quiz_answer_letter"
-                      src="/src/assets/answer_a.svg"
+                      className="quiz-answer-letter"
+                      src={`${import.meta.env.BASE_URL}/images/answer_a.svg`}
                     />
-                    <div className="quiz_answer_text">
+                    <div className="quiz-answer-text">
                       {answers.a ? answers.a : "???"}
                     </div>
                   </div>
-                  <div id="b" className="quiz_answer" onClick={handleAnswer}>
+                  <div id="b" className="quiz-answer" onClick={handleAnswer}>
                     <img
-                      className="quiz_answer_letter"
-                      src="/src/assets/answer_b.svg"
+                      className="quiz-answer-letter"
+                      src={`${import.meta.env.BASE_URL}/images/answer_b.svg`}
                     />
-                    <div className="quiz_answer_text">
+                    <div className="quiz-answer-text">
                       {answers.b ? answers.b : "???"}
                     </div>
                   </div>
-                  <div id="c" className="quiz_answer" onClick={handleAnswer}>
+                  <div id="c" className="quiz-answer" onClick={handleAnswer}>
                     <img
-                      className="quiz_answer_letter"
-                      src="/src/assets/answer_c.svg"
+                      className="quiz-answer-letter"
+                      src={`${import.meta.env.BASE_URL}/images/answer_c.svg`}
                     />
-                    <div className="quiz_answer_text">
+                    <div className="quiz-answer-text">
                       {answers.c ? answers.c : "???"}
                     </div>
                   </div>
-                  <div id="d" className="quiz_answer" onClick={handleAnswer}>
+                  <div id="d" className="quiz-answer" onClick={handleAnswer}>
                     <img
-                      className="quiz_answer_letter"
-                      src="/src/assets/answer_d.svg"
+                      className="quiz-answer-letter"
+                      src={`${import.meta.env.BASE_URL}/images/answer_d.svg`}
                     />
-                    <div className="quiz_answer_text">
+                    <div className="quiz-answer-text">
                       {answers.d ? answers.d : "???"}
                     </div>
                   </div>
                 </div>
-              )}{" "}
+              )}
             </div>
             {nextQuestion && (
               <div className="quiz-next" onClick={handleNextQuestion}>

@@ -105,7 +105,7 @@ const Person = () => {
       <div className="person">
         {filmography?.[randMedia] ? (
           <div
-            className="person_back"
+            className="person-back"
             style={{
               backgroundImage: `url(https://image.tmdb.org/t/p/w500${filmography[randMedia].backdrop_path})`,
               height: "80vh",
@@ -113,7 +113,7 @@ const Person = () => {
           ></div>
         ) : (
           <div
-            className="person_back"
+            className="person-back"
             style={{
               backgroundImage:
                 "linear-gradient(to right top, #022631, #003842, #004a51, #005d5e, #0f7167)",
@@ -122,82 +122,84 @@ const Person = () => {
           ></div>
         )}
 
-        <div className="person_front" ref={targetFront}>
+        <div className="person-front" ref={targetFront}>
           {person?.profile_path ? (
             <div
-              className="person_profile"
+              className="person-profile"
               style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/w500${person?.profile_path})`,
               }}
             ></div>
           ) : (
             <div
-              className="person_profile"
+              className="person-profile"
               style={{
-                backgroundImage: "url('/src/assets/default_img.jpg')",
+                backgroundImage: `url('${
+                  import.meta.env.BASE_URL
+                }/images/default_img.jpg')`,
               }}
             ></div>
           )}
-          <div className="person_content">
-            <h1 className="person_name">{person?.name}</h1>
-            <div className="person_dates">
+          <div className="person-content">
+            <h1 className="person-name">{person?.name}</h1>
+            <div className="person-dates">
               {person?.birthday ? (
-                <div className="person_date">
-                  <span className="person_dates_label">Born</span>
-                  <span className="person_dates_content">
+                <div className="person-date">
+                  <span className="person-dates-label">Born</span>
+                  <span className="person-dates-content">
                     {person?.birthday}
                   </span>
                 </div>
               ) : null}
               {person?.deathday ? (
-                <div className="person_date">
-                  <span className="person_dates_label">Died</span>
-                  <span className="person_dates_content">
+                <div className="person-date">
+                  <span className="person-dates-label">Died</span>
+                  <span className="person-dates-content">
                     {person?.deathday}
                   </span>
                 </div>
               ) : null}
               {person?.birthday ? (
-                <div className="person_date">
-                  <span className="person_dates_label">Age</span>
-                  <span className="person_dates_content">
+                <div className="person-date">
+                  <span className="person-dates-label">Age</span>
+                  <span className="person-dates-content">
                     {age !== null ? age : null} years
                   </span>
                 </div>
               ) : null}
             </div>
-            <div className="person_bio">
+            <div className="person-bio">
               <h2>Biography</h2>
               {person?.biography ? (
-                <div className="person_bio_content">{person?.biography}</div>
+                <div className="person-bio-content">{person?.biography}</div>
               ) : (
-                <div className="person_bio_empty">
+                <div className="person-bio-empty">
                   There is no biography about this person.
                 </div>
               )}
             </div>
-            <div className="person_filmo">
+            <div className="person-filmo">
               <h2>Filmography</h2>
               {filmography?.[0] ? (
-                <div className="person_filmo_content">
+                <div className="person-filmo-content">
                   {filmography?.map((elem, index) => (
                     <Link
                       to={`/movie/${elem.id}`}
-                      className="person_filmo_media"
+                      className="person-filmo-media"
                       key={index}
                     >
                       <div
-                        className="person_filmo_poster"
+                        className="person-filmo-poster"
                         style={{
                           backgroundImage: `url(https://image.tmdb.org/t/p/w500${elem.poster_path})`,
                         }}
                       ></div>
-                      <div className="person_filmo_title">{elem.title}</div>
+                      <div className="person-filmo-title">{elem.title}</div>
                     </Link>
                   ))}
                 </div>
               ) : (
-                <div className="person_filmo_empty">
+                <div className="person-filmo-empty">
                   There is no filmography about this person.
                 </div>
               )}
