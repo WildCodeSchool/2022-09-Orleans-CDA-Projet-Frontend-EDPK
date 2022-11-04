@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Carousel from "./carousel/Carousel";
 import Categories from "./Categories";
 import VideoPlayer from "./VideoPlayer";
