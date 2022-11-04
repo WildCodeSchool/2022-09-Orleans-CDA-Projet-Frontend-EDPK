@@ -1,5 +1,5 @@
 import "./Person.scss";
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import useSize from "../../hooks/useSize";
 import Popup from "../../components/Popup";

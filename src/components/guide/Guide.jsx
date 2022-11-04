@@ -112,7 +112,7 @@ const Guide = () => {
               alt="return arrow"
             />
           </button>
-          <h2 className="title mb-3">For You !</h2>
+          <h2 className="title mb-3">For You!</h2>
           <div className="board">
             {trending.length > 0
               ? trending.map((movie) => (
