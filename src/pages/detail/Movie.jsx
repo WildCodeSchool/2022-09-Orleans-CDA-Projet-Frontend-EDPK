@@ -8,9 +8,9 @@ import Popup from "../../components/Popup";
 const Movie = () => {
   const { movieId } = useParams();
   const apiKey = import.meta.env.VITE_API_KEY;
-  const url_movie_detail = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
-  const url_movie_actors = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`;
-  const url_movie_videos = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`;
+  const urlMovieDetail = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
+  const urlMovieActors = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`;
+  const urlMovieVideos = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`;
   const [movie, setMovie] = useState({});
   const [characters, setCharacters] = useState([]);
   const [actors, setActors] = useState([]);
@@ -19,16 +19,23 @@ const Movie = () => {
   async function getMovieById(signal) {
     try {
       const response = await axios
-        .get(url_movie_detail, signal)
+        .get(urlMovieDetail, signal)
         .then((res) => res.data);
+
       setMovie(response);
-    } catch (error) {}
+    } catch (error) {
+      if (error.response.status && error.response.status === 404) {
+        window.location.href = import.meta.env.BASE_URL + "/404";
+      } else if (error.response.status && error.response.status === 500) {
+        window.location.href = import.meta.env.BASE_URL + "/500";
+      }
+    }
   }
 
   async function getVideosByTv(signal) {
     try {
       const response = await axios
-        .get(url_movie_videos, signal)
+        .get(urlMovieVideos, signal)
         .then((res) => res?.data?.results);
       if (response && Array.isArray(response)) setVideos(response);
     } catch (error) {}
@@ -44,7 +51,7 @@ const Movie = () => {
   async function getActorsByMovie(signal) {
     try {
       const response = await axios
-        .get(url_movie_actors, signal)
+        .get(urlMovieActors, signal)
         .then((res) => res?.data?.cast);
 
       if (response && Array.isArray(response)) setCharacters(response);
@@ -67,7 +74,7 @@ const Movie = () => {
         ?.filter(
           (c) => c.known_for_department === "Acting" && c.profile_path !== null
         )
-        ?.slice(0, 3);
+        ?.slice(0, 10);
       setActors(actors);
     }
     window.scrollTo(0, 100);
