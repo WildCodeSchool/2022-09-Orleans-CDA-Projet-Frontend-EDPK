@@ -5,7 +5,7 @@ const Footer = () => {
     <footer>
       <div className="footer-logo">
         <img
-          src={`${import.meta.env.BASE_URL}/images/logo.png`}
+          src={`${import.meta.env.BASE_URL}images/logo.png`}
           alt="Logo of Cineflix"
         />
         <span>Cineflix</span>
@@ -20,7 +20,7 @@ const Footer = () => {
               className="footer-author"
             >
               <img
-                src={`${import.meta.env.BASE_URL}/images/emmanuel.jpg`}
+                src={`${import.meta.env.BASE_URL}images/emmanuel.jpg`}
                 alt="Profile of Emmanuel"
               />
               <div className="footer-author-firstname">
@@ -34,7 +34,7 @@ const Footer = () => {
               className="footer-author"
             >
               <img
-                src={`${import.meta.env.BASE_URL}/images/dangiras.jpg`}
+                src={`${import.meta.env.BASE_URL}images/dangiras.jpg`}
                 alt="Profile of Dangiras"
               />
               <div className="footer-author-firstname">
@@ -48,7 +48,7 @@ const Footer = () => {
               className="footer-author"
             >
               <img
-                src={`${import.meta.env.BASE_URL}/images/kylian.jpg`}
+                src={`${import.meta.env.BASE_URL}images/kylian.jpg`}
                 alt="Profile of Kylian"
               />
               <div className="footer-author-firstname">
@@ -62,7 +62,7 @@ const Footer = () => {
               className="footer-author"
             >
               <img
-                src={`${import.meta.env.BASE_URL}/images/paul.jpg`}
+                src={`${import.meta.env.BASE_URL}images/paul.jpg`}
                 alt="Profile of Paul"
               />
               <div className="footer-author-firstname">
@@ -84,7 +84,7 @@ const Footer = () => {
             </div>
             <a href="https://developers.themoviedb.org/3/" target="_blank">
               <img
-                src={`${import.meta.env.BASE_URL}/images/tmdb.svg`}
+                src={`${import.meta.env.BASE_URL}images/tmdb.svg`}
                 alt="Logo of TMDB"
               />
             </a>

@@ -136,7 +136,7 @@ const Person = () => {
               style={{
                 backgroundImage: `url('${
                   import.meta.env.BASE_URL
-                }/images/default_img.jpg')`,
+                }images/default_img.jpg')`,
               }}
             ></div>
           )}

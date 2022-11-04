@@ -455,7 +455,7 @@ const Quiz = () => {
               {isLoading ? (
                 <div className="quiz-loader">
                   <img
-                    src={`${import.meta.env.BASE_URL}/images/loader.svg`}
+                    src={`${import.meta.env.BASE_URL}images/loader.svg`}
                     alt="Loader gif"
                   />
                 </div>
@@ -464,7 +464,7 @@ const Quiz = () => {
                   <div id="a" className="quiz-answer" onClick={handleAnswer}>
                     <img
                       className="quiz-answer-letter"
-                      src={`${import.meta.env.BASE_URL}/images/answer_a.svg`}
+                      src={`${import.meta.env.BASE_URL}images/answer_a.svg`}
                     />
                     <div className="quiz-answer-text">
                       {answers.a ? answers.a : "???"}
@@ -473,7 +473,7 @@ const Quiz = () => {
                   <div id="b" className="quiz-answer" onClick={handleAnswer}>
                     <img
                       className="quiz-answer-letter"
-                      src={`${import.meta.env.BASE_URL}/images/answer_b.svg`}
+                      src={`${import.meta.env.BASE_URL}images/answer_b.svg`}
                     />
                     <div className="quiz-answer-text">
                       {answers.b ? answers.b : "???"}
@@ -482,7 +482,7 @@ const Quiz = () => {
                   <div id="c" className="quiz-answer" onClick={handleAnswer}>
                     <img
                       className="quiz-answer-letter"
-                      src={`${import.meta.env.BASE_URL}/images/answer_c.svg`}
+                      src={`${import.meta.env.BASE_URL}images/answer_c.svg`}
                     />
                     <div className="quiz-answer-text">
                       {answers.c ? answers.c : "???"}
@@ -491,7 +491,7 @@ const Quiz = () => {
                   <div id="d" className="quiz-answer" onClick={handleAnswer}>
                     <img
                       className="quiz-answer-letter"
-                      src={`${import.meta.env.BASE_URL}/images/answer_d.svg`}
+                      src={`${import.meta.env.BASE_URL}images/answer_d.svg`}
                     />
                     <div className="quiz-answer-text">
                       {answers.d ? answers.d : "???"}
@@ -553,7 +553,7 @@ const Quiz = () => {
                           className="quiz-score-answer-letter"
                           src={`${
                             import.meta.env.BASE_URL
-                          }/images/answer_${key}.svg`}
+                          }images/answer_${key}.svg`}
                         />
                         <div className="quiz-score-answer-text">
                           {elem.answers[key]}
