@@ -60,8 +60,8 @@ const Navbar = () => {
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="logo hidden lg:block"
-                    src="/images/logo.png"
-                    alt="CineFlix"
+                    src={`${import.meta.env.BASE_URL}/images/logo.png`}
+                    alt="Logo of CineFlix"
                   />
                   <p className="cineflix hidden lg:block">Cineflix</p>
                 </div>
@@ -132,15 +132,13 @@ const Navbar = () => {
                           className="scroll dropdown overflow-y-auto h-96 rounded border-l border-r border-b py-1 text-white"
                           role="none"
                         >
-                          {categoryMovies &&
-                            categoryMovies.map((genre) => (
-                              <div className="m-4" key={genre.id}>
-                                <Link to={`/category/movie/${genre.id}/1`}>
-                                  {genre.name}
-                                </Link>
-                              </div>
-                            ))}
-                          {/* <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">{category}</a> */}
+                          {categoryMovies?.map((genre) => (
+                            <div className="m-4" key={genre.id}>
+                              <Link to={`/category/movie/${genre.id}/1`}>
+                                {genre.name}
+                              </Link>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -190,15 +188,13 @@ const Navbar = () => {
                         className="scroll dropdown overflow-y-auto h-96 rounded border-l border-r border-b py-1 text-white"
                         role="none"
                       >
-                        {categoryTV &&
-                          categoryTV.map((genre) => (
-                            <div className="m-4" key={genre.id}>
-                              <Link to={`/category/tv/${genre.id}/1`}>
-                                {genre.name}
-                              </Link>
-                            </div>
-                          ))}
-                        {/* <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">{category}</a> */}
+                        {categoryTV?.map((genre) => (
+                          <div className="m-4" key={genre.id}>
+                            <Link to={`/category/tv/${genre.id}/1`}>
+                              {genre.name}
+                            </Link>
+                          </div>
+                        ))}
                       </div>
                     </div>
                     <li

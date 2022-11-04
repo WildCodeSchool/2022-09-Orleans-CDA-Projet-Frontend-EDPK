@@ -17,14 +17,14 @@ const Person = () => {
 
   useEffect(() => {
     if (
-      document?.getElementsByClassName("person_back")[0]?.style?.height &&
+      document?.getElementsByClassName("person-back")[0]?.style?.height &&
       sizeFront?.height
     ) {
       if (
-        document.getElementsByClassName("person_back")[0].style.height !==
+        document.getElementsByClassName("person-back")[0].style.height !==
         sizeFront.height + "px"
       ) {
-        document.getElementsByClassName("person_back")[0].style.height =
+        document.getElementsByClassName("person-back")[0].style.height =
           "calc(10rem + " + sizeFront.height + "px)";
       }
     }

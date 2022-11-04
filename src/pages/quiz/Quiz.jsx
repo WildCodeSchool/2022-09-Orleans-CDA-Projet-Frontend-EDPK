@@ -47,14 +47,14 @@ const Quiz = () => {
 
   useEffect(() => {
     if (
-      document?.getElementsByClassName("quiz_back")[0]?.style?.height &&
+      document?.getElementsByClassName("quiz-back")[0]?.style?.height &&
       sizeFront?.height
     ) {
       if (
-        document.getElementsByClassName("quiz_back")[0].style.height !==
+        document.getElementsByClassName("quiz-back")[0].style.height !==
         sizeFront.height + "px"
       ) {
-        document.getElementsByClassName("quiz_back")[0].style.height =
+        document.getElementsByClassName("quiz-back")[0].style.height =
           sizeFront.height + "px";
       }
     }
@@ -353,7 +353,7 @@ const Quiz = () => {
     setCount((prev) => prev + 1);
     if (count === rounds - 1) setIsLastRound(true);
 
-    const quizButtons = document.getElementsByClassName("quiz_answer");
+    const quizButtons = document.getElementsByClassName("quiz-answer");
     for (const elem of quizButtons) {
       elem.style.backgroundColor = "#d9d9d9";
       elem.style.animation = "none";
@@ -361,17 +361,17 @@ const Quiz = () => {
   };
 
   const handleRounds = (e) => {
-    const quizRounds = document.getElementsByClassName("quiz_round");
+    const quizRounds = document.getElementsByClassName("quiz-round");
     for (const elem of quizRounds) elem.style.backgroundColor = "#d9d9d9";
     e.target.style.backgroundColor = "green";
     switch (e.target.id) {
-      case "rounds_3":
+      case "rounds-3":
         setRounds(3);
         break;
-      case "rounds_5":
+      case "rounds-5":
         setRounds(5);
         break;
-      case "rounds_10":
+      case "rounds-10":
         setRounds(10);
         break;
       default:
@@ -402,9 +402,9 @@ const Quiz = () => {
 
   return (
     <>
-      <div className="quiz_back" style={{ height: "80vh" }}>
+      <div className="quiz-back" style={{ height: "80vh" }}>
         <div
-          className="quiz_background"
+          className="quiz-background"
           style={
             displayGame && mediaData.backdrop_path
               ? {
@@ -414,33 +414,33 @@ const Quiz = () => {
           }
         ></div>
       </div>
-      <div className="quiz_front" ref={targetFront}>
+      <div className="quiz-front" ref={targetFront}>
         {displayRules && (
           <>
-            <div className="quiz_title">Quiz</div>
-            <div className="quiz_rounds">
+            <div className="quiz-title">Quiz</div>
+            <div className="quiz-rounds">
               <div
-                id="rounds_3"
-                className="quiz_round quiz_round_selected"
+                id="rounds-3"
+                className="quiz-round quiz-round-selected"
                 onClick={handleRounds}
               >
                 3 rounds
               </div>
-              <div id="rounds_5" className="quiz_round" onClick={handleRounds}>
+              <div id="rounds-5" className="quiz-round" onClick={handleRounds}>
                 5 rounds
               </div>
-              <div id="rounds_10" className="quiz_round" onClick={handleRounds}>
+              <div id="rounds-10" className="quiz-round" onClick={handleRounds}>
                 10 rounds
               </div>
             </div>
-            <div className="quiz_start" onClick={handleNextQuestion}>
+            <div className="quiz-start" onClick={handleNextQuestion}>
               Let's start !
             </div>
           </>
         )}
         {displayGame && (
           <>
-            <div className="quiz_counter">
+            <div className="quiz-counter">
               {count} / {rounds}
             </div>
             {mediaData?.poster_path ? (
@@ -495,24 +495,24 @@ const Quiz = () => {
                     </div>
                   </div>
                 </div>
-              )}
+              )}{" "}
             </div>
             {nextQuestion && (
-              <div className="quiz_next" onClick={handleNextQuestion}>
+              <div className="quiz-next" onClick={handleNextQuestion}>
                 Next question ➡️
               </div>
             )}
             {seeResults && (
-              <div className="quiz_seeresult" onClick={handleSeeResults}>
-                🏆 See results 🏆
+              <div className="quiz-seeresult" onClick={handleSeeResults}>
+                See results
               </div>
             )}
           </>
         )}
         {displayScore && (
           <>
-            <div className="quiz_score_title">Scoreboard</div>
-            <div className="quiz_score_total">
+            <div className="quiz-score-title">Scoreboard</div>
+            <div className="quiz-score-total">
               {score.length &&
                 score
                   .map((elem) => elem.point)
@@ -523,21 +523,21 @@ const Quiz = () => {
             {score.map((elem, index) => (
               <div
                 key={index}
-                className="quiz_score_result"
+                className="quiz-score-result"
                 style={
                   elem.point === 1
                     ? { backgroundColor: "#00800052" }
                     : { backgroundColor: "#ff000066" }
                 }
               >
-                <div className="quiz_score_number">{index + 1}</div>
-                <div className="quiz_score_content">
-                  <div className="quiz_score_question">{elem.question}</div>
-                  <div className="quiz_score_answers">
+                <div className="quiz-score-number">{index + 1}</div>
+                <div className="quiz-score-content">
+                  <div className="quiz-score-question">{elem.question}</div>
+                  <div className="quiz-score-answers">
                     {Object.keys(elem.answers).map((key) => (
                       <div
                         key={key}
-                        className="quiz_score_answer"
+                        className="quiz-score-answer"
                         style={
                           elem.rightAnswer === key
                             ? { backgroundColor: "green" }
@@ -547,10 +547,12 @@ const Quiz = () => {
                         }
                       >
                         <img
-                          className="quiz_score_answer_letter"
-                          src={`/src/assets/answer_${key}.svg`}
+                          className="quiz-score-answer-letter"
+                          src={`${
+                            import.meta.env.BASE_URL
+                          }/images/answer_${key}.svg`}
                         />
-                        <div className="quiz_score_answer_text">
+                        <div className="quiz-score-answer-text">
                           {elem.answers[key]}
                         </div>
                       </div>
@@ -560,11 +562,11 @@ const Quiz = () => {
               </div>
             ))}
 
-            <div className="quiz_score_after">
-              <div className="quiz_score_back" onClick={handleBackToRules}>
+            <div className="quiz-score-after">
+              <div className="quiz-score-back" onClick={handleBackToRules}>
                 Back to rules
               </div>
-              <div className="quiz_score_again" onClick={handlePlayAgain}>
+              <div className="quiz-score-again" onClick={handlePlayAgain}>
                 Play again
               </div>
             </div>

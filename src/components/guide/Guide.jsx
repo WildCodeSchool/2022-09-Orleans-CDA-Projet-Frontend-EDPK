@@ -31,12 +31,12 @@ const Guide = () => {
     },
   ];
   const apiKey = import.meta.env.VITE_API_KEY;
-  const url_trending = "https://api.themoviedb.org/3/trending/all/day?api_key=";
+  const urlTrending = "https://api.themoviedb.org/3/trending/all/day?api_key=";
   const [trending, setTrending] = useState([]);
 
   async function getTrending(signal) {
     const response = await axios
-      .get(url_trending + apiKey, signal)
+      .get(urlTrending + apiKey, signal)
       .then((res) => res.data);
     const trends = response.results;
     setTrending(trends);
@@ -50,14 +50,12 @@ const Guide = () => {
   }, []);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [currentAnswer, setCurrentAnswer] = useState("");
   const [guideAnswers, setGuideAnswers] = useState([]);
   const date = new Date();
   const year = date.getFullYear() - 3;
   const categoryAnswer = guideAnswers[0];
   const latestAnswer = guideAnswers[1];
   const ratingAnswer = guideAnswers[2];
-  const [filtersList, setFilterList] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
 
   const toggleQuestion = (e) => {
@@ -76,14 +74,14 @@ const Guide = () => {
     let filteredMovies = trending;
     if (categoryAnswer) {
       filteredMovies = trending.filter((movie) => {
-        return movie.genre_ids.includes(parseInt(categoryAnswer));
+        return movie.genre_ids.includes(parseInt(categoryAnswer, 10));
       });
     }
-    if (latestAnswer && latestAnswer == 1) {
+    if (latestAnswer && latestAnswer === 1) {
       filteredMovies = trending.filter((movie) => {
         return new Date(movie.release_date) > new Date(year);
       });
-    } else if (latestAnswer && latestAnswer == 2) {
+    } else if (latestAnswer && latestAnswer === 2) {
       filteredMovies = trending.filter((movie) => {
         return new Date(movie.release_date) < new Date(year);
       });
@@ -99,7 +97,7 @@ const Guide = () => {
   return (
     <div className="app">
       {isFiltered ? (
-        <div className="movieList mt-5">
+        <div className="movie-List mt-5">
           <h2 className="title mb-3">For You !</h2>
           <div className="board">
             {trending.length > 0

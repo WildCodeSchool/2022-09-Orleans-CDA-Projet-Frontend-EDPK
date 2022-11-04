@@ -9,29 +9,29 @@ footer {
   align-items: center;
 }
 
-.footer_logo {
+.footer-logo {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-.footer_logo img {
+.footer-logo img {
   width: 4rem;
 }
 
-.footer_logo span {
+.footer-logo span {
   margin-left: 1rem;
   font-size: 3.5rem;
   font-family: var(--title-font);
 }
 
-.footer_aside {
+.footer-aside {
   display: flex;
   flex-direction: column;
 }
 
-.footer_authors {
+.footer-authors {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,15 +41,15 @@ footer {
   width: 100%;
 }
 
-.footer_authors_title,
-.footer_api_title {
+.footer-authors-title,
+.footer-api-title {
   width: 100%;
   font-size: 2rem;
   font-family: var(--title-font);
   margin-left: 1rem;
 }
 
-.footer_authors_content {
+.footer-authors-content {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -57,7 +57,7 @@ footer {
   align-items: center;
 }
 
-.footer_author {
+.footer-author {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -65,24 +65,24 @@ footer {
   margin: 0 1rem;
 }
 
-.footer_author img {
+.footer-author img {
   width: 2rem;
   border-radius: 100%;
 }
 
-.footer_author_firstname {
+.footer-author-firstname {
   margin-left: 0.5rem;
   font-size: 1.2rem;
   font-family: var(--title-font);
   width: 100%;
 }
 
-.footer_author_lastname {
+.footer-author-lastname {
   display: none;
   margin: 0;
 }
 
-.footer_api {
+.footer-api {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,17 +92,17 @@ footer {
   width: 100%;
 }
 
-.footer_api_description {
+.footer-api-description {
   font-size: 0.7rem;
   margin-bottom: 0.5rem;
 }
 
-.footer_api_content {
+.footer-api-content {
   width: 100%;
   margin-left: 1rem;
 }
 
-.footer_api_content img {
+.footer-api-content img {
   width: 15rem;
 }
 
@@ -111,32 +111,32 @@ footer {
     flex-direction: column;
   }
 
-  .footer_logo {
+  .footer-logo {
     margin: 2rem 0 4rem 0;
   }
 }
 
 @media (max-width: 600px) {
-  .footer_logo img {
+  .footer-logo img {
     width: 12vw;
   }
 
-  .footer_logo span {
+  .footer-logo span {
     font-size: 10vw;
     margin-left: 3vw;
   }
 
-  .footer_authors_content {
+  .footer-authors-content {
     flex-direction: column;
   }
 
-  .footer_author {
+  .footer-author {
     min-width: 150px;
     margin: 0.25rem 0 0.25rem 1rem;
     width: 100%;
   }
 
-  .footer_author_lastname {
+  .footer-author-lastname {
     display: inline;
   }
 }

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Categories from "./Categories";
-import Videoplayer from "./Videoplayer";
+import VideoPlayer from "./VideoPlayer";
 
 function Card({ type, data, actors, videos }) {
   return (
     <>
       <div className="flex justify-center">
         <div className="flex flex-col md:flex-row md:max-w-5xl rounded-lg bg-white shadow-lg md:my-20 shadow-2xl">
-          <Videoplayer videos={videos} />
+          <VideoPlayer videos={videos} />
 
           <img
             className=" w-full h-96 md:h-auto object-cover md:w-90 rounded-t-lg md:rounded-none md:rounded-l-lg"
@@ -21,7 +21,7 @@ function Card({ type, data, actors, videos }) {
           />
           <div className="p-6 flex flex-col justify-start items-center">
             <h5 className="text-gray-900 text-3xl font-medium mb-2 text-center">
-              {type === "movie" ? data.title : data.name}{" "}
+              {type === "movie" ? data.title : data.name}
             </h5>
 
             <Categories type={type} data={data} />
@@ -76,7 +76,7 @@ function Card({ type, data, actors, videos }) {
               data.seasons ? (
                 <div>
                   <p className="text-gray-600 p-4">
-                    Number of seasons :{" "}
+                    Number of seasons :&nbsp;
                     {
                       data.seasons.filter((s) => s.name.includes("Season"))
                         .length
