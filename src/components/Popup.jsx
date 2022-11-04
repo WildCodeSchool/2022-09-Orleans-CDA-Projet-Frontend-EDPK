@@ -8,7 +8,7 @@ const Popup = () => {
   return (
     <div
       className="relative z-10"
-      id="popup_component"
+      id="popup-component"
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
