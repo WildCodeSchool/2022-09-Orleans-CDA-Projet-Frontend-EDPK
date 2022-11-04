@@ -54,8 +54,8 @@ const Navbar = () => {
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="logo hidden lg:block"
-                    src="/images/logo.png"
-                    alt="CineFlix"
+                    src={`${import.meta.env.BASE_URL}/images/logo.png`}
+                    alt="Logo of CineFlix"
                   />
                   <p className="cineflix hidden lg:block">Cineflix</p>
                 </div>
