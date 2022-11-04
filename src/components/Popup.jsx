@@ -8,7 +8,7 @@ const Popup = () => {
   return (
     <div
       className="relative z-10"
-      id="popup_component"
+      id="popup-component"
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
@@ -42,7 +42,7 @@ const Popup = () => {
                     className="text-lg font-medium leading-6 text-gray-900"
                     id="modal-title"
                   >
-                    Warning adult content !
+                    Warning adult content!
                   </h3>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">

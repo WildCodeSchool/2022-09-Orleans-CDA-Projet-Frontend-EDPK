@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Videoplayer = (props) => {
+const VideoPlayer = (props) => {
   const { videos } = props;
   const [videoPlayer, setVideoPlayer] = useState(false);
 
@@ -80,4 +80,4 @@ const Videoplayer = (props) => {
   );
 };
 
-export default Videoplayer;
+export default VideoPlayer;
