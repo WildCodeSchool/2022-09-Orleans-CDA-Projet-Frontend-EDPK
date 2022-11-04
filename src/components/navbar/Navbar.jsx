@@ -134,7 +134,7 @@ const Navbar = () => {
                         >
                           {categoryMovies &&
                             categoryMovies.map((genre) => (
-                              <div className="m-4" key={genre.id}>
+                              <div className="each m-4" key={genre.id}>
                                 <Link to={`/category/movie/${genre.id}/1`}>
                                   {genre.name}
                                 </Link>
@@ -192,7 +192,7 @@ const Navbar = () => {
                       >
                         {categoryTV &&
                           categoryTV.map((genre) => (
-                            <div className="m-4" key={genre.id}>
+                            <div className="each m-4" key={genre.id}>
                               <Link to={`/category/tv/${genre.id}/1`}>
                                 {genre.name}
                               </Link>

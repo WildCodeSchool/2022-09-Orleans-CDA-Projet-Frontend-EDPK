@@ -30,8 +30,13 @@ nav {
 
 .dropdown {
   background-color: var(--var-primary);
+  font-family: var(--text-font);
 }
 
+.each:hover {
+  background-color: (var(--var-secondary));
+  color: black;
+}
 .logo {
   height: 6rem;
   width: 3.5rem;
