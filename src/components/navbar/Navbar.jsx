@@ -177,7 +177,7 @@ const Navbar = () => {
                         className="dropdown overflow-y-auto h-96 rounded border-l border-r border-b py-1 text-white"
                         role="none"
                       >
-                        {categoryMovies?.map((genre) => (
+                        {categoryTV?.map((genre) => (
                           <div className="m-4" key={genre.id}>
                             <Link to={`/category/tv/${genre.id}/1`}>
                               {genre.name}
