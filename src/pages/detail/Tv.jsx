@@ -27,10 +27,9 @@ const Tv = () => {
       setTv(response);
     } catch (error) {
       if (error.response.status && error.response.status === 404) {
-        navigate("/404");
-        //window.location.href = import.meta.env.BASE_URL + "/404";
+        return navigate("/404");
       } else if (error.response.status && error.response.status === 500) {
-        navigate("/500");
+        return navigate("/500");
       }
     }
   }
