@@ -13,7 +13,7 @@ import Navbar from "./components/navbar/Navbar";
 
 function App() {
   return (
-    <BrowserRouter basename="/2022-09-Orleans-CDA-Projet-Frontend-EDPK/">
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <>
         <Navbar />
         <Routes>
