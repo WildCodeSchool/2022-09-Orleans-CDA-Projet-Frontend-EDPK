@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Categories from "./Categories";
-import VideoPlayer from "./Videoplayer";
+import VideoPlayer from "./VideoPlayer";
 
 function Card({ type, data, actors, videos }) {
   return (
