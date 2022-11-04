@@ -79,20 +79,3 @@ const MoviesListHome = () => {
   );
 };
 export default MoviesListHome;
-
-/* <div className="">
-                  <div className="card flex justify-evenly">
-                  <a href="#!">
-                    <img
-                      className="rounded-t-lg"
-                      src={`https://image.tmdb.org/t/p/w500${t.poster_path}`}
-                      alt={t.original_title}
-                    />
-                  </a>
-                  </div>
-                  
-                    <h2 className="text-gray-1000 text-xl font-medium">
-                      {t.original_title}
-                    </h2>
-                  
-                </div> */
