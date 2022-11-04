@@ -1,6 +1,8 @@
 # yarn
 
 - add
-  = npm install
+  = yarn
+
+- we only use yarn
 
 - format

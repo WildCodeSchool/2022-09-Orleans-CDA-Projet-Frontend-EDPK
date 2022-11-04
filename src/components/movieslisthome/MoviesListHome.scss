@@ -1,0 +1,49 @@
+img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  padding-left: 5rem;
+  width: 95%;
+}
+
+.board {
+  display: flex;
+  justify-content: space-around;
+}
+h3 {
+  color: var(--var-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  max-width: 20ch;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+h2 {
+  padding-left: 1.05rem;
+  color: var(--var-text);
+  font-family: var(--title-font);
+}
+
+@media only screen and (max-width: 800px) {
+  .box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .board {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  img {
+    width: 15rem;
+  }
+}

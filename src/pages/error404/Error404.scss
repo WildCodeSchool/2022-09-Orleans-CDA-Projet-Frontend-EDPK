@@ -1,0 +1,31 @@
+.error404 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 70vh;
+}
+
+.error404-title {
+  font-size: 3rem;
+  color: var(--var-secondary);
+  font-family: var(--title-font);
+}
+
+.error404-text {
+  font-size: 2rem;
+  color: var(--var-secondary);
+  font-family: var(--title-font);
+}
+
+.error404-back {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  color: var(--var-secondary);
+  font-family: var(--title-font);
+  text-decoration: underline;
+}
+
+.error404-back:hover {
+  text-decoration: none;
+}
