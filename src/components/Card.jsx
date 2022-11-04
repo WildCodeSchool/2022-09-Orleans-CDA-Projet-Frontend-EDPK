@@ -76,7 +76,7 @@ function Card({ type, data, actors, videos }) {
               data.seasons ? (
                 <div>
                   <p className="text-gray-600 p-4">
-                    Number of seasons :{" "}
+                    Number of seasons :&nbsp;
                     {
                       data.seasons.filter((s) => s.name.includes("Season"))
                         .length
