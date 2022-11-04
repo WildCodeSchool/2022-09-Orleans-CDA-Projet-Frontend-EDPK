@@ -7,7 +7,7 @@ import Popup from "../../components/Popup";
 
 const Movie = () => {
   const { movieId } = useParams();
-  const apiKey = import.meta.env.VITE_API_KEY;
+  const apiKey = "25b22b4c39eef9f534de0f037ba42e82";
   const urlMovieDetail = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
   const urlMovieActors = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`;
   const urlMovieVideos = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`;

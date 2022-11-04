@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const MoviesListHome = () => {
-  const apiKey = import.meta.env.VITE_API_KEY;
+  const apiKey = "25b22b4c39eef9f534de0f037ba42e82";
   const urlTrending = "https://api.themoviedb.org/3/trending/all/day?api_key=";
   const [trending, setTrending] = useState([]);
   const [tv, setTv] = useState([]);

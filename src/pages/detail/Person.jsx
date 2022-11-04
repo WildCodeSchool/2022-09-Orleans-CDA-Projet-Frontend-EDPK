@@ -35,9 +35,7 @@ const Person = () => {
       try {
         const personDetails = await axios
           .get(
-            `https://api.themoviedb.org/3/person/${personId}?api_key=${
-              import.meta.env.VITE_API_KEY
-            }&language=en-US`
+            `https://api.themoviedb.org/3/person/${personId}?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}&language=en-US`
           )
           .then((res) => res.data);
         setPerson(personDetails);
@@ -56,9 +54,7 @@ const Person = () => {
         if (personDetails.known_for_department === "Directing") {
           const personFilmo = await axios
             .get(
-              `https://api.themoviedb.org/3/person/${personId}/movie_credits?api_key=${
-                import.meta.env.VITE_API_KEY
-              }&language=en-US`
+              `https://api.themoviedb.org/3/person/${personId}/movie_credits?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}&language=en-US`
             )
             .then((res) => {
               const raw = res.data.crew.filter(({ job }) => job === "Director");
@@ -77,9 +73,7 @@ const Person = () => {
         } else {
           const personFilmo = await axios
             .get(
-              `https://api.themoviedb.org/3/person/${personId}/movie_credits?api_key=${
-                import.meta.env.VITE_API_KEY
-              }&language=en-US`
+              `https://api.themoviedb.org/3/person/${personId}/movie_credits?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}&language=en-US`
             )
             .then((res) => {
               return res.data.cast

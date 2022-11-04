@@ -13,9 +13,7 @@ const CategoryPage = () => {
     axios
       .get(
         `
-        https://api.themoviedb.org/3/discover/${type}?api_key=${
-          import.meta.env.VITE_API_KEY
-        }&language=en-US&adult=false&include_video=false&page=${
+        https://api.themoviedb.org/3/discover/${type}?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}&language=en-US&adult=false&include_video=false&page=${
           pageNumber * 2 - 1
         }&with_genres=${genre}&with_watch_monetization_types=flatrate`
       )
@@ -24,9 +22,7 @@ const CategoryPage = () => {
         axios
           .get(
             `
-          https://api.themoviedb.org/3/discover/${type}?api_key=${
-              import.meta.env.VITE_API_KEY
-            }&language=en-US&adult=false&include_video=false&page=${
+          https://api.themoviedb.org/3/discover/${type}?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}&language=en-US&adult=false&include_video=false&page=${
               pageNumber * 2
             }&with_genres=${genre}&with_watch_monetization_types=flatrate`
           )

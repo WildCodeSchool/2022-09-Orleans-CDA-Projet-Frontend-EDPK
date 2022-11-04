@@ -6,7 +6,7 @@ import Card from "../../components/Card";
 
 const Tv = () => {
   const { tvId } = useParams();
-  const apiKey = import.meta.env.VITE_API_KEY;
+  const apiKey = "25b22b4c39eef9f534de0f037ba42e82";
   const urlTvDetail = `https://api.themoviedb.org/3/tv/${tvId}?api_key=${apiKey}`;
   const urlTvActors = `https://api.themoviedb.org/3/tv/${tvId}/credits?api_key=${apiKey}`;
   const urlTvSeasons = `https://api.themoviedb.org/3/tv/${tvId}/season/1?api_key=${apiKey}`; //todo

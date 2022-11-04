@@ -8,9 +8,7 @@ const Searchbar = ({ media = null, genreId = null }) => {
   const [search, setSearch] = useState("");
   const [display, setDisplay] = useState("");
   const [defaultValues, setDefaultValues] = useState({
-    url: `https://api.themoviedb.org/3/search/multi?api_key=${
-      import.meta.env.VITE_API_KEY
-    }&language=en&page=1&include_adult=false&query=`,
+    url: `https://api.themoviedb.org/3/search/multi?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}&language=en&page=1&include_adult=false&query=`,
     placeholder: "Search a movie, a TV show, or a person...",
   });
 
@@ -24,18 +22,14 @@ const Searchbar = ({ media = null, genreId = null }) => {
       switch (media) {
         case "movie":
           setDefaultValues({
-            url: `https://api.themoviedb.org/3/discover/movie?api_key=${
-              import.meta.env.VITE_API_KEY
-            }&with_genres=${genreId}`,
+            url: `https://api.themoviedb.org/3/discover/movie?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}&with_genres=${genreId}`,
             media: "MOVIE",
             placeholder: `Search a movie of ${defaultValues.genre}...`,
           });
           break;
         case "tv":
           setDefaultValues({
-            url: `https://api.themoviedb.org/3/discover/tv?api_key=${
-              import.meta.env.VITE_API_KEY
-            }&with_genres=${genreId}`,
+            url: `https://api.themoviedb.org/3/discover/tv?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}&with_genres=${genreId}`,
             media: "TV SHOW",
             placeholder: `Search a TV show of ${defaultValues.genre}...`,
           });
@@ -47,27 +41,21 @@ const Searchbar = ({ media = null, genreId = null }) => {
       switch (media) {
         case "movie":
           setDefaultValues({
-            url: `https://api.themoviedb.org/3/search/movie?api_key=${
-              import.meta.env.VITE_API_KEY
-            }&language=en&page=1&include_adult=false&query=`,
+            url: `https://api.themoviedb.org/3/search/movie?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}&language=en&page=1&include_adult=false&query=`,
             media: "MOVIE",
             placeholder: "Search a movie...",
           });
           break;
         case "tv":
           setDefaultValues({
-            url: `https://api.themoviedb.org/3/search/tv?api_key=${
-              import.meta.env.VITE_API_KEY
-            }&language=en&page=1&include_adult=false&query=`,
+            url: `https://api.themoviedb.org/3/search/tv?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}&language=en&page=1&include_adult=false&query=`,
             media: "TV SHOW",
             placeholder: "Search a TV show...",
           });
           break;
         default:
           setDefaultValues({
-            url: `https://api.themoviedb.org/3/search/multi?api_key=${
-              import.meta.env.VITE_API_KEY
-            }&language=en&page=1&include_adult=false&query=`,
+            url: `https://api.themoviedb.org/3/search/multi?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}&language=en&page=1&include_adult=false&query=`,
             placeholder: "Search a movie, a TV show, or a person...",
           });
           break;

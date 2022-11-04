@@ -6,9 +6,6 @@ on:
 
 jobs:
   deploy:
-    env:
-      VITE_API_KEY: ${{ env.VITE_API_KEY }}
-
     permissions:
       pages: write
       id-token: write

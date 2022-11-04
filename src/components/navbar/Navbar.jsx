@@ -14,9 +14,7 @@ const Navbar = () => {
     if (categoryMovies.length === 0 && categoryTV.length === 0) {
       axios
         .get(
-          `https://api.themoviedb.org/3/genre/movie/list?api_key=${
-            import.meta.env.VITE_API_KEY
-          }&language=en-US`
+          `https://api.themoviedb.org/3/genre/movie/list?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}&language=en-US`
         )
         .then((response) => response.data)
         .then((data) => {
@@ -24,9 +22,7 @@ const Navbar = () => {
         });
       axios
         .get(
-          `https://api.themoviedb.org/3/genre/tv/list?api_key=${
-            import.meta.env.VITE_API_KEY
-          }&language=en-US`
+          `https://api.themoviedb.org/3/genre/tv/list?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}&language=en-US`
         )
         .then((response) => response.data)
         .then((data) => {

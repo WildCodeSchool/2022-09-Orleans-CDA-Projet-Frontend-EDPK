@@ -66,9 +66,7 @@ const Quiz = () => {
 
       axios
         .get(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${
-            import.meta.env.VITE_API_KEY
-          }&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randPage()}&with_watch_monetization_types=flatrate
+          `https://api.themoviedb.org/3/discover/movie?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randPage()}&with_watch_monetization_types=flatrate
         `
         )
         .then((res) => res.data)
@@ -83,9 +81,7 @@ const Quiz = () => {
     if (mediaId) {
       (async () => {
         const { data: fetchData } = await axios.get(
-          `https://api.themoviedb.org/3/movie/${mediaId}?api_key=${
-            import.meta.env.VITE_API_KEY
-          }`
+          `https://api.themoviedb.org/3/movie/${mediaId}?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}`
         );
 
         setMediaData(fetchData);
@@ -151,9 +147,7 @@ const Quiz = () => {
         else if (randomQuestion === 1) {
           (async () => {
             const { data: fetchCharacter } = await axios.get(
-              `https://api.themoviedb.org/3/movie/${mediaId}/credits?api_key=${
-                import.meta.env.VITE_API_KEY
-              }`
+              `https://api.themoviedb.org/3/movie/${mediaId}/credits?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}`
             );
 
             setQuestion(
@@ -211,9 +205,7 @@ const Quiz = () => {
             );
 
             const { data: fetchDirector } = await axios.get(
-              `https://api.themoviedb.org/3/movie/${mediaId}/credits?api_key=${
-                import.meta.env.VITE_API_KEY
-              }`
+              `https://api.themoviedb.org/3/movie/${mediaId}/credits?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}`
             );
 
             const { name: rightDirector } = fetchDirector.crew.filter(
@@ -225,9 +217,7 @@ const Quiz = () => {
               const {
                 data: { results: resultsOtherMedia },
               } = await axios.get(
-                `https://api.themoviedb.org/3/discover/movie?api_key=${
-                  import.meta.env.VITE_API_KEY
-                }&language=en-US&sort_by=popularity.desc&include_adult=false&page=${randPage()}
+                `https://api.themoviedb.org/3/discover/movie?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}&language=en-US&sort_by=popularity.desc&include_adult=false&page=${randPage()}
                 `
               );
               const fetchOtherMedia = resultsOtherMedia[randResult()];
@@ -235,7 +225,7 @@ const Quiz = () => {
               const { data: fetchOtherCredits } = await axios.get(
                 `https://api.themoviedb.org/3/movie/${
                   fetchOtherMedia.id
-                }/credits?api_key=${import.meta.env.VITE_API_KEY}`
+                }/credits?api_key=${"25b22b4c39eef9f534de0f037ba42e82"}`
               );
 
               const director = fetchOtherCredits.crew.filter(
