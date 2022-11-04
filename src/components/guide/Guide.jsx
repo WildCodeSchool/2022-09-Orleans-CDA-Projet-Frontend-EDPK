@@ -97,7 +97,7 @@ const Guide = () => {
   return (
     <div className="app">
       {isFiltered ? (
-        <div className="movieList mt-5">
+        <div className="movie-List mt-5">
           <h2 className="title mb-3">For You !</h2>
           <div className="board">
             {trending.length > 0
