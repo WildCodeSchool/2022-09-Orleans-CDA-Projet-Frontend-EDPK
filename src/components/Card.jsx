@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Categories from "./Categories";
-import Videoplayer from "./Videoplayer";
+import VideoPlayer from "./Videoplayer";
 
 function Card({ type, data, actors, videos }) {
   return (
     <>
       <div className="flex justify-center">
         <div className="flex flex-col md:flex-row md:max-w-5xl rounded-lg bg-white shadow-lg md:my-20 shadow-2xl">
-          <Videoplayer videos={videos} />
+          <VideoPlayer videos={videos} />
 
           <img
             className=" w-full h-96 md:h-auto object-cover md:w-90 rounded-t-lg md:rounded-none md:rounded-l-lg"
