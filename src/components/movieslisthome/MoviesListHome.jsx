@@ -32,7 +32,7 @@ const MoviesListHome = () => {
 
   return (
     <div>
-      <div className="movieList mt-5">
+      <div className="movie-List mt-5">
         <h2 className="mb-3">Trending Movies</h2>
         <div className="board">
           {movies.map((t) => (
@@ -54,7 +54,7 @@ const MoviesListHome = () => {
           ))}
         </div>
       </div>
-      <div className="movieList mt-5">
+      <div className="movie-List mt-5">
         <h2 className="mb-3">Trending TV Shows</h2>
         <div className="board">
           {tv.map((t) => (
