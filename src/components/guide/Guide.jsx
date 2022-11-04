@@ -108,7 +108,7 @@ const Guide = () => {
             }}
           >
             <img
-              src={`${import.meta.env.BASE_URL}/images/return.png`}
+              src={`${import.meta.env.BASE_URL}images/return.png`}
               alt="return arrow"
             />
           </button>
@@ -150,7 +150,7 @@ const Guide = () => {
               }}
             >
               <img
-                src={`${import.meta.env.BASE_URL}/images/return.png`}
+                src={`${import.meta.env.BASE_URL}images/return.png`}
                 alt="return arrow"
               />
             </button>

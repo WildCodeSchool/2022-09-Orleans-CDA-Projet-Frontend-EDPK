@@ -9,7 +9,7 @@ function Home() {
     <div className="home">
       <header>
         <video
-          src={`${import.meta.env.BASE_URL}/videos/video.mp4`}
+          src={`${import.meta.env.BASE_URL}videos/video.mp4`}
           alt="Video of introduction"
           autoPlay
           loop
