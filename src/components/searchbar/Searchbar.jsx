@@ -76,7 +76,7 @@ const Searchbar = ({ media = null, genreId = null }) => {
   }, []);
 
   useEffect(() => {
-    const timeOut = setTimeout(() => {
+    const timeout = setTimeout(() => {
       if (search !== "") {
         axios
           .get(genreId ? defaultValues.url : defaultValues.url + search)
@@ -88,7 +88,7 @@ const Searchbar = ({ media = null, genreId = null }) => {
         setDisplay("");
       }
     }, 500);
-    return () => clearTimeout(timeOut);
+    return () => clearTimeout(timeout);
   }, [search]);
 
   const focusInSearch = () => {
