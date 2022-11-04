@@ -4,7 +4,10 @@ const Footer = () => {
   return (
     <footer>
       <div className="footer-logo">
-        <img src="/images/logo.png" />
+        <img
+          src={`${import.meta.env.BASE_URL}/images/logo.png`}
+          alt="Logo of Cineflix"
+        />
         <span>Cineflix</span>
       </div>
       <div className="footer-aside">
@@ -16,7 +19,10 @@ const Footer = () => {
               target="_blank"
               className="footer-author"
             >
-              <img src="/images/emmanuel.jpg" alt="Profile of Emmanuel" />
+              <img
+                src={`${import.meta.env.BASE_URL}/images/emmanuel.jpg`}
+                alt="Profile of Emmanuel"
+              />
               <div className="footer-author-firstname">
                 Emmanuel
                 <span className="footer-author-lastname"> Pereira</span>
@@ -27,7 +33,10 @@ const Footer = () => {
               target="_blank"
               className="footer-author"
             >
-              <img src="/images/dangiras.jpg" alt="Profile of Dangiras" />
+              <img
+                src={`${import.meta.env.BASE_URL}/images/dangiras.jpg`}
+                alt="Profile of Dangiras"
+              />
               <div className="footer-author-firstname">
                 Dangiras
                 <span className="footer-author-lastname"> Hausmanas</span>
@@ -38,7 +47,10 @@ const Footer = () => {
               target="_blank"
               className="footer-author"
             >
-              <img src="/images/kylian.jpg" alt="Profile of Kylian" />
+              <img
+                src={`${import.meta.env.BASE_URL}/images/kylian.jpg`}
+                alt="Profile of Kylian"
+              />
               <div className="footer-author-firstname">
                 Kylian
                 <span className="footer-author-lastname"> Moreira</span>
@@ -49,7 +61,10 @@ const Footer = () => {
               target="_blank"
               className="footer-author"
             >
-              <img src="/images/paul.jpg" alt="Profile of Paul" />
+              <img
+                src={`${import.meta.env.BASE_URL}/images/paul.jpg`}
+                alt="Profile of Paul"
+              />
               <div className="footer-author-firstname">
                 Paul
                 <span className="footer-author-lastname">
@@ -68,7 +83,10 @@ const Footer = () => {
               Database.
             </div>
             <a href="https://developers.themoviedb.org/3/" target="_blank">
-              <img src="/images/tmdb.svg" alt="Logo of TMDB" />
+              <img
+                src={`${import.meta.env.BASE_URL}/images/tmdb.svg`}
+                alt="Logo of TMDB"
+              />
             </a>
           </div>
         </div>

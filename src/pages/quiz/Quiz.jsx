@@ -450,7 +450,7 @@ const Quiz = () => {
                 <div id="a" className="quiz-answer" onClick={handleAnswer}>
                   <img
                     className="quiz-answer-letter"
-                    src="/images/answer_a.svg"
+                    src={`${import.meta.env.BASE_URL}/images/answer_a.svg`}
                     alt="Button of answer A"
                   />
                   <div className="quiz-answer-text">
@@ -460,7 +460,7 @@ const Quiz = () => {
                 <div id="b" className="quiz-answer" onClick={handleAnswer}>
                   <img
                     className="quiz-answer-letter"
-                    src="/images/answer_b.svg"
+                    src={`${import.meta.env.BASE_URL}/images/answer_b.svg`}
                     alt="Button of answer B"
                   />
                   <div className="quiz-answer-text">
@@ -470,7 +470,7 @@ const Quiz = () => {
                 <div id="c" className="quiz-answer" onClick={handleAnswer}>
                   <img
                     className="quiz-answer-letter"
-                    src="/images/answer_c.svg"
+                    src={`${import.meta.env.BASE_URL}/images/answer_c.svg`}
                     alt="Button of answer C"
                   />
                   <div className="quiz-answer-text">
@@ -480,7 +480,7 @@ const Quiz = () => {
                 <div id="d" className="quiz-answer" onClick={handleAnswer}>
                   <img
                     className="quiz-answer-letter"
-                    src="/images/answer_d.svg"
+                    src={`${import.meta.env.BASE_URL}/images/answer_d.svg`}
                     alt="Button of answer D"
                   />
                   <div className="quiz-answer-text">
@@ -540,7 +540,9 @@ const Quiz = () => {
                       >
                         <img
                           className="quiz-score-answer-letter"
-                          src={`/src/assets/answer_${key}.svg`}
+                          src={`${
+                            import.meta.env.BASE_URL
+                          }/images/answer_${key}.svg`}
                         />
                         <div className="quiz-score-answer-text">
                           {elem.answers[key]}

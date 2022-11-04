@@ -8,7 +8,13 @@ function Home() {
   return (
     <div className="home">
       <header>
-        <video src="/videos/video3.mp4" autoPlay loop muted />
+        <video
+          src={`${import.meta.env.BASE_URL}/videos/video.mp4`}
+          alt="Video of introduction"
+          autoPlay
+          loop
+          muted
+        />
       </header>
       <Searchbar />
       <div className="card">
