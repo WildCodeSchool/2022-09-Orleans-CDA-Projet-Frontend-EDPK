@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CarouselActors from "./carousel/Carousel";
+import Carousel from "./carousel/Carousel";
 import Categories from "./Categories";
 import Videoplayer from "./Videoplayer";
 
@@ -49,7 +49,7 @@ function Card({ type, data, actors, videos }) {
               <div className="flex items-center space-x-2 text-base">
                 <h4 className="font-semibold text-slate-900">Main actors :</h4>
               </div>
-              <CarouselActors actors={actors} />
+              <Carousel actors={actors} />
             </div>
             {type === "tv" ? (
               data.seasons ? (
