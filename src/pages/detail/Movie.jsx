@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./movie.scss";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Card from "../../components/Card";
 import Popup from "../../components/Popup";
 
@@ -16,6 +16,8 @@ const Movie = () => {
   const [actors, setActors] = useState([]);
   const [videos, setVideos] = useState([]);
 
+  const navigate = useNavigate();
+
   async function getMovieById(signal) {
     try {
       const response = await axios
@@ -25,9 +27,9 @@ const Movie = () => {
       setMovie(response);
     } catch (error) {
       if (error.response.status && error.response.status === 404) {
-        window.location.href = import.meta.env.BASE_URL + "/404";
+        return navigate("/404");
       } else if (error.response.status && error.response.status === 500) {
-        window.location.href = import.meta.env.BASE_URL + "/500";
+        return navigate("/500");
       }
     }
   }

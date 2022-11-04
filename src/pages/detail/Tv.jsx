@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./tv.scss";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Card from "../../components/Card";
 
 const Tv = () => {
@@ -17,6 +17,8 @@ const Tv = () => {
   const [actors, setActors] = useState([]);
   const [videos, setVideos] = useState([]);
 
+  const navigate = useNavigate();
+
   async function getTvById(signal) {
     try {
       const response = await axios
@@ -25,9 +27,9 @@ const Tv = () => {
       setTv(response);
     } catch (error) {
       if (error.response.status && error.response.status === 404) {
-        window.location.href = import.meta.env.BASE_URL + "/404";
+        navigate("404");
       } else if (error.response.status && error.response.status === 500) {
-        window.location.href = import.meta.env.BASE_URL + "/500";
+        navigate("500");
       }
     }
   }
