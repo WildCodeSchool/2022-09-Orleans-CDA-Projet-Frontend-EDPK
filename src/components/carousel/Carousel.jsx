@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./carousel.css";
 
-const CarouselActors = ({ actors }) => {
+const Carousel = ({ actors }) => {
   const urlPhoto = "https://image.tmdb.org/t/p/w500";
 
   const [current, setCurrent] = useState(0);
@@ -97,4 +97,4 @@ const CarouselActors = ({ actors }) => {
     </section>
   );
 };
-export default CarouselActors;
+export default Carousel;
