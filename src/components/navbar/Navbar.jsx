@@ -121,14 +121,13 @@ const Navbar = () => {
                           className="dropdown overflow-y-auto h-96 rounded border-l border-r border-b py-1 text-white"
                           role="none"
                         >
-                          {categoryMovies &&
-                            categoryMovies.map((genre) => (
-                              <div className="m-4" key={genre.id}>
-                                <Link to={`/category/movie/${genre.id}/1`}>
-                                  {genre.name}
-                                </Link>
-                              </div>
-                            ))}
+                          {categoryMovies?.map((genre) => (
+                            <div className="m-4" key={genre.id}>
+                              <Link to={`/category/movie/${genre.id}/1`}>
+                                {genre.name}
+                              </Link>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -178,14 +177,13 @@ const Navbar = () => {
                         className="dropdown overflow-y-auto h-96 rounded border-l border-r border-b py-1 text-white"
                         role="none"
                       >
-                        {categoryTV &&
-                          categoryTV.map((genre) => (
-                            <div className="m-4" key={genre.id}>
-                              <Link to={`/category/tv/${genre.id}/1`}>
-                                {genre.name}
-                              </Link>
-                            </div>
-                          ))}
+                        {categoryTV?.map((genre) => (
+                          <div className="m-4" key={genre.id}>
+                            <Link to={`/category/tv/${genre.id}/1`}>
+                              {genre.name}
+                            </Link>
+                          </div>
+                        ))}
                       </div>
                     </div>
                     <li>
