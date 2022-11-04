@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CarouselActors from "./carouselactors/Carousel";
+import CarouselActors from "./carousel/Carousel";
 import Categories from "./Categories";
 import Videoplayer from "./Videoplayer";
 
