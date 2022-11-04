@@ -6,6 +6,9 @@ on:
 
 jobs:
   deploy:
+    env:
+      VITE_API_KEY: ${{ env.VITE_API_KEY }}
+
     permissions:
       pages: write
       id-token: write
@@ -14,7 +17,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{steps.deployment.outputs.page_url}}
-      VITE_API_KEY: ${{ env.VITE_API_KEY }}
 
     runs-on: ubuntu-latest
     steps:
